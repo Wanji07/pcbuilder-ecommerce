@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PCBuilder - Computer Parts and Accessories Store">
+    <title>PCBuilder</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <a href="#" class="logo" aria-label="PCBuilder home">
+            <span class="logo-mark">PB</span>
+            <span>PCBuilder</span>
+        </a>
+
+        <nav class="main-nav" aria-label="Main navigation">
+            <a href="#">Home</a>
+            <a href="#" class="active">Shop</a>
+            <a href="categories.html">Categories</a>
+            <a href="#">About us</a>
+            <a href="#">Contact</a>
+        </nav>
+
+        <div class="header-actions">
+            <button type="button" aria-label="Search">⌕</button>
+            <button type="button" aria-label="Shopping cart">🛒</button>
+            <button type="button" class="user-btn" aria-label="Account">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4zm0 2c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5z"/>
+                </svg>
+        </button>
+            <span>Cart</span>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="catalog-hero">
+            <p class="hero-label">The catalog</p>
+            <h1>Shop components.</h1>
+            <p class="hero-description">
+                Good parts. Clear specs. No guesswork.
+            </p>
+        </section>
+        <section class="catalog">
+            <!--Category Navigation-->
+    <div class="categoryproduct-nav">
+        <button class="category-button active" data-category="all">
+            All
+        </button>
+        <button class="category-button" data-category="cpu">
+            CPU
+        </button>
+        <button class="category-button" data-category="gpu">
+            GPU
+        </button>
+        <button class="category-button" data-category="ram">
+            RAM
+        </button>
+        <button class="category-button" data-category="storage">
+            Storage
+        </button>
+        <button class="category-button" data-category="case">
+            Case
+        </button>
+        <button class="category-button" data-category="mouse">
+            Mouse
+        </button>
+    </div>
+
+    <!-- Main shopcatalog area -->
+    <div class="catalog-layout">
+        <!-- FILTER SIDEBAR -->
+        <aside class="filters">
+            <small>FILTERS</small>
+            <label for="brand-filter">Brand</label>
+            <select id="brand-filter">
+                <option value="all">All Brands</option>
+                <option value="amd">AMD</option>
+                <option value="asus">ASUS</option>
+                <option value="corsair">Corsair</option>
+                <option value="samsung">Samsung</option>
+                <option value="nzxt">NZXT</option>
+                <option value="logitech">Logitech</option>
+            </select>
+            <label for="availability-filter">
+                Availability
+            </label>
+            <select id="availability-filter">
+                <option value="all">All</option>
+                <option value="available">Available</option>
+                <option value="out">Out of stock</option>
+            </select>
+        </aside>
+
+        <!-- PRODUCTS CATALOG-->
+        <div class="product-grid">
+            <article class="product-card" data-category="cpu" data-brand="amd" data-availability="available">
+                <div class="product-image">
+                    <img src="Shop product images/Ryzen77800X3D.png" alt="Ryzen processor">
+                    <span class="product-tag">CPU</span>
+                </div>
+                <div class="product-info">
+                    <small>AMD</small>
+                    <h3>Ryzen 7 7800X3D Processor</h3>
+                    <p>8-Core / 16-Thread · AM5</p>
+                    <strong>₱21,495</strong>
+                    <div class="product-actions">
+                        <a href="#">View details →</a>
+                        <button>Add to cart</button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" data-category="gpu"data-brand="asus"data-availability="available">
+                <div class="product-image">
+                    <img src="Shop product images/4070superdual.png" alt="RTX graphics card">
+                    <span class="product-tag">GPU</span>
+                </div>
+                <div class="product-info">
+                    <small>ASUS</small>
+                    <h3>GeForce RTX 4070 SUPER Dual</h3>
+                    <p>12GB GDDR6X · DLSS 3</p>
+                    <strong>₱38,995</strong>
+                    <div class="product-actions">
+                        <a href="#">View details →</a>
+                        <button>Add to cart</button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" data-category="ram" data-brand="corsair" data-availability="available">
+                <div class="product-image">
+                    <img src="Shop product images/Vengeance RGB DDR5 32GB.png" alt="Corsair RAM">
+                    <span class="product-tag">RAM</span>
+                </div>
+                 <div class="product-info">
+                    <small>Corsair</small>
+                    <h3>Vengeance RGB DDR5 32GB</h3>
+                    <p>6000MHz · CL36 · 2×16GB</p>
+                    <strong>₱6,495</strong>
+                    <div class="product-actions">
+                        <a href="#">View details →</a>
+                        <button>Add to cart</button>
+                 </div>
+                </div>
+            </article>
+
+            <article class="product-card" data-category="storage" data-brand="samsung" data-availability="available">
+                <div class="product-image">
+                    <img src="Shop product images/Storage.png" alt="Samsung SSD">
+                    <span class="product-tag">Storage</span>
+                </div>
+                <div class="product-info">
+                    <small>Samsung</small>
+                    <h3>990 PRO NVMe SSD 1TB</h3>
+                    <p>PCIe 4.0 · Read up to 7,450MB/s</p>
+                    <strong>₱6,995</strong>
+                    <div class="product-actions">
+                        <a href="#">View details →</a>
+                        <button>Add to cart</button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" data-category="case" data-brand="nzxt" data-availability="available">
+                <div class="product-image">
+                    <img src="Shop product images/H6 Flow Compact Mid-Tower.png" alt="NZXT computer case">
+                    <span class="product-tag">Case</span>
+                </div>
+                <div class="product-info">
+                    <small>NZXT</small>
+                    <h3>H6 Flow Compact Mid-Tower</h3>
+                    <p>Panoramic glass · ATX · White</p>
+                    <strong>₱8,495</strong>
+                    <div class="product-actions">
+                        <a href="#">View details →</a>
+                        <button>Add to cart</button>
+                    </div>
+                </div>
+            </article>
+            <article class="product-card" data-category="mouse" data-brand="logitech" data-availability="available">
+                <div class="product-image">
+                    <img src="Shop product images/G PRO X Superlight 2.png" alt="Logitech mouse">
+                    <span class="product-tag">Mouse</span>
+                </div>
+                <div class="product-info">
+                    <small>Logitech</small>
+                    <h3>G PRO X Superlight 2</h3>
+                    <p>Wireless · HERO 2 Sensor</p>
+                    <strong>₱7,295</strong>
+                    <div class="product-actions">
+                        <a href="#">View details →</a>
+                        <button>Add to cart</button>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+</main>
+
+</body>
+
+
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-brand">
+            <h2>PCBuilder</h2>
+            <p>Build better. Start here.</p>
+        </div>
+        <div class="footer-column">
+            <h4>Explore</h4>
+
+            <a href="#">Shop components</a>
+            <a href="#">Categories</a>
+            <a href="#">About us</a>
+        </div>
+        <div class="footer-column">
+            <h4>Support</h4>
+
+            <a href="#">Contact us</a>
+            <a href="#">Shipping & Returns</a>
+            <a href="#">FAQ</a>
+        </div>
+        <div class="footer-column">
+            <h4>Follow along</h4>
+
+            <a href="#">Instagram · Facebook</a>
+            <a href="#">TikTok · YouTube</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2026 PCBuilder. A better way to build.</p>
+        <p>Made for builders, in the Philippines.</p>
+    </div>
+</footer>
+</html>
