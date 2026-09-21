@@ -4,12 +4,16 @@
 Minor divider /**/
 
 
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap");
+
 :root {
     --page-background: #f5f4f0;
     --text: #1b2a32;
     --muted: #767d81;
     --border: #deded8;
     --accent: #c9f23b;
+    --body-font: "DM Sans", "Trebuchet MS", sans-serif;
+    --display-font: "Space Grotesk", "Trebuchet MS", sans-serif;
 }
 
 /* =========================
@@ -28,7 +32,8 @@ body {
     margin: 0;
     background: var(--page-background);
     color: var(--text);
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: var(--body-font);
+    line-height: 1.5;
 }
 
 a {
@@ -55,8 +60,9 @@ button {
     align-items: center;
     gap: 8px;
     color: var(--text);
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 700;
+    letter-spacing: -0.02em;
     white-space: nowrap;
 }
 
@@ -86,9 +92,9 @@ button {
     align-items: center;
     height: 100%;
     color: #667277;
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.02em;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
 }
 
 .main-nav a.active {
@@ -111,7 +117,7 @@ button {
     gap: 10px;
     margin-left: auto;
     color: var(--text);
-    font-size: 10px;
+    font-size: 12px;
 }
 
 .header-actions button {
@@ -155,13 +161,26 @@ button {
 }
 
 .hero-label {
-    margin: 0 0 18px;
+    width: 92%;
+    max-width: 1100px;
+    margin: 72px auto 0;
     color: var(--muted);
-    font-size: 9px;
+    font-size: 11px;
     font-weight: 700;
-    letter-spacing: 2px;
+    letter-spacing: 0.18em;
+    line-height: 1.2;
     text-transform: uppercase;
-padding-left: 400px
+}
+
+.hero-label h1 {
+    max-width: 620px;
+    margin: 14px 0 0;
+    color: var(--text);
+    font-family: var(--display-font);
+    font-size: clamp(52px, 8vw, 96px);
+    font-weight: 600;
+    letter-spacing: -0.07em;
+    line-height: 0.92;
 }
 
 .catalog-hero h1 {
@@ -222,21 +241,28 @@ padding-left: 400px
 
 .category-heading small {
     color: #63707a;
-    font-size: 9px;
-    letter-spacing: 3px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    line-height: 1.2;
+    text-transform: uppercase;
 }
 
 .category-heading h2 {
     margin: 12px 0 10px;
-    font-size: 36px;
-    font-weight: 400;
+    font-family: var(--display-font);
+    font-size: clamp(30px, 4vw, 42px);
+    font-weight: 600;
+    letter-spacing: -0.05em;
+    line-height: 1;
     color: #12283a;
 }
 
 .category-heading p {
     margin: 0;
     color: #71808a;
-    font-size: 13px;
+    font-size: 15px;
+    line-height: 1.45;
 }
 
 .view-categories {
@@ -247,7 +273,9 @@ padding-left: 400px
     color: #12283a;
     text-decoration: none;
 
-    font-size: 11px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
 }
 
 .category-row {
@@ -329,14 +357,18 @@ padding-left: 400px
 .category-text h3 {
     margin: 0 0 5px;
 
-    font-size: 18px;
-    font-weight: bold;
+    font-family: var(--display-font);
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
 }
 
 .category-text p {
     margin: 0;
 
-    font-size: 11px;
+    font-size: 12px;
+    line-height: 1.35;
 
     color: rgba(255, 255, 255, 0.8);
 }
