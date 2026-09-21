@@ -8,21 +8,50 @@
 
     <title>PCBuilder</title>
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
 
-    <header>
-        <!-- Navigation will be developed here -->
+    
+    <header class="site-header">
+        <a href="home.html" class="logo" aria-label="PCBuilder home">
+            <span class="logo-mark">PB</span>
+            <span>PCBuilder</span>
+        </a>
+
+        <nav class="main-nav" aria-label="Main navigation">
+            <a href="home.html" class="active">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="categories.html">Categories</a>
+            <a href="#about">About us</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+        <div class="header-actions">
+            <button type="button" aria-label="Search">⌕</button>
+            <button type="button" aria-label="Shopping cart">🛒</button>
+            <button type="button" class="user-btn" aria-label="Account">
+                
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4zm0 2c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5z"></path>
+            </svg>
+            </button>
+
+            <span>Cart</span>
+        </div>
     </header>
 
     <main>
 
         <!-- Hero Section -->
-        <section id="hero">
-            <!-- Hero content -->
-        </section>
+        <section id="hero" class="catalog-hero">
+            <p class="hero-label">The catalog</p>
+            <h1>Shop components.</h1>
+            <p class="hero-description">
+                Good parts. Clear specs. No guesswork.
+            </p>
+            </section>
 
         <!-- Products / Categories Section -->
         <section id="products">
