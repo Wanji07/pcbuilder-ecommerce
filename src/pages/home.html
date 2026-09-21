@@ -3,46 +3,175 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <meta name="description" content="PCBuilder - Computer Parts and Accessories Store">
-
     <title>PCBuilder</title>
-
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/src/css/style.css">
 </head>
-
 <body>
 
-    <header>
-        <!-- Navigation will be developed here -->
+    <header class="site-header">
+        <a href="#" class="logo" aria-label="PCBuilder home">
+            <span class="logo-mark">PB</span>
+            <span>PCBuilder</span>
+        </a>
+        <nav class="main-nav" aria-label="Main navigation">
+            <a href="#" class="active">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="categories.html">Categories</a>
+            <a href="#">About us</a>
+            <a href="#">Contact</a>
+        </nav>
+
+        <div class="header-actions">
+            <button type="button" aria-label="Search">⌕</button>
+            <button type="button" aria-label="Shopping cart">🛒</button>
+            <button type="button" class="user-btn" aria-label="Account">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4zm0 2c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5z"/>
+                </svg>
+        </button>
+            <span>Cart</span>
+        </div>
     </header>
+<main>
+<!--Hero page-->
+<div class="hero-label">
+<small>THE BETTER WAY TO BUILD</small>
+<h1>Build your
+dream PC.</h1>
+</div>
+    <!--Category Homepage-->
+<section class="category-section">
 
-    <main>
+    <div class="category-heading">
+        <div>
+            <small>START HERE</small>
+            <h2>Shop by category</h2>
+            <p>The right parts make all the difference.</p>
+        </div>
 
-        <!-- Hero Section -->
-        <section id="hero">
-            <!-- Hero content -->
-        </section>
+        <a href="#" class="view-categories">
+            View all categories →
+        </a>
+    </div>
 
-        <!-- Products / Categories Section -->
-        <section id="products">
-            <!-- Products or categories -->
-        </section>
+    <div class="category-row">
+        <a href="#" class="category-card">
+            <img src="/src/assets/CategoriesImages/Cpucategory.png" alt="CPU">
 
-        <!-- Company Information Section -->
-        <section id="about">
-            <!-- Company information -->
-        </section>
+            <div class="category-overlay">
+                <span class="category-icon">⚙</span>
+                <span class="category-arrow">→</span>
 
-        <!-- Call-to-Action Section -->
-        <section id="cta">
-            <!-- CTA content -->
-        </section>
+                <div class="category-text">
+                    <h3>CPU</h3>
+                    <p>The brain of your build</p>
+                </div>
+            </div>
+        </a>
 
-    </main>
+        <a href="#" class="category-card">
+            <img src="/src/assets/CategoriesImages/Gpucategory.png" alt="GPU">
 
-    <footer>
-        <!-- Footer content -->
-    </footer>
+            <div class="category-overlay">
+                <span class="category-icon">ϟ</span>
+                <span class="category-arrow">→</span>
+
+                <div class="category-text">
+                    <h3>GPU</h3>
+                    <p>Frames that feel real</p>
+                </div>
+            </div>
+        </a>
+
+        <a href="#" class="category-card">
+            <img src="/src/assets/CategoriesImages/Storage.png" alt="Storage">
+
+            <div class="category-overlay">
+                <span class="category-icon">◇</span>
+                <span class="category-arrow">→</span>
+
+                <div class="category-text">
+                    <h3>Storage</h3>
+                    <p>Fast. Quiet. Ready.</p>
+                </div>
+            </div>
+        </a>
+
+        <a href="#" class="category-card">
+            <img src="/src/assets/CategoriesImages/Monitorcategory.png" alt="Monitors">
+            <div class="category-overlay">
+                <span class="category-icon">▣</span>
+                <span class="category-arrow">→</span>
+                <div class="category-text">
+                    <h3>Monitors</h3>
+                    <p>See every detail</p>
+                </div>
+            </div>
+        </a>
+        <a href="#" class="category-card">
+            <img src="/src/assets/CategoriesImages/Peripherals.png" alt="Peripherals">
+
+            <div class="category-overlay">
+                <span class="category-icon">◯</span>
+                <span class="category-arrow">→</span>
+
+                <div class="category-text">
+                    <h3>Peripherals</h3>
+                    <p>Your setup, perfected</p>
+                </div>
+            </div>
+        </a>
+
+        <a href="#" class="category-card">
+            <img src="/src/assets/CategoriesImages/Audiocategories.png" alt="Audio">
+
+            <div class="category-overlay">
+                <span class="category-icon">♧</span>
+                <span class="category-arrow">→</span>
+
+                <div class="category-text">
+                    <h3>Audio</h3>
+                    <p>Hear the difference</p>
+                </div>
+            </div>
+        </a>
+
+    </div>
+</section>
+</main>
 </body>
+
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-brand">
+            <h2>PCBuilder</h2>
+            <p>Build better. Start here.</p>
+        </div>
+        <div class="footer-column">
+            <h4>Explore</h4>
+
+            <a href="#">Shop components</a>
+            <a href="#">Categories</a>
+            <a href="#">About us</a>
+        </div>
+        <div class="footer-column">
+            <h4>Support</h4>
+
+            <a href="#">Contact us</a>
+            <a href="#">Shipping & Returns</a>
+            <a href="#">FAQ</a>
+        </div>
+        <div class="footer-column">
+            <h4>Follow along</h4>
+
+            <a href="#">Instagram · Facebook</a>
+            <a href="#">TikTok · YouTube</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2026 PCBuilder. A better way to build.</p>
+        <p>Made for builders, in the Philippines.</p>
+    </div>
+</footer>
 </html>
