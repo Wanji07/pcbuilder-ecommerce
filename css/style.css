@@ -161,6 +161,7 @@ button {
     font-weight: 700;
     letter-spacing: 2px;
     text-transform: uppercase;
+padding-left: 400px
 }
 
 .catalog-hero h1 {
@@ -201,6 +202,153 @@ button {
         padding: 50px 22px 30px;
     }
 }
+
+/* =========================
+   HOMEPAGE CSS homepage.html
+   ========================= */
+
+.category-section {
+    width: 92%;
+    max-width: 1100px;
+    margin: 50px auto;
+}
+
+.category-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-bottom: 35px;
+}
+
+.category-heading small {
+    color: #63707a;
+    font-size: 9px;
+    letter-spacing: 3px;
+}
+
+.category-heading h2 {
+    margin: 12px 0 10px;
+    font-size: 36px;
+    font-weight: 400;
+    color: #12283a;
+}
+
+.category-heading p {
+    margin: 0;
+    color: #71808a;
+    font-size: 13px;
+}
+
+.view-categories {
+    padding: 12px 18px;
+
+    border: 1px solid #12283a;
+
+    color: #12283a;
+    text-decoration: none;
+
+    font-size: 11px;
+}
+
+.category-row {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 11px;
+}
+
+.category-card {
+    position: relative;
+
+    height: 205px;
+
+    overflow: hidden;
+
+    display: block;
+
+    text-decoration: none;
+    color: white;
+}
+
+.category-card img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition: transform 0.3s ease;
+}
+
+.category-card::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background: linear-gradient(
+        transparent 35%,
+        rgba(0, 0, 0, 0.75)
+    );
+}
+
+.category-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 2;
+
+    padding: 16px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.category-icon {
+    color: #b6df00;
+    font-size: 22px;
+}
+
+.category-arrow {
+    position: absolute;
+
+    top: 16px;
+    right: 16px;
+
+    font-size: 20px;
+
+    transition: transform 0.3s ease;
+}
+
+.category-text {
+    margin-top: auto;
+}
+
+.category-text h3 {
+    margin: 0 0 5px;
+
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.category-text p {
+    margin: 0;
+
+    font-size: 11px;
+
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.category-card:hover img {
+    transform: scale(1.05);
+}
+
+.category-card:hover .category-arrow {
+    transform: translateX(5px);
+}
+
 
 /* =========================
    PRODUCTS CATALOG shop.html
