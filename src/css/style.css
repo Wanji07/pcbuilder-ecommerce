@@ -4,12 +4,16 @@
 Minor divider /**/
 
 
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap");
+
 :root {
     --page-background: #f5f4f0;
     --text: #1b2a32;
     --muted: #767d81;
     --border: #deded8;
     --accent: #c9f23b;
+    --body-font: "DM Sans", "Trebuchet MS", sans-serif;
+    --display-font: "Space Grotesk", "Trebuchet MS", sans-serif;
 }
 
 /* =========================
@@ -28,7 +32,8 @@ body {
     margin: 0;
     background: var(--page-background);
     color: var(--text);
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: var(--body-font);
+    line-height: 1.5;
 }
 
 a {
@@ -55,8 +60,9 @@ button {
     align-items: center;
     gap: 8px;
     color: var(--text);
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 700;
+    letter-spacing: -0.02em;
     white-space: nowrap;
 }
 
@@ -86,9 +92,9 @@ button {
     align-items: center;
     height: 100%;
     color: #667277;
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.02em;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
 }
 
 .main-nav a.active {
@@ -111,7 +117,7 @@ button {
     gap: 10px;
     margin-left: auto;
     color: var(--text);
-    font-size: 10px;
+    font-size: 12px;
 }
 
 .header-actions button {
@@ -157,11 +163,14 @@ button {
 }
 
 .hero-label {
-    margin: 0 0 18px;
+    width: 92%;
+    max-width: 1100px;
+    margin: 72px auto 0;
     color: var(--muted);
-    font-size: 9px;
+    font-size: 11px;
     font-weight: 700;
-    letter-spacing: 2px;
+    letter-spacing: 0.18em;
+    line-height: 1.2;
     text-transform: uppercase;
 }
 
@@ -207,6 +216,166 @@ button {
         padding: 50px 22px 30px;
     }
 }
+
+/* =========================
+   HOMEPAGE CSS homepage.html
+   ========================= */
+
+.category-section {
+    width: 92%;
+    max-width: 1100px;
+    margin: 50px auto;
+}
+
+.category-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-bottom: 35px;
+}
+
+.category-heading small {
+    color: #63707a;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+.category-heading h2 {
+    margin: 12px 0 10px;
+    font-family: var(--display-font);
+    font-size: clamp(30px, 4vw, 42px);
+    font-weight: 600;
+    letter-spacing: -0.05em;
+    line-height: 1;
+    color: #12283a;
+}
+
+.category-heading p {
+    margin: 0;
+    color: #71808a;
+    font-size: 15px;
+    line-height: 1.45;
+}
+
+.view-categories {
+    padding: 12px 18px;
+
+    border: 1px solid #12283a;
+
+    color: #12283a;
+    text-decoration: none;
+
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+}
+
+.category-row {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 11px;
+}
+
+.category-card {
+    position: relative;
+
+    height: 205px;
+
+    overflow: hidden;
+
+    display: block;
+
+    text-decoration: none;
+    color: white;
+}
+
+.category-card img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition: transform 0.3s ease;
+}
+
+.category-card::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background: linear-gradient(
+        transparent 35%,
+        rgba(0, 0, 0, 0.75)
+    );
+}
+
+.category-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 2;
+
+    padding: 16px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.category-icon {
+    color: #b6df00;
+    font-size: 22px;
+}
+
+.category-arrow {
+    position: absolute;
+
+    top: 16px;
+    right: 16px;
+
+    font-size: 20px;
+
+    transition: transform 0.3s ease;
+}
+
+.category-text {
+    margin-top: auto;
+}
+
+.category-text h3 {
+    margin: 0 0 5px;
+
+    font-family: var(--display-font);
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+}
+
+.category-text p {
+    margin: 0;
+
+    font-size: 12px;
+    line-height: 1.35;
+
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.category-card:hover img {
+    transform: scale(1.05);
+}
+
+.category-card:hover .category-arrow {
+    transform: translateX(5px);
+}
+
 
 /* =========================
    PRODUCTS CATALOG shop.html

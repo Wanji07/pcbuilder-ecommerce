@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PCBuilder company information: who we are, where to find us, and who is on the team.">
+    <title>Company Information | PCBuilder</title>
+    <link rel="stylesheet" href="/src/css/style.css">
+    <!-- Styles for this page only (scoped to .company-info) -->
+    <style>
+        .company-info {
+            --ci-ink: #16222e;
+            --ci-muted: #6b7480;
+            --ci-olive: #7a9400;
+            --ci-lime: #c6f04a;
+            --ci-line: #e0ded6;
+            --ci-label: #8a6f3c;
+            --ci-sage: #b8c6ae;
+            --ci-stone: #cdd2c4;
+            --ci-mist: #adbcc4;
+            --ci-mono: "JetBrains Mono", "Consolas", "Courier New", monospace;
+
+            color: var(--ci-ink);
+        }
+
+        .company-info h2 {
+            margin: 0;
+            letter-spacing: -0.04em;
+        }
+
+        .company-info p { margin: 0; }
+
+        .company-info a:focus-visible {
+            outline: 2px solid var(--ci-ink);
+            outline-offset: 3px;
+        }
+
+        /* ---------- Layout ---------- */
+        .ci-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        .ci-section { padding: 56px 0; }
+        .ci-section + .ci-section { border-top: 1px solid var(--ci-line); }
+        .ci-section-head { margin-bottom: 32px; }
+
+        .ci-label {
+            margin-bottom: 14px;
+            font-family: var(--ci-mono);
+            font-size: 10px;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--ci-label);
+        }
+
+        .company-info h2 {
+            font-size: clamp(26px, 3.4vw, 34px);
+            font-weight: 300;
+            line-height: 1.1;
+        }
+
+        /* ---------- Who we are + facts ---------- */
+        .ci-overview {
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 64px;
+            align-items: start;
+        }
+
+        .ci-story h2 + p {
+            max-width: 46ch;
+            margin-top: 18px;
+            font-size: 13px;
+            color: var(--ci-muted);
+        }
+
+        .ci-facts {
+            margin: 0;
+            border-top: 1px solid var(--ci-ink);
+        }
+        .ci-facts div {
+            display: grid;
+            grid-template-columns: 130px 1fr;
+            gap: 16px;
+            padding: 14px 0;
+            border-bottom: 1px solid var(--ci-line);
+        }
+        .ci-facts dt {
+            padding-top: 3px;
+            font-family: var(--ci-mono);
+            font-size: 10px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--ci-label);
+        }
+        .ci-facts dd { margin: 0; font-size: 13px; }
+        .ci-facts dd a { border-bottom: 1px solid var(--ci-lime); }
+        .ci-facts dd a:hover { background: var(--ci-lime); }
+
+        /* ---------- Mission / Vision ---------- */
+        .ci-purpose {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+        }
+        .ci-statement {
+            font-size: clamp(20px, 2.6vw, 26px);
+            font-weight: 300;
+            line-height: 1.15;
+            letter-spacing: -0.04em;
+        }
+
+        /* ---------- Team ---------- */
+        .ci-people {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0 48px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            border-top: 1px solid var(--ci-ink);
+        }
+        .ci-people li {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 14px 0;
+            border-bottom: 1px solid var(--ci-line);
+        }
+        .ci-avatar {
+            flex: none;
+            display: grid;
+            place-items: center;
+            width: 48px;
+            height: 48px;
+            font-size: 16px;
+            font-weight: 300;
+            letter-spacing: -0.04em;
+            background: var(--ci-sage);
+        }
+        .ci-people li:nth-child(3n + 2) .ci-avatar { background: var(--ci-stone); }
+        .ci-people li:nth-child(3n) .ci-avatar { background: var(--ci-mist); }
+
+        .ci-person-name {
+            display: block;
+            font-size: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+        .ci-person-role {
+            font-family: var(--ci-mono);
+            font-size: 10px;
+            color: var(--ci-muted);
+        }
+
+        /* ---------- Contact prompt ---------- */
+        .ci-reach {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 32px;
+        }
+        .ci-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 22px;
+            background: var(--ci-lime);
+            color: var(--ci-ink);
+            font-size: 12px;
+            font-weight: 800;
+            text-decoration: none;
+            transition: background 0.15s;
+        }
+        .ci-button:hover { background: #d4f56f; }
+
+        /* ---------- Responsive ---------- */
+        @media (max-width: 860px) {
+            .ci-overview,
+            .ci-purpose {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .ci-people { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 520px) {
+            .ci-container { padding: 0 20px; }
+            .ci-facts div {
+                grid-template-columns: 1fr;
+                gap: 4px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="site-header">
+        <a href="#" class="logo" aria-label="PCBuilder home">
+            <span class="logo-mark">PB</span>
+            <span>PCBuilder</span>
+        </a>
+        <nav class="main-nav" aria-label="Main navigation">
+            <a href="home.html">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="categories.html">Categories</a>
+            <a href="#">About us</a>
+            <a href="#">Contact</a>
+        </nav>
+
+        <div class="header-actions">
+            <button type="button" aria-label="Search">⌕</button>
+            <button type="button" aria-label="Shopping cart">🛒</button>
+            <button type="button" class="user-btn" aria-label="Account">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4zm0 2c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5z"/>
+                </svg>
+            </button>
+            <span>Cart</span>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="catalog-hero">
+            <p class="hero-label">COMPANY INFORMATION</p>
+            <h1>Know who you're <br> buying from.</h1>
+            <p class="hero-description">
+                Who we are, where to find us, and who is on the team.
+            </p>
+        </section>
+
+        <div class="company-info">
+        <div class="ci-container">
+
+            <!-- Who we are + facts -->
+            <section class="ci-section ci-overview" aria-labelledby="who-heading">
+                <div class="ci-story">
+                    <p class="ci-label">Who we are</p>
+                    <h2 id="who-heading">A computer parts store for people who build.</h2>
+                    <p>
+                        PCBuilder started in a small Quezon City workspace with one idea: buying the right hardware
+                        should be as satisfying as using it. Today, we're a small, dedicated team helping thousands
+                        of Filipinos create their ideal setup, one carefully chosen component at a time.
+                    </p>
+                </div>
+
+                <dl class="ci-facts">
+                    <div>
+                        <dt>Company</dt>
+                        <dd>PCBuilder</dd>
+                    </div>
+                    <div>
+                        <dt>Business</dt>
+                        <dd>Computer parts and accessories store</dd>
+                    </div>
+                    <div>
+                        <dt>Address</dt>
+                        <dd>Unit 4, Tech District<br>Commonwealth Avenue, Quezon City</dd>
+                    </div>
+                    <div>
+                        <dt>Email</dt>
+                        <dd><a href="mailto:hello@pcbuilder.ph">hello@pcbuilder.ph</a></dd>
+                    </div>
+                    <div>
+                        <dt>Phone</dt>
+                        <dd><a href="tel:+63281234567">+63 2 8123 4567</a></dd>
+                    </div>
+                    <div>
+                        <dt>Store hours</dt>
+                        <dd>Mon–Sat, 9:00 AM–6:00 PM</dd>
+                    </div>
+                    <div>
+                        <dt>Serving</dt>
+                        <dd>Builders across the Philippines</dd>
+                    </div>
+                </dl>
+            </section>
+
+            <!-- Mission / Vision -->
+            <section class="ci-section ci-purpose" aria-label="Mission and vision">
+                <div>
+                    <p class="ci-label">Mission</p>
+                    <p class="ci-statement">Make powerful technology feel within reach.</p>
+                </div>
+                <div>
+                    <p class="ci-label">Vision</p>
+                    <p class="ci-statement">A Philippines where everyone can build their best work.</p>
+                </div>
+            </section>
+
+            <!-- Team -->
+            <section class="ci-section" aria-labelledby="team-heading">
+                <div class="ci-section-head">
+                    <p class="ci-label">The team</p>
+                    <h2 id="team-heading">Small team. Big care.</h2>
+                </div>
+
+                <ul class="ci-people">
+                    <li>
+                        <span class="ci-avatar" aria-hidden="true">EW</span>
+                        <span>
+                            <span class="ci-person-name">Enriquez, William Miguel P.</span>
+                            <span class="ci-person-role">Leader</span>
+                        </span>
+                    </li>
+                    <li>
+                        <span class="ci-avatar" aria-hidden="true">BP</span>
+                        <span>
+                            <span class="ci-person-name">Basco, Pierre Samuel</span>
+                            <span class="ci-person-role">Team member</span>
+                        </span>
+                    </li>
+                    <li>
+                        <span class="ci-avatar" aria-hidden="true">BJ</span>
+                        <span>
+                            <span class="ci-person-name">Bernardino, Job Samuel</span>
+                            <span class="ci-person-role">Team member</span>
+                        </span>
+                    </li>
+                    <li>
+                        <span class="ci-avatar" aria-hidden="true">CD</span>
+                        <span>
+                            <span class="ci-person-name">Cabrera, Dexter</span>
+                            <span class="ci-person-role">Team member</span>
+                        </span>
+                    </li>
+                    <li>
+                        <span class="ci-avatar" aria-hidden="true">OF</span>
+                        <span>
+                            <span class="ci-person-name">Ornopia, Fiel Simon</span>
+                            <span class="ci-person-role">Team member</span>
+                        </span>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Contact prompt -->
+            <section class="ci-section ci-reach" aria-label="Contact us">
+                <div>
+                    <p class="ci-label">Need more details?</p>
+                    <h2>Questions about an order or a build?</h2>
+                </div>
+                <a href="#" class="ci-button">Contact us <span aria-hidden="true">→</span></a>
+            </section>
+
+        </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h2>PCBuilder</h2>
+                <p>Build better. Start here.</p>
+            </div>
+            <div class="footer-column">
+                <h4>Explore</h4>
+
+                <a href="#">Shop components</a>
+                <a href="#">Categories</a>
+                <a href="#">About us</a>
+                <a href="company-information.html">Company information</a>
+            </div>
+            <div class="footer-column">
+                <h4>Support</h4>
+
+                <a href="#">Contact us</a>
+                <a href="#">Shipping & Returns</a>
+                <a href="#">FAQ</a>
+            </div>
+            <div class="footer-column">
+                <h4>Follow along</h4>
+
+                <a href="#">Instagram · Facebook</a>
+                <a href="#">TikTok · YouTube</a>
+            </div>
+          <div class="footer-column">
+            <h4> Follow along</h4>
+            <a href="//>Instagram · Facebook </a>
+            <a href="//>TikTok · YouTube</a>
+          </div>
+          </div>
+      <div class="footer-bottom">
+        <p>© 2026 PCVuilder. A better way to build.</p>
+        <p>Made for builders, in the Philippines.</p>
+          </div>
+    </footer>
+</body>
+</html>
