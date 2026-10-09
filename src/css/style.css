@@ -382,7 +382,7 @@ button {
    ========================= */
 
 .catalog {
-    width: 1100px;
+    width: min(1100px, calc(100% - 40px));
     margin: 40px auto 80px;
 }
 
@@ -754,6 +754,38 @@ button {
     gap: 10px;
 }
 
+.product-count {
+    margin: 0 0 10px;
+    color: var(--muted);
+    font-size: 10px;
+}
+
+.product-search-label {
+    display: block;
+    margin-bottom: 6px;
+    color: #555;
+    font-size: 10px;
+}
+
+.product-search {
+    width: 100%;
+    margin-bottom: 12px;
+    border: 1px solid var(--border);
+    background: white;
+    padding: 9px 10px;
+    font: inherit;
+    font-size: 11px;
+}
+
+.empty-state {
+    margin: 0;
+    padding: 24px;
+    background: white;
+    color: var(--muted);
+    font-size: 12px;
+    text-align: center;
+}
+
 
 /*PRODUCT CARD*/
 
@@ -772,6 +804,7 @@ button {
     height: 157px;
 
     overflow: hidden;
+    background: #eef0e9;
 }
 
 
@@ -782,6 +815,27 @@ button {
     object-fit: cover;
 
     display: block;
+}
+
+.product-image.is-placeholder img {
+    object-fit: contain;
+    padding: 12px;
+}
+
+.product-image--contain img {
+    object-fit: contain;
+    padding: 8px;
+}
+
+.product-image.is-placeholder::after {
+    content: "Illustration";
+    position: absolute;
+    right: 8px;
+    bottom: 8px;
+    padding: 3px 6px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #53616a;
+    font-size: 8px;
 }
 
 
@@ -951,7 +1005,7 @@ button {
 
 
 .footer-container {
-    width: 1100px;
+    width: min(1100px, calc(100% - 40px));
     margin: 0 auto;
 
     display: grid;
@@ -1004,7 +1058,7 @@ button {
 }
 
 .footer-bottom {
-    width: 1100px;
+    width: min(1100px, calc(100% - 40px));
     margin: 0 auto;
 
     border-top: 1px solid #405461;
@@ -1021,4 +1075,50 @@ button {
 
     color: #89979f;
     font-size: 9px;
+}
+
+@media (max-width: 760px) {
+    .catalog-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .filters {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0 16px;
+    }
+
+    .filters > small {
+        grid-column: 1 / -1;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .footer-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 28px;
+    }
+
+    .footer-bottom {
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 480px) {
+    .catalog {
+        width: calc(100% - 28px);
+    }
+
+    .categoryproduct-nav {
+        gap: 18px;
+        overflow-x: auto;
+    }
+
+    .product-grid,
+    .footer-container {
+        grid-template-columns: 1fr;
+    }
 }

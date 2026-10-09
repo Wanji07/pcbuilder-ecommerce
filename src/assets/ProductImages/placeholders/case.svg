@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-labelledby="title">
+  <title id="title">Illustration of a desktop computer case</title>
+  <rect width="640" height="420" fill="#eef0e9"/>
+  <rect x="184" y="56" width="272" height="310" rx="22" fill="#203746"/>
+  <rect x="207" y="80" width="225" height="263" rx="12" fill="#d9dcd4"/>
+  <path d="M218 91h203v243H218z" fill="#eff2eb"/>
+  <circle cx="280" cy="174" r="52" fill="#c9f23b"/>
+  <circle cx="280" cy="174" r="24" fill="#203746"/>
+  <circle cx="362" cy="174" r="52" fill="#b3c392"/>
+  <circle cx="362" cy="174" r="24" fill="#203746"/>
+  <rect x="242" y="258" width="144" height="12" rx="6" fill="#203746"/>
+  <circle cx="409" cy="65" r="6" fill="#c9f23b"/>
+</svg>
