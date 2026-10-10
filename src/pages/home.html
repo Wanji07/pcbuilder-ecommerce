@@ -3,34 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="PCBuilder - Computer Parts and Accessories Store">
-    <title>PCBuilder</title>
+    <meta name="description" content="B.Y.T.E. - Build Your Tech Essentials">
+    <title>B.Y.T.E. | Build Your Tech Essentials</title>
     <link rel="stylesheet" href="/src/css/style.css">
 </head>
 <body>
 
     <header class="site-header">
-        <a href="#" class="logo" aria-label="PCBuilder home">
-            <span class="logo-mark">PB</span>
-            <span>PCBuilder</span>
+        <a href="home.html" class="logo" aria-label="B.Y.T.E. home">
+            <span class="logo-mark">BY</span>
+            <span>B.Y.T.E.</span>
         </a>
         <nav class="main-nav" aria-label="Main navigation">
-            <a href="#" class="active">Home</a>
+            <a href="home.html" class="active">Home</a>
             <a href="shop.html">Shop</a>
             <a href="categories.html">Categories</a>
-            <a href="#">About us</a>
-            <a href="#">Contact</a>
+            <a href="companyinfo.html">About us</a>
+            <a href="contact.html">Contact</a>
         </nav>
 
         <div class="header-actions">
             <button type="button" aria-label="Search">⌕</button>
-            <button type="button" aria-label="Shopping cart">🛒</button>
+            <button type="button" class="cart-button" aria-label="Shopping cart">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M3 4h2l2.1 10.2a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 1.9-1.4L20.5 8H6.2M9 20a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm8 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                </svg>
+            </button>
+            <span class="cart-label">Cart</span>
             <button type="button" class="user-btn" aria-label="Account">
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4zm0 2c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5z"/>
                 </svg>
         </button>
-            <span>Cart</span>
         </div>
     </header>
 <main>
@@ -60,7 +64,7 @@
         </div>
     </section>
 
-    <section class="home-pillars" aria-label="PCBuilder benefits">
+    <section class="home-pillars" aria-label="B.Y.T.E. benefits">
         <p>Components that work together</p>
         <p>Advice that works for you</p>
         <p>Builds that go further</p>
@@ -76,13 +80,13 @@
             <p>The right parts make all the difference.</p>
         </div>
 
-        <a href="#" class="view-categories">
+        <a href="categories.html" class="view-categories">
             View all categories →
         </a>
     </div>
 
     <div class="category-row">
-        <a href="#" class="category-card">
+        <a href="categories.html" class="category-card">
             <img src="/src/assets/CategoriesImages/Cpucategory.png" alt="CPU">
 
             <div class="category-overlay">
@@ -96,7 +100,7 @@
             </div>
         </a>
 
-        <a href="#" class="category-card">
+        <a href="categories.html" class="category-card">
             <img src="/src/assets/CategoriesImages/Gpucategory.png" alt="GPU">
 
             <div class="category-overlay">
@@ -110,7 +114,7 @@
             </div>
         </a>
 
-        <a href="#" class="category-card">
+        <a href="categories.html" class="category-card">
             <img src="/src/assets/CategoriesImages/Storage.png" alt="Storage">
 
             <div class="category-overlay">
@@ -124,7 +128,7 @@
             </div>
         </a>
 
-        <a href="#" class="category-card">
+        <a href="categories.html" class="category-card">
             <img src="/src/assets/CategoriesImages/Monitorcategory.png" alt="Monitors">
             <div class="category-overlay">
                 <span class="category-icon">▣</span>
@@ -135,7 +139,7 @@
                 </div>
             </div>
         </a>
-        <a href="#" class="category-card">
+        <a href="categories.html" class="category-card">
             <img src="/src/assets/CategoriesImages/Peripherals.png" alt="Peripherals">
 
             <div class="category-overlay">
@@ -149,7 +153,7 @@
             </div>
         </a>
 
-        <a href="#" class="category-card">
+        <a href="categories.html" class="category-card">
             <img src="/src/assets/CategoriesImages/Audiocategories.png" alt="Audio">
 
             <div class="category-overlay">
@@ -165,21 +169,55 @@
 
     </div>
 </section>
+
+<section class="home-company" aria-labelledby="home-company-heading">
+    <div class="home-company-copy">
+        <small>ABOUT B.Y.T.E.</small>
+        <h2 id="home-company-heading">Build Your Tech Essentials.</h2>
+    </div>
+    <div class="home-company-details">
+        <p>
+            B.Y.T.E. (Build Your Tech Essentials) is a proposed Philippine-based technology retail
+            company established in 2024. It specializes in computer components, accessories, and
+            peripherals for students, PC builders, gamers, and computer enthusiasts. Through its
+            PCBuilder online platform, B.Y.T.E. aims to provide customers with an organized and
+            convenient way to explore and purchase computer hardware.
+        </p>
+        <div class="home-company-facts">
+            <div>
+                <strong>Mission</strong>
+                <span>To provide accessible and reliable computer hardware through a simple and convenient online shopping experience.</span>
+            </div>
+            <div>
+                <strong>Vision</strong>
+                <span>To become a trusted technology retailer for Filipino PC enthusiasts.</span>
+            </div>
+            <div>
+                <strong>Address</strong>
+                <span>Quezon City, Metro Manila, Philippines</span>
+            </div>
+            <div>
+                <strong>Contact</strong>
+                <a href="mailto:support@byte-pcbuilder.com">support@byte-pcbuilder.com</a>
+            </div>
+        </div>
+    </div>
+</section>
 </main>
 </body>
 
 <footer class="footer">
     <div class="footer-container">
         <div class="footer-brand">
-            <h2>PCBuilder</h2>
-            <p>Build better. Start here.</p>
+            <h2>B.Y.T.E.</h2>
+            <p>Build Your Tech Essentials.</p>
         </div>
         <div class="footer-column">
             <h4>Explore</h4>
 
-            <a href="#">Shop components</a>
-            <a href="#">Categories</a>
-            <a href="#">About us</a>
+            <a href="shop.html">Shop components</a>
+            <a href="categories.html">Categories</a>
+            <a href="companyinfo.html">About us</a>
         </div>
         <div class="footer-column">
             <h4>Support</h4>
@@ -196,7 +234,7 @@
         </div>
     </div>
     <div class="footer-bottom">
-        <p>© 2026 PCBuilder. A better way to build.</p>
+        <p>© 2026 B.Y.T.E. A better way to build.</p>
         <p>Made for builders, in the Philippines.</p>
     </div>
 </footer>
