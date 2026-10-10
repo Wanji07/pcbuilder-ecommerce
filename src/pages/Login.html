@@ -15,7 +15,7 @@
             <span>PCBuilder</span>
         </a>
         <nav class="main-nav" aria-label="Main navigation">
-            <a href="home.html" class="active">Home</a>
+            <a href="home.html">Home</a>
             <a href="shop.html">Shop</a>
             <a href="categories.html">Categories</a>
             <a href="aboutus.html">About us</a>
@@ -25,7 +25,7 @@
         <div class="header-actions">
             <button type="button" aria-label="Search">⌕</button>
             <button type="button" onclick="window.location.href='Cart.html'" aria-label="Shopping cart">🛒</button>
-            <button type="button" class="user-btn" onclick="window.location.href='Login.html'" aria-label="Account">
+            <button type="button" class="user-btn" aria-label="Account">
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4zm0 2c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5z"/>
                 </svg>
@@ -34,8 +34,30 @@
         </div>
     </header>
 
+
 <main>
-    <h1>Login</h1>
+    <main class="auth-main">
+    <div class="auth-container">
+            <div class="auth-box" id="login-box">
+            <div class="auth-header-text">
+                <small>WELCOME BACK</small>
+                <h1>Login</h1>
+                <p>Access your saved builds, cart, and orders.</p>
+            </div>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="login-email">Email Address</label>
+                    <input type="email" id="login-email" placeholder="builder@pcbuilder.ph" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="auth-button">Login to Account</button>
+            </form>
+            <p class="auth-switch">Don't have an account? <a href="Registration.Html">Register here</a></p>
+        </div>        
+    </div>
 </main>
 </body>
 
