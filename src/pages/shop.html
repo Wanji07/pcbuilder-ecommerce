@@ -25,12 +25,9 @@
 
         <div class="header-actions">
             <button type="button" aria-label="Search">⌕</button>
-            <button type="button" class="cart-button" aria-label="Shopping cart">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M3 4h2l2.1 10.2a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 1.9-1.4L20.5 8H6.2M9 20a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm8 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
-                </svg>
-            </button>
-            <span class="cart-label">Cart</span>
+            <a class="cart-link" href="cart.html" aria-label="Shopping cart">
+                🛒 <span>Cart</span><span class="cart-count" id="cart-count" aria-live="polite"></span>
+            </a>
             <button type="button" class="user-btn" aria-label="Account">
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4zm0 2c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5z"/>
@@ -100,7 +97,7 @@
 
         <!-- PRODUCTS CATALOG-->
         <div class="product-grid">
-            <article class="product-card" data-category="cpu" data-brand="amd" data-availability="available">
+            <article class="product-card" data-product-id="ryzen-7-7800x3d" data-price="21495" data-category="cpu" data-brand="amd" data-availability="available">
                 <div class="product-image">
                     <img src="/src/assets/Productimages/Ryzen77800X3D.png" alt="Ryzen processor">
                     <span class="product-tag">CPU</span>
@@ -117,7 +114,7 @@
                 </div>
             </article>
 
-            <article class="product-card" data-category="gpu"data-brand="asus"data-availability="available">
+            <article class="product-card" data-product-id="rtx-4070-super-dual" data-price="38995" data-category="gpu" data-brand="asus" data-availability="available">
                 <div class="product-image">
                     <img src="/src/assets/Productimages/4070superdual.png" alt="RTX graphics card">
                     <span class="product-tag">GPU</span>
@@ -134,7 +131,7 @@
                 </div>
             </article>
 
-            <article class="product-card" data-category="ram" data-brand="corsair" data-availability="available">
+            <article class="product-card" data-product-id="vengeance-rgb-ddr5-32gb" data-price="6495" data-category="ram" data-brand="corsair" data-availability="available">
                 <div class="product-image">
                     <img src="/src/assets/Productimages/Vengeance RGB DDR5 32GB.png" alt="Corsair RAM">
                     <span class="product-tag">RAM</span>
@@ -151,7 +148,7 @@
                 </div>
             </article>
 
-            <article class="product-card" data-category="storage" data-brand="samsung" data-availability="available">
+            <article class="product-card" data-product-id="samsung-990-pro-1tb" data-price="6995" data-category="storage" data-brand="samsung" data-availability="available">
                 <div class="product-image">
                     <img src="/src/assets/Productimages/Storage.png" alt="Samsung SSD">
                     <span class="product-tag">Storage</span>
@@ -168,7 +165,7 @@
                 </div>
             </article>
 
-            <article class="product-card" data-category="case" data-brand="nzxt" data-availability="available">
+            <article class="product-card" data-product-id="nzxt-h6-flow" data-price="8495" data-category="case" data-brand="nzxt" data-availability="available">
                 <div class="product-image">
                     <img src="/src/assets/Productimages/H6 Flow Compact Mid-Tower.png" alt="NZXT computer case">
                     <span class="product-tag">Case</span>
@@ -184,7 +181,7 @@
                     </div>
                 </div>
             </article>
-            <article class="product-card" data-category="mouse" data-brand="logitech" data-availability="available">
+            <article class="product-card" data-product-id="logitech-g-pro-x-superlight-2" data-price="7295" data-category="mouse" data-brand="logitech" data-availability="available">
                 <div class="product-image">
                     <img src="/src/assets/Productimages/G PRO X Superlight 2.png" alt="Logitech mouse">
                     <span class="product-tag">Mouse</span>
@@ -206,6 +203,8 @@
 
 </main>
 
+<p class="cart-feedback" id="cart-feedback" role="status" aria-live="polite"></p>
+<script src="../js/cart.js" defer></script>
 </body>
 
 
