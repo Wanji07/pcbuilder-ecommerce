@@ -1,4 +1,4 @@
-//Registration.html
+// registration.html
 
 const registerForm = document.getElementById('register-form');
 if (registerForm) {
@@ -18,12 +18,12 @@ if (registerForm) {
         localStorage.setItem('pcbuilder_user', JSON.stringify(userData));
 
         alert('Account created successfully! Please log in.');
-        window.location.href = 'Login.html';
+        window.location.href = 'login.html';
     });
 }
 
 // =========================
-// LOGIN FUNCTIONALITY Login.html
+// LOGIN FUNCTIONALITY login.html
 // =========================
 const loginForm = document.getElementById('login-form');
 if (loginForm) {
