@@ -25,6 +25,7 @@ if (registerForm) {
 // =========================
 // LOGIN FUNCTIONALITY login.html
 // =========================
+
 const loginForm = document.getElementById('login-form');
 if (loginForm) {
     loginForm.addEventListener('submit', function(e) {
