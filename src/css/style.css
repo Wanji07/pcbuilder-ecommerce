@@ -120,6 +120,28 @@ button {
     font-size: 12px;
 }
 
+.cart-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+}
+
+.cart-button svg {
+    width: 22px;
+    height: 22px;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.5;
+}
+
+.cart-label {
+    margin-left: -5px;
+}
+
 .header-actions button {
     border: none;
     background: transparent;
@@ -443,6 +465,40 @@ button {
 
 .home-company-link:hover span {
     transform: translateX(4px);
+}
+
+.home-company-facts {
+    display: grid;
+    gap: 12px;
+    margin-top: 28px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border);
+}
+
+.home-company-facts div {
+    display: grid;
+    grid-template-columns: 78px 1fr;
+    gap: 16px;
+    font-size: 12px;
+    line-height: 1.45;
+}
+
+.home-company-facts strong {
+    color: var(--text);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.home-company-facts span,
+.home-company-facts a {
+    color: #71808a;
+}
+
+.home-company-facts a {
+    text-decoration: underline;
+    text-decoration-color: var(--accent);
+    text-underline-offset: 3px;
 }
 
 
