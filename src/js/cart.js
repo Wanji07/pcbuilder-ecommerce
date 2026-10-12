@@ -167,8 +167,11 @@ function renderCart(cart) {
 function getProductFromCard(card) {
     const name = card.querySelector(".product-info h3")?.textContent.trim();
     const image = card.querySelector(".product-image img")?.getAttribute("src");
-    const price = Number(card.dataset.price);
-    const id = card.dataset.productId;
+    const displayedPrice = card.querySelector(".product-info strong")?.textContent;
+    const price = Number(card.dataset.price ?? displayedPrice?.replace(/\D/g, ""));
+    const id = card.dataset.productId ?? name?.toLowerCase()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-|-$/g, "");
 
     if (!id || !name || !image || !Number.isSafeInteger(price) || price < 0) {
         throw new Error("A product is missing its cart data.");

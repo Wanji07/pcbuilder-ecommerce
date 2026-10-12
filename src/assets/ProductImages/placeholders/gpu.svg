@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-labelledby="title">
+  <title id="title">Illustration of a graphics card</title>
+  <rect width="640" height="420" fill="#eef0e9"/>
+  <rect x="92" y="130" width="438" height="164" rx="24" fill="#203746"/>
+  <rect x="118" y="151" width="370" height="120" rx="14" fill="#314e5b"/>
+  <g fill="#c9f23b">
+    <circle cx="238" cy="210" r="42"/><circle cx="375" cy="210" r="42"/>
+  </g>
+  <g fill="#203746">
+    <path d="M238 177l10 28 25-15-15 25 28 10-28 10 15 25-25-15-10 28-10-28-25 15 15-25-28-10 28-10-15-25 25 15z"/>
+    <path d="M375 177l10 28 25-15-15 25 28 10-28 10 15 25-25-15-10 28-10-28-25 15 15-25-28-10 28-10-15-25 25 15z"/>
+  </g>
+  <path d="M530 176h24v66h-24m-347 52v22m53-22v22m53-22v22m53-22v22m53-22v22" fill="none" stroke="#9aae35" stroke-width="10"/>
+</svg>

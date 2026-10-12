@@ -34,6 +34,12 @@ The project focuses on creating a clean, organized, and user-friendly shopping e
 - Sign Up
 - Login
 
+## 🛍️ Shop Catalog
+
+The shop page includes 10 sample products in each of its six categories: CPU, GPU, RAM, Storage, Case, and Mouse. Prices are estimates for demonstration only and should be checked against current Philippine retailer listings before publication. New catalog items use clearly labeled, original category illustrations until product photos are added. The shop's separate `src/js/shop.js` script filters products by category, brand, availability, and search text.
+
+To preview the shop in VS Code, open `src/pages/shop.html`, right-click it, and select **Open with Live Server**.
+
 ## 👥 Project Team
 
 - William

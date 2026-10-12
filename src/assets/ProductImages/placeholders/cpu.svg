@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-labelledby="title">
+  <title id="title">Illustration of a processor</title>
+  <rect width="640" height="420" fill="#eef0e9"/>
+  <g fill="none" stroke="#9aae35" stroke-width="12" stroke-linecap="round">
+    <path d="M210 80v42m55-42v42m55-42v42m55-42v42m55-42v42M210 298v42m55-42v42m55-42v42m55-42v42m55-42v42M130 160h42m-42 55h42m-42 55h42m-42 55h42m254-165h42m-42 55h42m-42 55h42m-42 55h42"/>
+  </g>
+  <rect x="172" y="122" width="296" height="176" rx="22" fill="#203746"/>
+  <rect x="205" y="151" width="230" height="118" rx="12" fill="#c9f23b"/>
+  <path d="M238 238v-56h22l22 32 22-32h22v56h-21v-25l-23 31-23-31v25z" fill="#203746"/>
+</svg>

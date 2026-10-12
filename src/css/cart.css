@@ -899,6 +899,35 @@ button {
     gap: 10px;
 }
 
+.product-search-label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 11px;
+}
+
+.product-search {
+    width: 100%;
+    margin-bottom: 12px;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    background: #fff;
+    color: var(--text);
+    font: inherit;
+}
+
+.product-count {
+    margin: 0 0 12px;
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.empty-state {
+    grid-column: 1 / -1;
+    padding: 24px;
+    color: var(--muted);
+    text-align: center;
+}
+
 
 /*PRODUCT CARD*/
 
@@ -927,6 +956,27 @@ button {
     object-fit: cover;
 
     display: block;
+}
+
+.product-image.is-placeholder img,
+.product-image--contain img {
+    object-fit: contain;
+    padding: 12px;
+}
+
+.product-image--contain img {
+    padding: 8px;
+}
+
+.product-image.is-placeholder::after {
+    content: "Illustration";
+    position: absolute;
+    right: 8px;
+    bottom: 8px;
+    padding: 3px 6px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #53616a;
+    font-size: 8px;
 }
 
 

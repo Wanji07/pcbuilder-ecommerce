@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-labelledby="title">
+  <title id="title">Illustration of a computer mouse</title>
+  <rect width="640" height="420" fill="#eef0e9"/>
+  <path d="M320 72c-77 0-126 52-126 133v42c0 70 51 120 126 120s126-50 126-120v-42c0-81-49-133-126-133z" fill="#203746"/>
+  <path d="M320 74v112m-124 13h248" fill="none" stroke="#9aae35" stroke-width="10"/>
+  <rect x="307" y="118" width="26" height="54" rx="13" fill="#c9f23b"/>
+  <path d="M242 265c0 44 35 79 78 79m78-79c0 44-35 79-78 79" fill="none" stroke="#314e5b" stroke-width="10"/>
+</svg>

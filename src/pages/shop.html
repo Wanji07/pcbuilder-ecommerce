@@ -4,23 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="B.Y.T.E. - Build Your Tech Essentials">
-    <title>B.Y.T.E. | Build Your Tech Essentials</title>
-    <link rel="stylesheet" href="/src/css/cart.css">
+    <title>B.Y.T.E. | Shop components</title>
+    <link rel="stylesheet" href="../css/cart.css">
 </head>
 
 <body>
 
     <header class="site-header">
-        <a href="../../home.html" class="logo" aria-label="B.Y.T.E. home">
+        <a href="home.html" class="logo" aria-label="B.Y.T.E. home">
             <span class="logo-mark">BY</span>
             <span>B.Y.T.E.</span>
         </a>
         <nav class="main-nav" aria-label="Main navigation">
-            <a href="../../home.html">Home</a>
-            <a href="/src/pages/shop.html" class="active">Shop</a>
-            <a href="../pages/categories.html">Categories</a>
-            <a href="../pages/aboutUs.html">About us</a>
-            <a href="#">Contact</a>
+            <a href="home.html">Home</a>
+            <a href="shop.html" class="active">Shop</a>
+            <a href="categories.html">Categories</a>
+            <a href="aboutUs.html">About us</a>
+            <a href="contact.html">Contact</a>
         </nav>
 
         <div class="header-actions">
@@ -28,7 +28,7 @@
             <a class="cart-link" href="cart.html" aria-label="Shopping cart">
                 🛒 <span>Cart</span><span class="cart-count" id="cart-count" aria-live="polite"></span>
             </a>
-            <button type="button" class="user-btn" aria-label="Account">
+            <button type="button" class="user-btn" onclick="window.location.href='login.html'" aria-label="Account">
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4zm0 2c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5z"/>
                 </svg>
@@ -47,25 +47,25 @@
         <section class="catalog">
             <!--Category Navigation-->
     <div class="categoryproduct-nav">
-        <button class="category-button active" data-category="all">
+        <button type="button" class="category-button active" data-category="all" aria-pressed="true">
             All
         </button>
-        <button class="category-button" data-category="cpu">
+        <button type="button" class="category-button" data-category="cpu" aria-pressed="false">
             CPU
         </button>
-        <button class="category-button" data-category="gpu">
+        <button type="button" class="category-button" data-category="gpu" aria-pressed="false">
             GPU
         </button>
-        <button class="category-button" data-category="ram">
+        <button type="button" class="category-button" data-category="ram" aria-pressed="false">
             RAM
         </button>
-        <button class="category-button" data-category="storage">
+        <button type="button" class="category-button" data-category="storage" aria-pressed="false">
             Storage
         </button>
-        <button class="category-button" data-category="case">
+        <button type="button" class="category-button" data-category="case" aria-pressed="false">
             Case
         </button>
-        <button class="category-button" data-category="mouse">
+        <button type="button" class="category-button" data-category="mouse" aria-pressed="false">
             Mouse
         </button>
     </div>
@@ -80,10 +80,34 @@
                 <option value="all">All Brands</option>
                 <option value="amd">AMD</option>
                 <option value="asus">ASUS</option>
+                <option value="asrock">ASRock</option>
+                <option value="adata">ADATA</option>
                 <option value="corsair">Corsair</option>
+                <option value="cooler-master">Cooler Master</option>
+                <option value="crucial">Crucial</option>
+                <option value="deepcool">DeepCool</option>
+                <option value="fractal-design">Fractal Design</option>
+                <option value="g-skill">G.Skill</option>
+                <option value="gigabyte">Gigabyte</option>
+                <option value="glorious">Glorious</option>
+                <option value="hyperx">HyperX</option>
+                <option value="hyte">HYTE</option>
+                <option value="intel">Intel</option>
+                <option value="kingston">Kingston</option>
+                <option value="lian-li">Lian Li</option>
+                <option value="lexar">Lexar</option>
+                <option value="montech">Montech</option>
+                <option value="msi">MSI</option>
+                <option value="razer">Razer</option>
                 <option value="samsung">Samsung</option>
+                <option value="sapphire">Sapphire</option>
+                <option value="seagate">Seagate</option>
                 <option value="nzxt">NZXT</option>
                 <option value="logitech">Logitech</option>
+                <option value="steelseries">SteelSeries</option>
+                <option value="teamgroup">TeamGroup</option>
+                <option value="tecware">Tecware</option>
+                <option value="wd">WD</option>
             </select>
             <label for="availability-filter">
                 Availability
@@ -96,8 +120,12 @@
         </aside>
 
         <!-- PRODUCTS CATALOG-->
-        <div class="product-grid">
-            <article class="product-card" data-product-id="ryzen-7-7800x3d" data-price="21495" data-category="cpu" data-brand="amd" data-availability="available">
+        <div class="product-results">
+            <label class="product-search-label" for="product-search">Search products</label>
+            <input id="product-search" class="product-search" type="search" placeholder="Name, brand, or specs">
+            <p id="product-count" class="product-count" role="status" aria-live="polite"></p>
+            <div class="product-grid">
+            <article class="product-card" data-category="cpu" data-brand="amd" data-availability="available">
                 <div class="product-image">
                     <img src="/src/assets/Productimages/Ryzen77800X3D.png" alt="Ryzen processor">
                     <span class="product-tag">CPU</span>
@@ -114,7 +142,44 @@
                 </div>
             </article>
 
-            <article class="product-card" data-product-id="rtx-4070-super-dual" data-price="38995" data-category="gpu" data-brand="asus" data-availability="available">
+            <article class="product-card" data-category="cpu" data-brand="amd" data-availability="available">
+                <div class="product-image product-image--contain"><img src="/src/assets/ProductImages/AMD Ryzen 5 7600.png" alt="AMD Ryzen 5 7600 processor"><span class="product-tag">CPU</span></div>
+                <div class="product-info"><small>AMD</small><h3>Ryzen 5 7600</h3><p>6-Core / 12-Thread · AM5 · Radeon Graphics</p><strong>₱9,995</strong><div class="product-actions"><a href="#">View details →</a><button>Add to cart</button></div></div>
+            </article>
+            <article class="product-card" data-category="cpu" data-brand="amd" data-availability="available">
+                <div class="product-image product-image--contain"><img src="/src/assets/ProductImages/AMD Ryzen 5 5600.png" alt="AMD Ryzen 5 5600 processor retail box"><span class="product-tag">CPU</span></div>
+                <div class="product-info"><small>AMD</small><h3>Ryzen 5 5600</h3><p>6-Core / 12-Thread · AM4 · 65W TDP</p><strong>₱6,495</strong><div class="product-actions"><a href="#">View details →</a><button>Add to cart</button></div></div>
+            </article>
+            <article class="product-card" data-category="cpu" data-brand="amd" data-availability="available">
+                <div class="product-image is-placeholder"><img src="/src/assets/ProductImages/placeholders/cpu.svg" alt="Illustrative processor image"><span class="product-tag">CPU</span></div>
+                <div class="product-info"><small>AMD</small><h3>Ryzen 7 5700X3D</h3><p>8-Core / 16-Thread · AM4 · 3D V-Cache</p><strong>₱11,995</strong><div class="product-actions"><a href="#">View details →</a><button>Add to cart</button></div></div>
+            </article>
+            <article class="product-card" data-category="cpu" data-brand="amd" data-availability="available">
+                <div class="product-image product-image--contain"><img src="/src/assets/ProductImages/AMD Ryzen 5 5600G.png" alt="AMD Ryzen 5 5600G processor"><span class="product-tag">CPU</span></div>
+                <div class="product-info"><small>AMD</small><h3>Ryzen 5 5600G</h3><p>6-Core / 12-Thread · AM4 · Radeon Graphics</p><strong>₱6,995</strong><div class="product-actions"><a href="#">View details →</a><button>Add to cart</button></div></div>
+            </article>
+            <article class="product-card" data-category="cpu" data-brand="amd" data-availability="available">
+                <div class="product-image product-image--contain"><img src="/src/assets/ProductImages/AMD Ryzen 5 9600X.png" alt="AMD Ryzen 5 9600X processor"><span class="product-tag">CPU</span></div>
+                <div class="product-info"><small>AMD</small><h3>Ryzen 5 9600X</h3><p>6-Core / 12-Thread · AM5 · Zen 5</p><strong>₱14,995</strong><div class="product-actions"><a href="#">View details →</a><button>Add to cart</button></div></div>
+            </article>
+            <article class="product-card" data-category="cpu" data-brand="amd" data-availability="available">
+                <div class="product-image product-image--contain"><img src="/src/assets/ProductImages/AMD Ryzen 7 9700X.png" alt="AMD Ryzen 7 9700X processor"><span class="product-tag">CPU</span></div>
+                <div class="product-info"><small>AMD</small><h3>Ryzen 7 9700X</h3><p>8-Core / 16-Thread · AM5 · Zen 5</p><strong>₱19,995</strong><div class="product-actions"><a href="#">View details →</a><button>Add to cart</button></div></div>
+            </article>
+            <article class="product-card" data-category="cpu" data-brand="intel" data-availability="available">
+                <div class="product-image is-placeholder"><img src="/src/assets/ProductImages/placeholders/cpu.svg" alt="Illustrative processor image"><span class="product-tag">CPU</span></div>
+                <div class="product-info"><small>Intel</small><h3>Core i5-13400F</h3><p>10-Core / 16-Thread · LGA1700 · Discrete GPU required</p><strong>₱10,995</strong><div class="product-actions"><a href="#">View details →</a><button>Add to cart</button></div></div>
+            </article>
+            <article class="product-card" data-category="cpu" data-brand="intel" data-availability="available">
+                <div class="product-image is-placeholder"><img src="/src/assets/ProductImages/placeholders/cpu.svg" alt="Illustrative processor image"><span class="product-tag">CPU</span></div>
+                <div class="product-info"><small>Intel</small><h3>Core i5-14400F</h3><p>10-Core / 16-Thread · LGA1700 · Discrete GPU required</p><strong>₱11,995</strong><div class="product-actions"><a href="#">View details →</a><button>Add to cart</button></div></div>
+            </article>
+            <article class="product-card" data-category="cpu" data-brand="intel" data-availability="available">
+                <div class="product-image is-placeholder"><img src="/src/assets/ProductImages/placeholders/cpu.svg" alt="Illustrative processor image"><span class="product-tag">CPU</span></div>
+                <div class="product-info"><small>Intel</small><h3>Core i7-14700K</h3><p>20-Core / 28-Thread · LGA1700 · Unlocked</p><strong>₱26,995</strong><div class="product-actions"><a href="#">View details →</a><button>Add to cart</button></div></div>
+            </article>
+
+            <article class="product-card" data-category="gpu" data-brand="asus" data-availability="available">
                 <div class="product-image">
                     <img src="/src/assets/Productimages/4070superdual.png" alt="RTX graphics card">
                     <span class="product-tag">GPU</span>
@@ -131,7 +196,44 @@
                 </div>
             </article>
 
-            <article class="product-card" data-product-id="vengeance-rgb-ddr5-32gb" data-price="6495" data-category="ram" data-brand="corsair" data-availability="available">
+            <article class="product-card" data-category="gpu" data-brand="gigabyte" data-availability="available">
+                <div class="product-image is-placeholder"><img src="/src/assets/ProductImages/placeholders/gpu.svg" alt="Illustrative graphics card image"><span class="product-tag">GPU</span></div>
+                <div class="product-info"><small>Gigabyte</small><h3>GeForce RTX 4060 Eagle OC 8GB</h3><p>8GB GDDR6 · DLSS 3 · Dual-fan</p><strong>₱18,995</strong><div class="product-actions"><a href="#">View details →</a><button>Add to cart</button></div></div>
+            </article>
+            <article class="product-card" data-category="gpu" data-brand="msi" data-availability="available">
+                <div class="product-image is-placeholder"><img src="/src/assets/ProductImages/placeholders/gpu.svg" alt="Illustrative graphics card image"><span class="product-tag">GPU</span></div>
+                <div class="product-info"><small>MSI</small><h3>GeForce RTX 4060 Ti Ventus 2X 8GB</h3><p>8GB GDDR6 · Ada Lovelace · Dual-fan</p><strong>₱26,995</strong><div class="product-actions"><a href="#">View details →</a><button>Add to cart</button></div></div>
+            </article>
+            <article class="product-card" data-category="gpu" data-brand="gigabyte" data-availability="available">
+                <div class="product-image is-placeholder"><img src="/src/assets/ProductImages/placeholders/gpu.svg" alt="Illustrative graphics card image"><span class="product-tag">GPU</span></div>
+                <div class="product-info"><small>Gigabyte</small><h3>GeForce RTX 4070 Windforce OC 12GB</h3><p>12GB GDDR6X · Ada Lovelace · Triple-fan</p><strong>₱34,995</strong><div class="product-actions"><a href="#">View details →</a><button>Add to cart</button></div></div>
+            </article>
+            <article class="product-card" data-category="gpu" data-brand="msi" data-availability="available">
+                <div class="product-image is-placeholder"><img src="/src/assets/ProductImages/placeholders/gpu.svg" alt="Illustrative graphics card image"><span class="product-tag">GPU</span></div>
+                <div class="product-info"><small>MSI</small><h3>GeForce RTX 5070 Ventus 2X 12GB</h3><p>12GB GDDR7 · DLSS 4 · Dual-fan</p><strong>₱39,995</strong><div class="product-actions"><a href="#">View details →</a><button>Add to cart</button></div></div>
+            </article>
+            <article class="product-card" data-category="gpu" data-brand="sapphire" data-availability="available">
+                <div class="product-image is-placeholder"><img src="/src/assets/ProductImages/placeholders/gpu.svg" alt="Illustrative graphics card image"><span class="product-tag">GPU</span></div>
+                <div class="product-info"><small>Sapphire</small><h3>Pulse Radeon RX 7600 8GB</h3><p>8GB GDDR6 · RDNA 3 · Dual-fan</p><strong>₱16,995</strong><div class="product-actions"><a href="#">View details →</a><button>Add to cart</button></div></div>
+            </article>
+            <article class="product-card" data-category="gpu" data-brand="asus" data-availability="available">
+                <div class="product-image is-placeholder"><img src="/src/assets/ProductImages/placeholders/gpu.svg" alt="Illustrative graphics card image"><span class="product-tag">GPU</span></div>
+                <div class="product-info"><small>ASUS</small><h3>Dual Radeon RX 7700 XT 12GB</h3><p>12GB GDDR6 · RDNA 3 · Dual-fan</p><strong>₱29,995</strong><div class="product-actions"><a href="#">View details →</a><button>Add to cart</button></div></div>
+            </article>
+            <article class="product-card" data-category="gpu" data-brand="sapphire" data-availability="available">
+                <div class="product-image is-placeholder"><img src="/src/assets/ProductImages/placeholders/gpu.svg" alt="Illustrative graphics card image"><span class="product-tag">GPU</span></div>
+                <div class="product-info"><small>Sapphire</small><h3>Pulse Radeon RX 7800 XT 16GB</h3><p>16GB GDDR6 · RDNA 3 · Triple-fan</p><strong>₱36,995</strong><div class="product-actions"><a href="#">View details →</a><button>Add to cart</button></div></div>
+            </article>
+            <article class="product-card" data-category="gpu" data-brand="intel" data-availability="available">
+                <div class="product-image is-placeholder"><img src="/src/assets/ProductImages/placeholders/gpu.svg" alt="Illustrative graphics card image"><span class="product-tag">GPU</span></div>
+                <div class="product-info"><small>Intel</small><h3>Arc B580 Limited Edition 12GB</h3><p>12GB GDDR6 · Xe2 architecture · AV1</p><strong>₱16,995</strong><div class="product-actions"><a href="#">View details →</a><button>Add to cart</button></div></div>
+            </article>
+            <article class="product-card" data-category="gpu" data-brand="asrock" data-availability="available">
+                <div class="product-image is-placeholder"><img src="/src/assets/ProductImages/placeholders/gpu.svg" alt="Illustrative graphics card image"><span class="product-tag">GPU</span></div>
+                <div class="product-info"><small>ASRock</small><h3>Challenger Radeon RX 6600 8GB</h3><p>8GB GDDR6 · RDNA 2 · Dual-fan</p><strong>₱13,995</strong><div class="product-actions"><a href="#">View details →</a><button>Add to cart</button></div></div>
+            </article>
+
+            <article class="product-card" data-category="ram" data-brand="corsair" data-availability="available">
                 <div class="product-image">
                     <img src="/src/assets/Productimages/Vengeance RGB DDR5 32GB.png" alt="Corsair RAM">
                     <span class="product-tag">RAM</span>
@@ -148,7 +250,44 @@
                 </div>
             </article>
 
-            <article class="product-card" data-product-id="samsung-990-pro-1tb" data-price="6995" data-category="storage" data-brand="samsung" data-availability="available">
+            <article class="product-card" data-category="ram" data-brand="kingston" data-availability="available">
+                <div class="product-image is-placeholder"><img src="/src/assets/ProductImages/placeholders/ram.svg" alt="Illustrative memory module image"><span class="product-tag">RAM</span></div>
+                <div class="product-info"><small>Kingston</small><h3>FURY Beast DDR5 32GB (2×16GB)</h3><p>6000MT/s · CL36 · DDR5 UDIMM</p><strong>₱5,295</strong><div class="product-actions"><a href="#">View details →</a><button>Add to cart</button></div></div>
+            </article>
+            <article class="product-card" data-category="ram" data-brand="g-skill" data-availability="available">
+                <div class="product-image is-placeholder"><img src="/src/assets/ProductImages/placeholders/ram.svg" alt="Illustrative memory module image"><span class="product-tag">RAM</span></div>
+                <div class="product-info"><small>G.Skill</small><h3>Ripjaws S5 DDR5 32GB (2×16GB)</h3><p>6000MT/s · CL36 · Low-profile heat spreader</p><strong>₱5,495</strong><div class="product-actions"><a href="#">View details →</a><button>Add to cart</button></div></div>
+            </article>
+            <article class="product-card" data-category="ram" data-brand="teamgroup" data-availability="available">
+                <div class="product-image is-placeholder"><img src="/src/assets/ProductImages/placeholders/ram.svg" alt="Illustrative memory module image"><span class="product-tag">RAM</span></div>
+                <div class="product-info"><small>TeamGroup</small><h3>T-Force Delta RGB DDR5 32GB</h3><p>6000MT/s · RGB lighting · 2×16GB kit</p><strong>₱5,795</strong><div class="product-actions"><a href="#">View details →</a><button>Add to cart</button></div></div>
+            </article>
+            <article class="product-card" data-category="ram" data-brand="crucial" data-availability="available">
+                <div class="product-image is-placeholder"><img src="/src/assets/ProductImages/placeholders/ram.svg" alt="Illustrative memory module image"><span class="product-tag">RAM</span></div>
+                <div class="product-info"><small>Crucial</small><h3>Pro DDR5 32GB (2×16GB)</h3><p>5600MT/s · Non-ECC · Desktop UDIMM</p><strong>₱4,995</strong><div class="product-actions"><a href="#">View details →</a><button>Add to cart</button></div></div>
+            </article>
+            <article class="product-card" data-category="ram" data-brand="corsair" data-availability="available">
+                <div class="product-image is-placeholder"><img src="/src/assets/ProductImages/placeholders/ram.svg" alt="Illustrative memory module image"><span class="product-tag">RAM</span></div>
+                <div class="product-info"><small>Corsair</small><h3>Vengeance LPX DDR4 32GB</h3><p>3200MT/s · CL16 · 2×16GB kit</p><strong>₱3,295</strong><div class="product-actions"><a href="#">View details →</a><button>Add to cart</button></div></div>
+            </article>
+            <article class="product-card" data-category="ram" data-brand="kingston" data-availability="available">
+                <div class="product-image is-placeholder"><img src="/src/assets/ProductImages/placeholders/ram.svg" alt="Illustrative memory module image"><span class="product-tag">RAM</span></div>
+                <div class="product-info"><small>Kingston</small><h3>FURY Beast DDR4 32GB</h3><p>3200MT/s · CL16 · 2×16GB kit</p><strong>₱3,095</strong><div class="product-actions"><a href="#">View details →</a><button>Add to cart</button></div></div>
+            </article>
+            <article class="product-card" data-category="ram" data-brand="teamgroup" data-availability="available">
+                <div class="product-image is-placeholder"><img src="/src/assets/ProductImages/placeholders/ram.svg" alt="Illustrative memory module image"><span class="product-tag">RAM</span></div>
+                <div class="product-info"><small>TeamGroup</small><h3>T-Force Vulcan Z DDR4 16GB</h3><p>3200MT/s · CL16 · 2×8GB kit</p><strong>₱1,695</strong><div class="product-actions"><a href="#">View details →</a><button>Add to cart</button></div></div>
+            </article>
+            <article class="product-card" data-category="ram" data-brand="g-skill" data-availability="available">
+                <div class="product-image is-placeholder"><img src="/src/assets/ProductImages/placeholders/ram.svg" alt="Illustrative memory module image"><span class="product-tag">RAM</span></div>
+                <div class="product-info"><small>G.Skill</small><h3>Trident Z5 Neo DDR5 32GB</h3><p>6000MT/s · AMD EXPO · 2×16GB kit</p><strong>₱6,495</strong><div class="product-actions"><a href="#">View details →</a><button>Add to cart</button></div></div>
+            </article>
+            <article class="product-card" data-category="ram" data-brand="adata" data-availability="available">
+                <div class="product-image is-placeholder"><img src="/src/assets/ProductImages/placeholders/ram.svg" alt="Illustrative memory module image"><span class="product-tag">RAM</span></div>
+                <div class="product-info"><small>ADATA</small><h3>XPG Lancer Blade DDR5 32GB</h3><p>6000MT/s · CL30 · 2×16GB kit</p><strong>₱5,295</strong><div class="product-actions"><a href="#">View details →</a><button>Add to cart</button></div></div>
+            </article>
+
+            <article class="product-card" data-category="storage" data-brand="samsung" data-availability="available">
                 <div class="product-image">
                     <img src="/src/assets/Productimages/Storage.png" alt="Samsung SSD">
                     <span class="product-tag">Storage</span>
@@ -165,7 +304,44 @@
                 </div>
             </article>
 
-            <article class="product-card" data-product-id="nzxt-h6-flow" data-price="8495" data-category="case" data-brand="nzxt" data-availability="available">
+            <article class="product-card" data-category="storage" data-brand="wd" data-availability="available">
+                <div class="product-image is-placeholder"><img src="/src/assets/ProductImages/placeholders/storage.svg" alt="Illustrative storage device image"><span class="product-tag">Storage</span></div>
+                <div class="product-info"><small>WD</small><h3>Blue SN580 NVMe SSD 1TB</h3><p>M.2 2280 · PCIe 4.0 · Up to 4,150MB/s read</p><strong>₱4,495</strong><div class="product-actions"><a href="#">View details →</a><button>Add to cart</button></div></div>
+            </article>
+            <article class="product-card" data-category="storage" data-brand="kingston" data-availability="available">
+                <div class="product-image is-placeholder"><img src="/src/assets/ProductImages/placeholders/storage.svg" alt="Illustrative storage device image"><span class="product-tag">Storage</span></div>
+                <div class="product-info"><small>Kingston</small><h3>NV2 NVMe SSD 1TB</h3><p>M.2 2280 · PCIe 4.0 · Up to 3,500MB/s read</p><strong>₱3,495</strong><div class="product-actions"><a href="#">View details →</a><button>Add to cart</button></div></div>
+            </article>
+            <article class="product-card" data-category="storage" data-brand="crucial" data-availability="available">
+                <div class="product-image is-placeholder"><img src="/src/assets/ProductImages/placeholders/storage.svg" alt="Illustrative storage device image"><span class="product-tag">Storage</span></div>
+                <div class="product-info"><small>Crucial</small><h3>P3 Plus NVMe SSD 1TB</h3><p>M.2 2280 · PCIe 4.0 · Up to 5,000MB/s read</p><strong>₱4,295</strong><div class="product-actions"><a href="#">View details →</a><button>Add to cart</button></div></div>
+            </article>
+            <article class="product-card" data-category="storage" data-brand="wd" data-availability="available">
+                <div class="product-image is-placeholder"><img src="/src/assets/ProductImages/placeholders/storage.svg" alt="Illustrative storage device image"><span class="product-tag">Storage</span></div>
+                <div class="product-info"><small>WD</small><h3>Black SN850X NVMe SSD 1TB</h3><p>M.2 2280 · PCIe 4.0 · Up to 7,300MB/s read</p><strong>₱6,495</strong><div class="product-actions"><a href="#">View details →</a><button>Add to cart</button></div></div>
+            </article>
+            <article class="product-card" data-category="storage" data-brand="samsung" data-availability="available">
+                <div class="product-image is-placeholder"><img src="/src/assets/ProductImages/placeholders/storage.svg" alt="Illustrative storage device image"><span class="product-tag">Storage</span></div>
+                <div class="product-info"><small>Samsung</small><h3>990 EVO Plus NVMe SSD 1TB</h3><p>M.2 2280 · PCIe 4.0 / 5.0 · Up to 7,150MB/s read</p><strong>₱5,995</strong><div class="product-actions"><a href="#">View details →</a><button>Add to cart</button></div></div>
+            </article>
+            <article class="product-card" data-category="storage" data-brand="lexar" data-availability="available">
+                <div class="product-image is-placeholder"><img src="/src/assets/ProductImages/placeholders/storage.svg" alt="Illustrative storage device image"><span class="product-tag">Storage</span></div>
+                <div class="product-info"><small>Lexar</small><h3>NM790 NVMe SSD 1TB</h3><p>M.2 2280 · PCIe 4.0 · Up to 7,400MB/s read</p><strong>₱4,495</strong><div class="product-actions"><a href="#">View details →</a><button>Add to cart</button></div></div>
+            </article>
+            <article class="product-card" data-category="storage" data-brand="crucial" data-availability="available">
+                <div class="product-image is-placeholder"><img src="/src/assets/ProductImages/placeholders/storage.svg" alt="Illustrative storage device image"><span class="product-tag">Storage</span></div>
+                <div class="product-info"><small>Crucial</small><h3>MX500 SATA SSD 1TB</h3><p>2.5-inch SATA · Up to 560MB/s read</p><strong>₱4,995</strong><div class="product-actions"><a href="#">View details →</a><button>Add to cart</button></div></div>
+            </article>
+            <article class="product-card" data-category="storage" data-brand="seagate" data-availability="available">
+                <div class="product-image is-placeholder"><img src="/src/assets/ProductImages/placeholders/storage.svg" alt="Illustrative storage device image"><span class="product-tag">Storage</span></div>
+                <div class="product-info"><small>Seagate</small><h3>Barracuda HDD 2TB</h3><p>3.5-inch SATA · 7200RPM · Desktop drive</p><strong>₱3,995</strong><div class="product-actions"><a href="#">View details →</a><button>Add to cart</button></div></div>
+            </article>
+            <article class="product-card" data-category="storage" data-brand="wd" data-availability="available">
+                <div class="product-image is-placeholder"><img src="/src/assets/ProductImages/placeholders/storage.svg" alt="Illustrative storage device image"><span class="product-tag">Storage</span></div>
+                <div class="product-info"><small>WD</small><h3>Blue HDD 2TB</h3><p>3.5-inch SATA · 5400RPM · Desktop drive</p><strong>₱3,995</strong><div class="product-actions"><a href="#">View details →</a><button>Add to cart</button></div></div>
+            </article>
+
+            <article class="product-card" data-category="case" data-brand="nzxt" data-availability="available">
                 <div class="product-image">
                     <img src="/src/assets/Productimages/H6 Flow Compact Mid-Tower.png" alt="NZXT computer case">
                     <span class="product-tag">Case</span>
@@ -181,7 +357,45 @@
                     </div>
                 </div>
             </article>
-            <article class="product-card" data-product-id="logitech-g-pro-x-superlight-2" data-price="7295" data-category="mouse" data-brand="logitech" data-availability="available">
+
+            <article class="product-card" data-category="case" data-brand="corsair" data-availability="available">
+                <div class="product-image is-placeholder"><img src="/src/assets/ProductImages/placeholders/case.svg" alt="Illustrative computer case image"><span class="product-tag">Case</span></div>
+                <div class="product-info"><small>Corsair</small><h3>4000D Airflow Mid-Tower</h3><p>ATX · Mesh front panel · Tempered glass</p><strong>₱5,995</strong><div class="product-actions"><a href="#">View details →</a><button>Add to cart</button></div></div>
+            </article>
+            <article class="product-card" data-category="case" data-brand="lian-li" data-availability="available">
+                <div class="product-image is-placeholder"><img src="/src/assets/ProductImages/placeholders/case.svg" alt="Illustrative computer case image"><span class="product-tag">Case</span></div>
+                <div class="product-info"><small>Lian Li</small><h3>LANCOOL 216 Mid-Tower</h3><p>ATX · High-airflow mesh · 2×160mm fans</p><strong>₱6,495</strong><div class="product-actions"><a href="#">View details →</a><button>Add to cart</button></div></div>
+            </article>
+            <article class="product-card" data-category="case" data-brand="montech" data-availability="available">
+                <div class="product-image is-placeholder"><img src="/src/assets/ProductImages/placeholders/case.svg" alt="Illustrative computer case image"><span class="product-tag">Case</span></div>
+                <div class="product-info"><small>Montech</small><h3>AIR 903 MAX Mid-Tower</h3><p>ATX · Mesh front · 4× pre-installed fans</p><strong>₱4,995</strong><div class="product-actions"><a href="#">View details →</a><button>Add to cart</button></div></div>
+            </article>
+            <article class="product-card" data-category="case" data-brand="fractal-design" data-availability="available">
+                <div class="product-image is-placeholder"><img src="/src/assets/ProductImages/placeholders/case.svg" alt="Illustrative computer case image"><span class="product-tag">Case</span></div>
+                <div class="product-info"><small>Fractal Design</small><h3>North Mid-Tower</h3><p>ATX · Wood-accent front · Mesh side panel</p><strong>₱9,995</strong><div class="product-actions"><a href="#">View details →</a><button>Add to cart</button></div></div>
+            </article>
+            <article class="product-card" data-category="case" data-brand="cooler-master" data-availability="available">
+                <div class="product-image is-placeholder"><img src="/src/assets/ProductImages/placeholders/case.svg" alt="Illustrative computer case image"><span class="product-tag">Case</span></div>
+                <div class="product-info"><small>Cooler Master</small><h3>MasterBox TD500 Mesh V2</h3><p>ATX · Mesh front · ARGB lighting</p><strong>₱6,495</strong><div class="product-actions"><a href="#">View details →</a><button>Add to cart</button></div></div>
+            </article>
+            <article class="product-card" data-category="case" data-brand="nzxt" data-availability="available">
+                <div class="product-image is-placeholder"><img src="/src/assets/ProductImages/placeholders/case.svg" alt="Illustrative computer case image"><span class="product-tag">Case</span></div>
+                <div class="product-info"><small>NZXT</small><h3>H5 Flow Mid-Tower</h3><p>ATX · Perforated front · Tempered glass</p><strong>₱5,495</strong><div class="product-actions"><a href="#">View details →</a><button>Add to cart</button></div></div>
+            </article>
+            <article class="product-card" data-category="case" data-brand="hyte" data-availability="available">
+                <div class="product-image is-placeholder"><img src="/src/assets/ProductImages/placeholders/case.svg" alt="Illustrative computer case image"><span class="product-tag">Case</span></div>
+                <div class="product-info"><small>HYTE</small><h3>Y60 Dual-Chamber Mid-Tower</h3><p>ATX · Panoramic glass · Vertical GPU layout</p><strong>₱12,995</strong><div class="product-actions"><a href="#">View details →</a><button>Add to cart</button></div></div>
+            </article>
+            <article class="product-card" data-category="case" data-brand="deepcool" data-availability="available">
+                <div class="product-image is-placeholder"><img src="/src/assets/ProductImages/placeholders/case.svg" alt="Illustrative computer case image"><span class="product-tag">Case</span></div>
+                <div class="product-info"><small>DeepCool</small><h3>CH370 Micro-ATX Case</h3><p>Micro-ATX · Mesh front · Tempered glass</p><strong>₱3,495</strong><div class="product-actions"><a href="#">View details →</a><button>Add to cart</button></div></div>
+            </article>
+            <article class="product-card" data-category="case" data-brand="tecware" data-availability="available">
+                <div class="product-image is-placeholder"><img src="/src/assets/ProductImages/placeholders/case.svg" alt="Illustrative computer case image"><span class="product-tag">Case</span></div>
+                <div class="product-info"><small>Tecware</small><h3>Forge M2 Micro-ATX Case</h3><p>Micro-ATX · Mesh front · Compact layout</p><strong>₱2,495</strong><div class="product-actions"><a href="#">View details →</a><button>Add to cart</button></div></div>
+            </article>
+
+            <article class="product-card" data-category="mouse" data-brand="logitech" data-availability="available">
                 <div class="product-image">
                     <img src="/src/assets/Productimages/G PRO X Superlight 2.png" alt="Logitech mouse">
                     <span class="product-tag">Mouse</span>
@@ -197,6 +411,44 @@
                     </div>
                 </div>
             </article>
+            <article class="product-card" data-category="mouse" data-brand="logitech" data-availability="available">
+                <div class="product-image is-placeholder"><img src="/src/assets/ProductImages/placeholders/mouse.svg" alt="Illustrative mouse image"><span class="product-tag">Mouse</span></div>
+                <div class="product-info"><small>Logitech</small><h3>G502 HERO</h3><p>Wired · HERO 25K sensor · 11 programmable buttons</p><strong>₱3,495</strong><div class="product-actions"><a href="#">View details →</a><button>Add to cart</button></div></div>
+            </article>
+            <article class="product-card" data-category="mouse" data-brand="logitech" data-availability="available">
+                <div class="product-image is-placeholder"><img src="/src/assets/ProductImages/placeholders/mouse.svg" alt="Illustrative mouse image"><span class="product-tag">Mouse</span></div>
+                <div class="product-info"><small>Logitech</small><h3>G305 LIGHTSPEED</h3><p>Wireless · HERO sensor · 6 programmable buttons</p><strong>₱2,495</strong><div class="product-actions"><a href="#">View details →</a><button>Add to cart</button></div></div>
+            </article>
+            <article class="product-card" data-category="mouse" data-brand="razer" data-availability="available">
+                <div class="product-image is-placeholder"><img src="/src/assets/ProductImages/placeholders/mouse.svg" alt="Illustrative mouse image"><span class="product-tag">Mouse</span></div>
+                <div class="product-info"><small>Razer</small><h3>DeathAdder V3</h3><p>Wired · Focus Pro 30K sensor · Ergonomic</p><strong>₱3,995</strong><div class="product-actions"><a href="#">View details →</a><button>Add to cart</button></div></div>
+            </article>
+            <article class="product-card" data-category="mouse" data-brand="razer" data-availability="available">
+                <div class="product-image is-placeholder"><img src="/src/assets/ProductImages/placeholders/mouse.svg" alt="Illustrative mouse image"><span class="product-tag">Mouse</span></div>
+                <div class="product-info"><small>Razer</small><h3>Viper V3 HyperSpeed</h3><p>Wireless · Focus Pro 30K sensor · AA battery</p><strong>₱3,995</strong><div class="product-actions"><a href="#">View details →</a><button>Add to cart</button></div></div>
+            </article>
+            <article class="product-card" data-category="mouse" data-brand="razer" data-availability="available">
+                <div class="product-image is-placeholder"><img src="/src/assets/ProductImages/placeholders/mouse.svg" alt="Illustrative mouse image"><span class="product-tag">Mouse</span></div>
+                <div class="product-info"><small>Razer</small><h3>Basilisk V3</h3><p>Wired · Focus+ 26K sensor · 11 programmable buttons</p><strong>₱3,495</strong><div class="product-actions"><a href="#">View details →</a><button>Add to cart</button></div></div>
+            </article>
+            <article class="product-card" data-category="mouse" data-brand="steelseries" data-availability="available">
+                <div class="product-image is-placeholder"><img src="/src/assets/ProductImages/placeholders/mouse.svg" alt="Illustrative mouse image"><span class="product-tag">Mouse</span></div>
+                <div class="product-info"><small>SteelSeries</small><h3>Rival 3</h3><p>Wired · TrueMove Core sensor · 6 buttons</p><strong>₱1,995</strong><div class="product-actions"><a href="#">View details →</a><button>Add to cart</button></div></div>
+            </article>
+            <article class="product-card" data-category="mouse" data-brand="hyperx" data-availability="available">
+                <div class="product-image is-placeholder"><img src="/src/assets/ProductImages/placeholders/mouse.svg" alt="Illustrative mouse image"><span class="product-tag">Mouse</span></div>
+                <div class="product-info"><small>HyperX</small><h3>Pulsefire Haste 2</h3><p>Wired · 26K sensor · Lightweight 61g design</p><strong>₱2,995</strong><div class="product-actions"><a href="#">View details →</a><button>Add to cart</button></div></div>
+            </article>
+            <article class="product-card" data-category="mouse" data-brand="glorious" data-availability="available">
+                <div class="product-image is-placeholder"><img src="/src/assets/ProductImages/placeholders/mouse.svg" alt="Illustrative mouse image"><span class="product-tag">Mouse</span></div>
+                <div class="product-info"><small>Glorious</small><h3>Model O 2</h3><p>Wired · BAMF 2.0 sensor · 6 programmable buttons</p><strong>₱3,495</strong><div class="product-actions"><a href="#">View details →</a><button>Add to cart</button></div></div>
+            </article>
+            <article class="product-card" data-category="mouse" data-brand="corsair" data-availability="available">
+                <div class="product-image is-placeholder"><img src="/src/assets/ProductImages/placeholders/mouse.svg" alt="Illustrative mouse image"><span class="product-tag">Mouse</span></div>
+                <div class="product-info"><small>Corsair</small><h3>Katar Pro XT</h3><p>Wired · 18,000 DPI sensor · Compact ambidextrous shape</p><strong>₱1,995</strong><div class="product-actions"><a href="#">View details →</a><button>Add to cart</button></div></div>
+            </article>
+            </div>
+            <p id="empty-state" class="empty-state" hidden>No products match these filters.</p>
         </div>
     </div>
 </section>
@@ -204,10 +456,8 @@
 </main>
 
 <p class="cart-feedback" id="cart-feedback" role="status" aria-live="polite"></p>
+<script src="../js/shop.js" defer></script>
 <script src="../js/cart.js" defer></script>
-</body>
-
-
 <footer class="footer">
     <div class="footer-container">
         <div class="footer-brand">
@@ -217,9 +467,9 @@
         <div class="footer-column">
             <h4>Explore</h4>
 
-            <a href="#">Shop components</a>
-            <a href="#">Categories</a>
-            <a href="#">About us</a>
+            <a href="shop.html">Shop components</a>
+            <a href="categories.html">Categories</a>
+            <a href="aboutUs.html">About us</a>
         </div>
         <div class="footer-column">
             <h4>Support</h4>
@@ -236,8 +486,9 @@
         </div>
     </div>
     <div class="footer-bottom">
-        <p>© 2026 B.Y.T.E. A better way to build.</p>
+        <p>© 2026 B.Y.T.E. Build Your Tech Essentials.</p>
         <p>Made for builders, in the Philippines.</p>
     </div>
 </footer>
+</body>
 </html>
