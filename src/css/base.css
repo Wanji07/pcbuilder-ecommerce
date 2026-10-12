@@ -1,0 +1,348 @@
+/* Major divider =============
+                Description
+                =============
+Minor divider /**/
+
+
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap");
+
+:root {
+    --page-background: #f5f4f0;
+    --text: #1b2a32;
+    --muted: #767d81;
+    --border: #deded8;
+    --accent: #c9f23b;
+    --body-font: "DM Sans", "Trebuchet MS", sans-serif;
+    --display-font: "Space Grotesk", "Trebuchet MS", sans-serif;
+}
+
+/* =========================
+   GENERAL CSS
+   ========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: var(--page-background);
+    color: var(--text);
+    font-family: var(--body-font);
+    line-height: 1.5;
+}
+
+a {
+    text-decoration: none;
+}
+
+button {
+    font: inherit;
+}
+
+/* Header */
+.site-header {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 18px;
+    border-bottom: 1px solid var(--border);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+}
+
+.logo-mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    background: var(--text);
+    color: var(--accent);
+    font-size: 8px;
+    font-weight: 700;
+    border-radius: 4px;
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: 26px;
+    margin-left: 35px;
+}
+
+.main-nav a {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    color: #667277;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+}
+
+.main-nav a.active {
+    color: var(--text);
+}
+
+.main-nav a.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 3px;
+    background: var(--accent);
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto;
+    color: var(--text);
+    font-size: 12px;
+}
+
+.cart-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+}
+
+.cart-button svg {
+    width: 22px;
+    height: 22px;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.5;
+}
+
+.cart-label {
+    margin-left: -5px;
+}
+
+.header-actions button {
+    border: none;
+    background: transparent;
+    color: var(--text);
+    font-size: 17px;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+}
+
+.user-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    transition: background 0.2s ease;
+    color: var(--text);
+}
+
+.user-btn svg {
+    width: 16px;
+    height: 16px;
+    display: block;
+    fill: currentColor;
+}
+
+.user-btn:hover {
+    background: rgba(0, 0, 0, 0.03);
+}
+
+/* Hero */
+.aboutus-hero,
+.contact-hero,
+.catalog-hero {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 58px 0 48px;
+    padding-left: 10px;
+}
+
+.hero-label {
+    width: 92%;
+    max-width: 1100px;
+    margin: 72px auto 0;
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+.aboutus-hero h1,
+.contact-hero h1,
+.catalog-hero h1 {
+    margin: 0;
+    color: var(--text);
+    font-size: clamp(46px, 5vw, 62px);
+    font-weight: 700;
+    letter-spacing: -3.5px;
+    line-height: 0.96;
+}
+
+.hero-description {
+    margin: 12px 0 0;
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+    .site-header {
+        flex-wrap: wrap;
+        gap: 12px;
+        height: auto;
+        padding-top: 14px;
+        padding-bottom: 14px;
+    }
+
+    .main-nav {
+        order: 3;
+        width: 100%;
+        margin-left: 0;
+        gap: 16px;
+        overflow-x: auto;
+    }
+
+    .aboutus-hero,
+    .contact-hero,
+    .catalog-hero {
+        padding: 50px 22px 30px;
+    }
+
+    .home-company {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        margin-top: 58px;
+        margin-bottom: 64px;
+    }
+}
+
+/* Shared accessibility states */
+:focus-visible {
+    outline: 3px solid #4b6500;
+    outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}
+
+/* =========================
+   FOOTER
+   ========================= */
+
+.footer {
+    background-color: #1d3545;
+    color: white;
+    padding: 45px 0 0;
+}
+
+
+.footer-container {
+    width: 1100px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 50px;
+
+    padding-bottom: 35px;
+}
+
+
+.footer-brand h2 {
+    margin: 0 0 5px;
+
+    font-size: 20px;
+}
+
+.footer-brand p {
+    margin: 0;
+
+    color: #aeb9bf;
+    font-size: 11px;
+}
+
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-column h4 {
+    margin: 0 0 15px;
+
+    color: #b6d600;
+
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.footer-column a {
+    margin-bottom: 10px;
+
+    color: #b8c2c7;
+    text-decoration: none;
+
+    font-size: 11px;
+}
+
+.footer-column a:hover {
+    color: white;
+}
+
+.footer-bottom {
+    width: 1100px;
+    margin: 0 auto;
+
+    border-top: 1px solid #405461;
+
+    display: flex;
+    justify-content: space-between;
+
+    padding: 14px 0;
+}
+
+
+.footer-bottom p {
+    margin: 0;
+
+    color: #89979f;
+    font-size: 9px;
+}

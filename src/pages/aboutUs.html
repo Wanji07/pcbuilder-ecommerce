@@ -3,35 +3,39 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="About PCBuilder">
-	<title>About Us | PCBuilder</title>
-	<link rel="stylesheet" href="/src/css/style.css">
+	<meta name="description" content="About B.Y.T.E. - Build Your Tech Essentials">
+	<title>About Us | B.Y.T.E.</title>
+	<link rel="stylesheet" href="../css/base.css">
 </head>
 
 <body>
 	<header class="site-header">
-		<a href="home.html" class="logo" aria-label="PCBuilder home">
-			<span class="logo-mark">PB</span>
-			<span>PCBuilder</span>
+		<a href="home.html" class="logo" aria-label="B.Y.T.E. home">
+			<span class="logo-mark">BY</span>
+			<span>B.Y.T.E.</span>
 		</a>
 
 		<nav class="main-nav" aria-label="Main navigation">
 			<a href="home.html">Home</a>
 			<a href="shop.html">Shop</a>
 			<a href="categories.html">Categories</a>
-			<a href="aboutus.html" class="active">About us</a>
+			<a href="aboutUs.html" class="active">About us</a>
 			<a href="contact.html">Contact</a>
 		</nav>
 
 		<div class="header-actions">
 			<button type="button" aria-label="Search">⌕</button>
-			<button type="button" onclick="window.location.href='Cart.html'" aria-label="Shopping cart">🛒</button>
-            <button type="button" class="user-btn" onclick="window.location.href='Login.html'" aria-label="Account">
+			<button type="button" class="cart-button" onclick="window.location.href='cart.html'" aria-label="Shopping cart">
+				<svg viewBox="0 0 24 24" aria-hidden="true">
+					<path d="M3 4h2l2.1 10.2a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 1.9-1.4L20.5 8H6.2M9 20a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm8 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+				</svg>
+			</button>
+			<span class="cart-label">Cart</span>
+			<button type="button" class="user-btn" onclick="window.location.href='login.html'" aria-label="Account">
 				<svg viewBox="0 0 24 24" aria-hidden="true">
 					<path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4zm0 2c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5z"/>
 				</svg>
 			</button>
-			<span>Cart</span>
 		</div>
 	</header>
 
@@ -40,7 +44,7 @@
 			<p class="hero-label">A little about us</p>
 			<h1>Good builds starts<br>with good people.</h1>
 			<p class="hero-description">
-				PCBuilder is a home for people who believe technology should feel empowering, not intimidating.
+				B.Y.T.E. is a home for people who believe technology should feel empowering, not intimidating.
 			</p>
 		</section>
 	</main>
@@ -48,20 +52,20 @@
 	<footer class="footer">
 		<div class="footer-container">
 			<div class="footer-brand">
-				<h2>PCBuilder</h2>
-				<p>Build better. Start here.</p>
+				<h2>B.Y.T.E.</h2>
+				<p>Build Your Tech Essentials.</p>
 			</div>
 			<div class="footer-column">
 				<h4>Explore</h4>
 				<a href="shop.html">Shop components</a>
 				<a href="categories.html">Categories</a>
-				<a href="aboutus.html">About us</a>
+				<a href="aboutUs.html">About us</a>
 			</div>
 			<div class="footer-column">
 				<h4>Support</h4>
 				<a href="contact.html">Contact us</a>
-				<a href="#">Shipping &amp; Returns</a>
-				<a href="#">FAQ</a>
+				<a href="shippingPayment.html">Shipping &amp; Returns</a>
+				<a href="contact.html">FAQ</a>
 			</div>
 			<div class="footer-column">
 				<h4>Follow along</h4>
@@ -70,7 +74,7 @@
 			</div>
 		</div>
 		<div class="footer-bottom">
-			<p>© 2026 PCBuilder. A better way to build.</p>
+			<p>© 2026 B.Y.T.E. Build Your Tech Essentials.</p>
 			<p>Made for builders, in the Philippines.</p>
 		</div>
 	</footer>
