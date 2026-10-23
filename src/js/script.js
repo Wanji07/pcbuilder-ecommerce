@@ -29,25 +29,37 @@ function readCart() {
 
     try {
         const parsedCart = JSON.parse(savedCart);
-        if (!Array.isArray(parsedCart) || !parsedCart.every(isValidCartItem)) {
-            throw new TypeError("The saved cart has an invalid format.");
+        if (!Array.isArray(parsedCart)) {
+            throw new TypeError("The saved cart is not an array.");
         }
+
+        if (!parsedCart.every(isValidCartItem)) {
+            localStorage.removeItem(CART_STORAGE_KEY);
+            return [];
+        }
+
         return parsedCart;
     } catch (error) {
-        console.error("Unable to parse the saved shopping cart.", error);
-        return null;
+        try {
+            localStorage.removeItem(CART_STORAGE_KEY);
+        } catch (clearError) {
+            console.error("Unable to clear the invalid shopping cart.", clearError);
+        }
+        return [];
     }
 }
 
 function isValidCartItem(item) {
+    const imagePath = typeof item?.image === "string" ? item.image.trim().replace(/\\/g, "/") : "";
+
     return item !== null
         && typeof item === "object"
         && typeof item.id === "string"
         && typeof item.name === "string"
         && Number.isSafeInteger(item.price)
         && item.price >= 0
-        && typeof item.image === "string"
-        && item.image.startsWith("/src/assets/")
+        && imagePath.length > 0
+        && /(^|\/|\\)assets\//i.test(imagePath)
         && Number.isInteger(item.quantity)
         && item.quantity >= 1
         && item.quantity <= MAX_QUANTITY;
@@ -273,6 +285,61 @@ if (cartItemsElement) {
         if (saveCart(cart)) {
             renderCart(cart);
             showCartFeedback("Your cart has been updated.");
+        }
+    });
+}
+
+// registration.html
+
+const registerForm = document.getElementById('register-form');
+if (registerForm) {
+    registerForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const name = document.getElementById('reg-name').value;
+        const email = document.getElementById('reg-email').value;
+        const password = document.getElementById('reg-password').value;
+
+        const userData = {
+            name: name,
+            email: email,
+            password: password
+        };
+
+        localStorage.setItem('pcbuilder_user', JSON.stringify(userData));
+
+        alert('Account created successfully! Please log in.');
+        window.location.href = 'login.html';
+    });
+}
+
+// =========================
+// LOGIN FUNCTIONALITY login.html
+// =========================
+
+const loginForm = document.getElementById('login-form');
+if (loginForm) {
+    loginForm.addEventListener('submit', function(e) {
+        e.preventDefault(); 
+
+        const inputEmail = document.getElementById('login-email').value;
+        const inputPassword = document.getElementById('login-password').value;
+
+        const savedUserJSON = localStorage.getItem('pcbuilder_user');
+
+        if (!savedUserJSON) {
+            alert('No account found. Please register first!');
+            return;
+        }
+
+        const savedUser = JSON.parse(savedUserJSON);
+
+        // Check if credentials match
+        if (inputEmail === savedUser.email && inputPassword === savedUser.password) {
+            alert('Login successful! Welcome back, ' + savedUser.name + '!');
+            window.location.href = 'home.html';
+        } else {
+            alert('Invalid email or password. Please try again.');
         }
     });
 }
