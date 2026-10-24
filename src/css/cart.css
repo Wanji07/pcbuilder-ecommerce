@@ -6,16 +6,6 @@ Minor divider /**/
 
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap");
 
-:root {
-    --page-background: #f5f4f0;
-    --text: #1b2a32;
-    --muted: #767d81;
-    --border: #deded8;
-    --accent: #c9f23b;
-    --body-font: "DM Sans", "Trebuchet MS", sans-serif;
-    --display-font: "Space Grotesk", "Trebuchet MS", sans-serif;
-}
-
 /* =========================
    GENERAL CSS
    ========================= */
@@ -30,14 +20,21 @@ html {
 
 body {
     margin: 0;
-    background: var(--page-background);
-    color: var(--text);
+    background: var(--bg-canvas);
+    color: var(--text-primary);
     font-family: var(--body-font);
     line-height: 1.5;
 }
 
 a {
+    color: var(--text-primary);
     text-decoration: none;
+}
+
+a:visited,
+a:hover,
+a:active {
+    color: var(--text-primary);
 }
 
 button {
@@ -52,18 +49,25 @@ button {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 18px;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--border-subtle);
 }
 
 .logo {
     display: flex;
     align-items: center;
     gap: 8px;
-    color: var(--text);
+    color: var(--text-primary);
     font-size: 14px;
     font-weight: 700;
     letter-spacing: -0.02em;
     white-space: nowrap;
+}
+
+.logo img {
+    display: block;
+    width: 150px;
+    height: auto;
+
 }
 
 .logo-mark {
@@ -72,7 +76,7 @@ button {
     justify-content: center;
     width: 22px;
     height: 22px;
-    background: var(--text);
+    background: var(--bg-surface);
     color: var(--accent);
     font-size: 8px;
     font-weight: 700;
@@ -91,14 +95,14 @@ button {
     display: flex;
     align-items: center;
     height: 100%;
-    color: #667277;
+    color: var(--text-primary);
     font-size: 12px;
     font-weight: 600;
     letter-spacing: 0.01em;
 }
 
 .main-nav a.active {
-    color: var(--text);
+    color: var(--text-primary);
 }
 
 .main-nav a.active::after {
@@ -116,7 +120,7 @@ button {
     align-items: center;
     gap: 10px;
     margin-left: auto;
-    color: var(--text);
+    color: var(--text-primary);
     font-size: 12px;
 }
 
@@ -145,7 +149,7 @@ button {
 .header-actions button {
     border: none;
     background: transparent;
-    color: var(--text);
+    color: var(--text-primary);
     font-size: 17px;
     cursor: pointer;
     padding: 0;
@@ -156,7 +160,7 @@ button {
     display: inline-flex;
     align-items: center;
     gap: 5px;
-    color: var(--text);
+    color: var(--text-primary);
     font-size: 12px;
     font-weight: 600;
     white-space: nowrap;
@@ -164,11 +168,11 @@ button {
 
 .cart-link:hover,
 .cart-link.active {
-    color: #547000;
+    color: var(--accent);
 }
 
 .cart-count {
-    color: #547000;
+    color: var(--accent);
     font-size: 10px;
 }
 
@@ -180,7 +184,7 @@ button {
     height: 24px;
     border-radius: 50%;
     transition: background 0.2s ease;
-    color: var(--text);
+    color: var(--text-primary);
 }
 
 .user-btn svg {
@@ -191,7 +195,7 @@ button {
 }
 
 .user-btn:hover {
-    background: rgba(0, 0, 0, 0.03);
+    background: var(--bg-surface-2);
 }
 
 /* Hero */
@@ -208,7 +212,7 @@ button {
     width: 92%;
     max-width: 1100px;
     margin: 72px auto 0;
-    color: var(--muted);
+    color: var(--text-muted);
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.18em;
@@ -220,7 +224,7 @@ button {
 .contact-hero h1,
 .catalog-hero h1 {
     margin: 0;
-    color: var(--text);
+    color: var(--text-primary);
     font-size: clamp(46px, 5vw, 62px);
     font-weight: 700;
     letter-spacing: -3.5px;
@@ -229,7 +233,7 @@ button {
 
 .hero-description {
     margin: 12px 0 0;
-    color: var(--muted);
+    color: var(--text-muted);
     font-size: 11px;
     font-weight: 500;
 }
@@ -284,7 +288,7 @@ button {
 }
 
 .category-heading small {
-    color: #63707a;
+    color: var(--text-secondary);
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.18em;
@@ -299,12 +303,12 @@ button {
     font-weight: 600;
     letter-spacing: -0.05em;
     line-height: 1;
-    color: #12283a;
+    color: var(--accent-ink);
 }
 
 .category-heading p {
     margin: 0;
-    color: #71808a;
+    color: var(--text-muted);
     font-size: 15px;
     line-height: 1.45;
 }
@@ -312,9 +316,9 @@ button {
 .view-categories {
     padding: 12px 18px;
 
-    border: 1px solid #12283a;
+    border: 1px solid var(--accent-ink);
 
-    color: #12283a;
+    color: var(--accent-ink);
     text-decoration: none;
 
     font-size: 12px;
@@ -338,7 +342,7 @@ button {
     display: block;
 
     text-decoration: none;
-    color: white;
+    color: var(--text-primary);
 }
 
 .category-card img {
@@ -361,7 +365,7 @@ button {
 
     background: linear-gradient(
         transparent 35%,
-        rgba(0, 0, 0, 0.75)
+        var(--bg-canvas)
     );
 }
 
@@ -379,7 +383,7 @@ button {
 }
 
 .category-icon {
-    color: #b6df00;
+    color: var(--accent);
     font-size: 22px;
 }
 
@@ -414,7 +418,7 @@ button {
     font-size: 12px;
     line-height: 1.35;
 
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--text-secondary);
 }
 
 .category-card:hover img {
@@ -433,11 +437,11 @@ button {
     max-width: 1100px;
     margin: 80px auto 90px;
     padding-top: 32px;
-    border-top: 1px solid var(--border);
+    border-top: 1px solid var(--border-subtle);
 }
 
 .home-company small {
-    color: #63707a;
+    color: var(--text-secondary);
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.18em;
@@ -448,7 +452,7 @@ button {
 .home-company h2 {
     max-width: 12ch;
     margin: 14px 0 0;
-    color: var(--text);
+    color: var(--text-primary);
     font-family: var(--display-font);
     font-size: clamp(30px, 4vw, 44px);
     font-weight: 600;
@@ -463,7 +467,7 @@ button {
 
 .home-company-details p {
     margin: 0 0 24px;
-    color: #71808a;
+    color: var(--text-muted);
     font-size: 15px;
     line-height: 1.6;
 }
@@ -472,13 +476,13 @@ button {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    color: var(--text);
+    color: var(--text-primary);
     font-size: 12px;
     font-weight: 700;
 }
 
 .home-company-link span {
-    color: #789900;
+    color: var(--accent);
     font-size: 18px;
     transition: transform 0.2s ease;
 }
@@ -492,7 +496,7 @@ button {
     gap: 12px;
     margin-top: 28px;
     padding-top: 18px;
-    border-top: 1px solid var(--border);
+    border-top: 1px solid var(--border-subtle);
 }
 
 .home-company-facts div {
@@ -504,7 +508,7 @@ button {
 }
 
 .home-company-facts strong {
-    color: var(--text);
+    color: var(--text-primary);
     font-size: 10px;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -512,7 +516,7 @@ button {
 
 .home-company-facts span,
 .home-company-facts a {
-    color: #71808a;
+    color: var(--text-primary);
 }
 
 .home-company-facts a {
@@ -561,7 +565,7 @@ button {
 
 .home-eyebrow {
     margin: 0 0 32px;
-    color: #6b9200;
+    color: var(--accent);
     font-size: 10px;
     font-weight: 700;
     letter-spacing: 2px;
@@ -570,7 +574,7 @@ button {
 
 .home-hero h1 {
     margin: 0;
-    color: #172631;
+    color: var(--text-primary);
     font-size: clamp(62px, 6.4vw, 100px);
     font-weight: 800;
     letter-spacing: -6px;
@@ -578,12 +582,12 @@ button {
 }
 
 .home-hero h1 span {
-    color: #719f00;
+    color: var(--accent);
 }
 
 .home-description {
     margin: 32px 0 0;
-    color: #71818a;
+    color: var(--text-muted);
     font-size: 16px;
     line-height: 1.65;
 }
@@ -600,15 +604,20 @@ button {
     display: inline-flex;
     align-items: center;
     gap: 20px;
-    color: #172631;
+    color: var(--text-primary);
     font-size: 13px;
     font-weight: 700;
 }
 
-.primary-action {
+.primary-action,
+.primary-action:visited,
+.primary-action:hover,
+.primary-action:active,
+.primary-action:focus-visible {
     min-height: 49px;
     padding: 0 20px;
     background: var(--accent);
+    color: var(--accent-ink) !important;
 }
 
 .primary-action span,
@@ -616,6 +625,10 @@ button {
     font-size: 24px;
     font-weight: 400;
     line-height: 0;
+}
+
+.primary-action span {
+    color: var(--accent-ink) !important;
 }
 
 .text-action {
@@ -626,7 +639,7 @@ button {
     display: flex;
     gap: 28px;
     margin-top: 62px;
-    color: #7d8a90;
+    color: var(--text-muted);
     font-size: 12px;
     letter-spacing: 0.03em;
 }
@@ -638,7 +651,7 @@ button {
 }
 
 .home-promises b {
-    color: #8999a0;
+    color: var(--text-muted);
     font-size: 20px;
     font-weight: 400;
 }
@@ -647,13 +660,12 @@ button {
     position: relative;
     aspect-ratio: 1.03 / 1;
     overflow: hidden;
-    background: #081217;
+    background: var(--bg-canvas);
 }
 
 .home-hero-visual::after {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, transparent 55%, rgba(0, 0, 0, 0.82));
     content: "";
     pointer-events: none;
 }
@@ -664,7 +676,6 @@ button {
     object-fit: cover;
     object-position: center;
     display: block;
-    filter: saturate(1.2) contrast(1.1);
     transform: scale(1.15);
 }
 
@@ -679,8 +690,8 @@ button {
     gap: 12px;
     padding: 20px 20px 18px;
     border-left: 3px solid var(--accent);
-    background: rgba(8, 18, 23, 0.82);
-    color: white;
+    background: var(--bg-elevated);
+    color: var(--text-primary);
 }
 
 .build-caption span {
@@ -708,7 +719,7 @@ button {
 .home-pillars p {
     align-self: center;
     margin: 0;
-    color: #2a3b18;
+    color: var(--accent-ink);
     font-size: 11px;
     letter-spacing: 1px;
     text-align: center;
@@ -776,21 +787,21 @@ button {
 .catalog-header small {
     font-size: 9px;
     letter-spacing: 2px;
-    color: #777;
+    color: var(--text-muted);
 }
 
 .catalog-header h1 {
     margin: 12px 0 8px;
 
     font-size: 44px;
-    color: #12283a;
+    color: var(--accent-ink);
 }
 
 .catalog-header p {
     margin: 0;
 
     font-size: 12px;
-    color: #777;
+    color: var(--text-muted);
 }
 
 
@@ -803,8 +814,8 @@ button {
     margin-top: 40px;
     padding: 12px 0;
 
-    border-top: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
+    border-top: 1px solid var(--border-subtle);
+    border-bottom: 1px solid var(--border-subtle);
 }
 
 
@@ -815,23 +826,23 @@ button {
     padding: 0;
 
     font-size: 10px;
-    color: #777;
+    color: var(--text-muted);
 
     cursor: pointer;
 }
 
 
 .category-button:hover {
-    color: #111;
+    color: var(--text-primary);
 }
 
 
 /* Currently selected category */
 
 .category-button.active {
-    color: #111;
+    color: var(--text-primary);
 
-    border-bottom: 2px solid #9bc400;
+    border-bottom: 2px solid var(--accent);
     padding-bottom: 4px;
 }
 
@@ -858,7 +869,7 @@ button {
 .filters > small {
     font-size: 8px;
     letter-spacing: 2px;
-    color: #777;
+    color: var(--text-muted);
 }
 
 
@@ -869,7 +880,7 @@ button {
     margin-bottom: 8px;
 
     font-size: 10px;
-    color: #555;
+    color: var(--text-secondary);
 }
 
 
@@ -877,7 +888,7 @@ button {
     width: 100%;
 
     border: none;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid var(--border-subtle);
 
     background: transparent;
 
@@ -903,7 +914,7 @@ button {
 /*PRODUCT CARD*/
 
 .product-card {
-    background: white;
+    background: var(--bg-surface);
 
     min-width: 0;
 }
@@ -924,7 +935,7 @@ button {
     width: 100%;
     height: 100%;
 
-    object-fit: cover;
+    object-fit: contain;
 
     display: block;
 }
@@ -938,7 +949,7 @@ button {
     top: 10px;
     left: 10px;
 
-    background: #b6df00;
+    background: var(--accent);
 
     padding: 5px 7px;
 
@@ -955,7 +966,7 @@ button {
 
 .product-info small {
     font-size: 8px;
-    color: #888;
+    color: var(--text-muted);
 }
 
 
@@ -965,7 +976,7 @@ button {
     font-size: 11px;
     font-weight: 400;
 
-    color: #263746;
+    color: var(--text-secondary);
 }
 
 
@@ -973,7 +984,7 @@ button {
     margin: 0 0 14px;
 
     font-size: 8px;
-    color: #888;
+    color: var(--text-muted);
 }
 
 
@@ -982,7 +993,7 @@ button {
 
     font-size: 12px;
 
-    color: #12283a;
+    color: var(--accent-ink);
 }
 
 
@@ -997,14 +1008,14 @@ button {
     margin-top: 15px;
     padding-top: 10px;
 
-    border-top: 1px solid #ddd;
+    border-top: 1px solid var(--border-subtle);
 }
 
 
 .product-actions a {
     font-size: 8px;
 
-    color: #111;
+    color: var(--text-primary);
     text-decoration: none;
 }
 
@@ -1012,8 +1023,8 @@ button {
 .product-actions button {
     border: none;
 
-    background: #1d3545;
-    color: white;
+    background: var(--bg-surface);
+    color: var(--text-primary);
 
     padding: 7px 9px;
 
@@ -1024,7 +1035,7 @@ button {
 
 
 .product-actions button:hover {
-    background: #2d4d60;
+    background: var(--bg-elevated);
 }
 
 
@@ -1042,7 +1053,7 @@ button {
 }
 
 .category-box {
-    background-color: white;
+    background-color: var(--bg-surface);
     overflow: hidden;
 }
 
@@ -1062,18 +1073,18 @@ button {
 
     font-size: 18px;
     font-weight: 400;
-    color: #222;
+    color: var(--text-primary);
 }
 
 .category-content p {
     margin: 0 0 22px;
 
     font-size: 12px;
-    color: #999;
+    color: var(--text-muted);
 }
 
 .category-content a {
-    color: #111;
+    color: var(--text-primary);
     text-decoration: none;
 
     font-size: 12px;
@@ -1081,7 +1092,7 @@ button {
 }
 
 .category-content a:hover {
-    color: #789900;
+    color: var(--text-primary);
 }
 
 /* =========================
@@ -1089,8 +1100,8 @@ button {
    ========================= */
 
 .footer {
-    background-color: #1d3545;
-    color: white;
+    background-color: var(--bg-surface);
+    color: var(--text-primary);
     padding: 45px 0 0;
 }
 
@@ -1129,7 +1140,7 @@ button {
 .footer-brand p {
     margin: 0;
 
-    color: #aeb9bf;
+    color: var(--text-muted);
     font-size: 11px;
 }
 
@@ -1142,7 +1153,7 @@ button {
 .footer-column h4 {
     margin: 0 0 15px;
 
-    color: #b6d600;
+    color: var(--accent);
 
     font-size: 11px;
     font-weight: bold;
@@ -1151,21 +1162,21 @@ button {
 .footer-column a {
     margin-bottom: 10px;
 
-    color: #b8c2c7;
+    color: var(--text-primary);
     text-decoration: none;
 
     font-size: 11px;
 }
 
 .footer-column a:hover {
-    color: white;
+    color: var(--text-primary);
 }
 
 .footer-bottom {
     width: 1100px;
     margin: 0 auto;
 
-    border-top: 1px solid #405461;
+    border-top: 1px solid var(--border-strong);
 
     display: flex;
     justify-content: center;
@@ -1177,7 +1188,7 @@ button {
 .footer-bottom p {
     margin: 0;
 
-    color: #89979f;
+    color: var(--text-muted);
     font-size: 9px;
 }
 
@@ -1206,14 +1217,14 @@ button {
 
 .cart-heading > p:last-child {
     margin: 12px 0 0;
-    color: var(--muted);
+    color: var(--text-muted);
     font-size: 13px;
 }
 
 .cart-feedback {
     width: min(1100px, calc(100% - 44px));
     margin: 0 auto 12px;
-    color: #547000;
+    color: var(--accent);
     font-size: 12px;
 }
 
@@ -1226,7 +1237,7 @@ button {
 
 .cart-items-panel,
 .order-summary {
-    background: #fff;
+    background: var(--bg-surface);
 }
 
 .cart-items {
@@ -1239,7 +1250,7 @@ button {
     align-items: center;
     gap: 16px;
     padding: 18px 0;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--border-subtle);
 }
 
 .cart-item:last-child {
@@ -1251,7 +1262,7 @@ button {
     width: 76px;
     height: 76px;
     object-fit: cover;
-    background: var(--page-background);
+    background: var(--bg-canvas);
 }
 
 .cart-item-details h2 {
@@ -1262,14 +1273,14 @@ button {
 
 .cart-item-details p {
     margin: 0;
-    color: var(--muted);
+    color: var(--text-muted);
     font-size: 12px;
 }
 
 .quantity-control {
     display: flex;
     align-items: center;
-    border: 1px solid var(--border);
+    border: 1px solid var(--border-subtle);
 }
 
 .quantity-control button,
@@ -1277,7 +1288,7 @@ button {
     height: 32px;
     border: 0;
     background: transparent;
-    color: var(--text);
+    color: var(--text-primary);
     text-align: center;
 }
 
@@ -1288,8 +1299,8 @@ button {
 
 .quantity-control input {
     width: 38px;
-    border-right: 1px solid var(--border);
-    border-left: 1px solid var(--border);
+    border-right: 1px solid var(--border-subtle);
+    border-left: 1px solid var(--border-subtle);
     font: inherit;
     font-size: 12px;
     appearance: textfield;
@@ -1311,7 +1322,7 @@ button {
     padding: 5px 0;
     border: 0;
     background: transparent;
-    color: #7b4a40;
+    color: var(--danger);
     font-size: 11px;
     text-decoration: underline;
     cursor: pointer;
@@ -1324,12 +1335,12 @@ button {
 
 .empty-cart p {
     margin: 0 0 10px;
-    color: var(--muted);
+    color: var(--text-muted);
 }
 
 .empty-cart a,
 .continue-shopping {
-    color: var(--text);
+    color: var(--text-primary);
     font-size: 12px;
     font-weight: 700;
     text-decoration: underline;
@@ -1355,26 +1366,26 @@ button {
 
 .summary-row {
     margin: 12px 0;
-    color: #5d676c;
+    color: var(--text-muted);
     font-size: 12px;
 }
 
 .summary-row strong {
-    color: var(--text);
+    color: var(--text-primary);
     font-weight: 600;
     white-space: nowrap;
 }
 
 .vat-note {
     margin: 10px 0 18px;
-    color: var(--muted);
+    color: var(--text-muted);
     font-size: 10px;
 }
 
 .summary-total {
     padding: 16px 0;
-    border-top: 1px solid var(--border);
-    color: var(--text);
+    border-top: 1px solid var(--border-subtle);
+    color: var(--text-primary);
     font-size: 14px;
     font-weight: 700;
 }

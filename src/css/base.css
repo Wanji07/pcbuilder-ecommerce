@@ -7,11 +7,27 @@ Minor divider /**/
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap");
 
 :root {
-    --page-background: #f5f4f0;
-    --text: #1b2a32;
-    --muted: #767d81;
-    --border: #deded8;
-    --accent: #c9f23b;
+    color-scheme: dark;
+    --bg-canvas: #08121F;
+    --bg-surface: #0D1B2C;
+    --bg-surface-2: #122334;
+    --bg-elevated: #17293C;
+    --border-subtle: #1E2E42;
+    --border-strong: #2B3F58;
+    --text-primary: #F2F6FB;
+    --text-secondary: #C3CEDA;
+    --text-muted: #8496AB;
+    --accent: #C8FF3D;
+    --accent-hover: #D8FF70;
+    --accent-ink: #08121F;
+    --link: #C8FF3D;
+    --focus-ring: #C8FF3D;
+    --danger: #FF7A7A;
+    --success: #4ADE9B;
+    --warning: #FFC24B;
+    --shadow-lg: 0 12px 34px rgba(0, 0, 0, .55);
+    --shadow-sm: 0 2px 10px rgba(0, 0, 0, .40);
+    --product-plate: #F5F7FA;
     --body-font: "DM Sans", "Trebuchet MS", sans-serif;
     --display-font: "Space Grotesk", "Trebuchet MS", sans-serif;
 }
@@ -30,14 +46,21 @@ html {
 
 body {
     margin: 0;
-    background: var(--page-background);
-    color: var(--text);
+    background: var(--bg-canvas);
+    color: var(--text-primary);
     font-family: var(--body-font);
     line-height: 1.5;
 }
 
 a {
+    color: var(--text-primary);
     text-decoration: none;
+}
+
+a:visited,
+a:hover,
+a:active {
+    color: var(--text-primary);
 }
 
 button {
@@ -52,18 +75,25 @@ button {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 18px;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--border-subtle);
 }
 
 .logo {
     display: flex;
     align-items: center;
     gap: 8px;
-    color: var(--text);
+    color: var(--text-primary);
     font-size: 14px;
     font-weight: 700;
     letter-spacing: -0.02em;
     white-space: nowrap;
+}
+
+.logo img {
+    display: block;
+    width: 150px;
+    height: auto;
+
 }
 
 .logo-mark {
@@ -72,7 +102,7 @@ button {
     justify-content: center;
     width: 22px;
     height: 22px;
-    background: var(--text);
+    background: var(--bg-surface);
     color: var(--accent);
     font-size: 8px;
     font-weight: 700;
@@ -91,14 +121,14 @@ button {
     display: flex;
     align-items: center;
     height: 100%;
-    color: #667277;
+    color: var(--text-primary);
     font-size: 12px;
     font-weight: 600;
     letter-spacing: 0.01em;
 }
 
 .main-nav a.active {
-    color: var(--text);
+    color: var(--text-primary);
 }
 
 .main-nav a.active::after {
@@ -116,7 +146,7 @@ button {
     align-items: center;
     gap: 10px;
     margin-left: auto;
-    color: var(--text);
+    color: var(--text-primary);
     font-size: 12px;
 }
 
@@ -145,7 +175,7 @@ button {
 .header-actions button {
     border: none;
     background: transparent;
-    color: var(--text);
+    color: var(--text-primary);
     font-size: 17px;
     cursor: pointer;
     padding: 0;
@@ -160,7 +190,7 @@ button {
     height: 24px;
     border-radius: 50%;
     transition: background 0.2s ease;
-    color: var(--text);
+    color: var(--text-primary);
 }
 
 .user-btn svg {
@@ -171,7 +201,7 @@ button {
 }
 
 .user-btn:hover {
-    background: rgba(0, 0, 0, 0.03);
+    background: var(--bg-surface-2);
 }
 
 /* Hero */
@@ -188,7 +218,7 @@ button {
     width: 92%;
     max-width: 1100px;
     margin: 72px auto 0;
-    color: var(--muted);
+    color: var(--text-muted);
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.18em;
@@ -200,7 +230,7 @@ button {
 .contact-hero h1,
 .catalog-hero h1 {
     margin: 0;
-    color: var(--text);
+    color: var(--text-primary);
     font-size: clamp(46px, 5vw, 62px);
     font-weight: 700;
     letter-spacing: -3.5px;
@@ -209,7 +239,7 @@ button {
 
 .hero-description {
     margin: 12px 0 0;
-    color: var(--muted);
+    color: var(--text-muted);
     font-size: 11px;
     font-weight: 500;
 }
@@ -248,7 +278,7 @@ button {
 
 /* Shared accessibility states */
 :focus-visible {
-    outline: 3px solid #4b6500;
+    outline: 3px solid var(--focus-ring);
     outline-offset: 3px;
 }
 
@@ -268,8 +298,8 @@ button {
    ========================= */
 
 .footer {
-    background-color: #1d3545;
-    color: white;
+    background-color: var(--bg-surface);
+    color: var(--text-primary);
     padding: 45px 0 0;
 }
 
@@ -308,7 +338,7 @@ button {
 .footer-brand p {
     margin: 0;
 
-    color: #aeb9bf;
+    color: var(--text-muted);
     font-size: 11px;
 }
 
@@ -321,7 +351,7 @@ button {
 .footer-column h4 {
     margin: 0 0 15px;
 
-    color: #b6d600;
+    color: var(--accent);
 
     font-size: 11px;
     font-weight: bold;
@@ -330,21 +360,21 @@ button {
 .footer-column a {
     margin-bottom: 10px;
 
-    color: #b8c2c7;
+    color: var(--text-primary);
     text-decoration: none;
 
     font-size: 11px;
 }
 
 .footer-column a:hover {
-    color: white;
+    color: var(--text-primary);
 }
 
 .footer-bottom {
     width: 1100px;
     margin: 0 auto;
 
-    border-top: 1px solid #405461;
+    border-top: 1px solid var(--border-strong);
 
     display: flex;
     justify-content: center;
@@ -356,6 +386,88 @@ button {
 .footer-bottom p {
     margin: 0;
 
-    color: #89979f;
+    color: var(--text-muted);
     font-size: 9px;
+}
+
+/* Dark theme controls and shared states */
+[data-theme="dark"] input,
+[data-theme="dark"] select,
+[data-theme="dark"] textarea {
+    background: var(--bg-surface-2);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] input::placeholder,
+[data-theme="dark"] textarea::placeholder {
+    color: var(--text-muted);
+}
+
+[data-theme="dark"] input:focus-visible,
+[data-theme="dark"] select:focus-visible,
+[data-theme="dark"] textarea:focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 2px;
+    border-color: var(--focus-ring);
+}
+
+[data-theme="dark"] input:-webkit-autofill,
+[data-theme="dark"] input:-webkit-autofill:hover,
+[data-theme="dark"] input:-webkit-autofill:focus {
+    box-shadow: inset 0 0 0 1000px var(--bg-surface-2);
+    -webkit-text-fill-color: var(--text-primary);
+}
+
+[data-theme="dark"] button:hover,
+[data-theme="dark"] a:hover {
+    transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+[data-theme="dark"] button:disabled,
+[data-theme="dark"] input:disabled,
+[data-theme="dark"] select:disabled,
+[data-theme="dark"] textarea:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+[data-theme="dark"] .product-card,
+[data-theme="dark"] .category-box,
+[data-theme="dark"] .auth-container {
+    background: var(--bg-surface);
+    border-color: var(--border-subtle);
+    color: var(--text-primary);
+    box-shadow: var(--shadow-sm);
+}
+
+[data-theme="dark"] .product-image,
+[data-theme="dark"] .cart-item-image {
+    background: var(--product-plate);
+}
+
+@media print {
+    :root {
+        color-scheme: light;
+    }
+
+    body,
+    [data-theme="dark"] body {
+        background: white;
+        color: black;
+    }
+
+    .site-header,
+    .footer,
+    .header-actions,
+    nav {
+        display: none;
+    }
+
+    * {
+        color: black !important;
+        background: white !important;
+        border-color: black !important;
+        box-shadow: none !important;
+    }
 }

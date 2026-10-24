@@ -1,17 +1,8 @@
 /* About page styles */
 .company-info {
-    --ci-ink: #16222e;
-    --ci-muted: #6b7480;
-    --ci-olive: #7a9400;
-    --ci-lime: #c6f04a;
-    --ci-line: #e0ded6;
-    --ci-label: #8a6f3c;
-    --ci-sage: #b8c6ae;
-    --ci-stone: #cdd2c4;
-    --ci-mist: #adbcc4;
     --ci-mono: "JetBrains Mono", "Consolas", "Courier New", monospace;
 
-    color: var(--ci-ink);
+    color: var(--text-primary);
 }
 
 .company-info h2 {
@@ -24,7 +15,7 @@
 }
 
 .company-info a:focus-visible {
-    outline: 2px solid var(--ci-ink);
+    outline: 2px solid var(--text-primary);
     outline-offset: 3px;
 }
 
@@ -39,7 +30,7 @@
 }
 
 .ci-section + .ci-section {
-    border-top: 1px solid var(--ci-line);
+    border-top: 1px solid var(--border-subtle);
 }
 
 .ci-section-head {
@@ -52,7 +43,7 @@
     font-size: 10px;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--ci-label);
+    color: var(--accent);
 }
 
 .company-info h2 {
@@ -72,12 +63,12 @@
     max-width: 46ch;
     margin-top: 18px;
     font-size: 13px;
-    color: var(--ci-muted);
+    color: var(--text-muted);
 }
 
 .ci-facts {
     margin: 0;
-    border-top: 1px solid var(--ci-ink);
+    border-top: 1px solid var(--text-primary);
 }
 
 .ci-facts div {
@@ -85,7 +76,7 @@
     grid-template-columns: 130px 1fr;
     gap: 16px;
     padding: 14px 0;
-    border-bottom: 1px solid var(--ci-line);
+    border-bottom: 1px solid var(--border-subtle);
 }
 
 .ci-facts dt {
@@ -94,7 +85,7 @@
     font-size: 10px;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--ci-label);
+    color: var(--accent);
 }
 
 .ci-facts dd {
@@ -103,11 +94,12 @@
 }
 
 .ci-facts dd a {
-    border-bottom: 1px solid var(--ci-lime);
+    border-bottom: 1px solid var(--accent);
 }
 
 .ci-facts dd a:hover {
-    background: var(--ci-lime);
+    background: var(--accent);
+    color: var(--text-primary);
 }
 
 .ci-purpose {
@@ -130,7 +122,7 @@
     margin: 0;
     padding: 0;
     list-style: none;
-    border-top: 1px solid var(--ci-ink);
+    border-top: 1px solid var(--text-primary);
 }
 
 .ci-people li {
@@ -138,7 +130,7 @@
     align-items: center;
     gap: 16px;
     padding: 14px 0;
-    border-bottom: 1px solid var(--ci-line);
+    border-bottom: 1px solid var(--border-subtle);
 }
 
 .ci-avatar {
@@ -150,15 +142,15 @@
     font-size: 16px;
     font-weight: 300;
     letter-spacing: -0.04em;
-    background: var(--ci-sage);
+    background: var(--bg-elevated);
 }
 
 .ci-people li:nth-child(3n + 2) .ci-avatar {
-    background: var(--ci-stone);
+    background: var(--bg-surface-2);
 }
 
 .ci-people li:nth-child(3n) .ci-avatar {
-    background: var(--ci-mist);
+    background: var(--border-strong);
 }
 
 .ci-person-name {
@@ -171,7 +163,7 @@
 .ci-person-role {
     font-family: var(--ci-mono);
     font-size: 10px;
-    color: var(--ci-muted);
+    color: var(--text-muted);
 }
 
 .ci-reach {
@@ -187,8 +179,8 @@
     align-items: center;
     gap: 10px;
     padding: 14px 22px;
-    background: var(--ci-lime);
-    color: var(--ci-ink);
+    background: var(--accent);
+    color: var(--text-primary);
     font-size: 12px;
     font-weight: 800;
     text-decoration: none;
@@ -196,7 +188,7 @@
 }
 
 .ci-button:hover {
-    background: #d4f56f;
+    background: var(--accent-hover);
 }
 
 @media (max-width: 860px) {
