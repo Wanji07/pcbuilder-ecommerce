@@ -2,9 +2,9 @@
 
 > **BUILD. UPGRADE. PERFORM.**
 
-PCBuilder is a proposed e-commerce website for computer parts and accessories, developed as the Final Project for **ITE 011 – Introduction to Computing**.
+B.Y.T.E. (Build Your Tech Essentials) is a Philippine technology retail company established in 2026 in Cubao, Quezon City. Its e-commerce website is developed as the Final Project for **ITE 011 – Introduction to Computing**.
 
-The project focuses on creating a clean, organized, and user-friendly shopping experience for students, PC builders, gamers, and computer enthusiasts.
+The project focuses on creating a clean, organized, and user-friendly shopping experience for students, PC builders, gamers, and technology enthusiasts.
 
 ## 🎯 Project Objectives
 
@@ -46,7 +46,7 @@ The project focuses on creating a clean, organized, and user-friendly shopping e
 
 **In Development**
 
-This repository is currently being used for the development of the PCBuilder Final Project. The structure and features are subject to change as development progresses.
+This repository is currently being used for the development of the B.Y.T.E. Final Project. The structure and features are subject to change as development progresses.
 
 ## 📌 Course
 
