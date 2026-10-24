@@ -278,7 +278,7 @@ button {
 
 .category-heading {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: end;
     margin-bottom: 35px;
 }
@@ -1113,6 +1113,19 @@ button {
     font-size: 20px;
 }
 
+.footer-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-brand img {
+    display: block;
+    width: 220px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
 .footer-brand p {
     margin: 0;
 
@@ -1155,7 +1168,7 @@ button {
     border-top: 1px solid #405461;
 
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 
     padding: 14px 0;
 }
