@@ -42,6 +42,20 @@
     color: var(--text-muted);
 }
 
+.subcategory-list {
+    display: grid;
+    gap: 7px;
+    margin: -10px 0 22px;
+    padding: 0;
+    color: var(--text-primary);
+    font-size: 12px;
+    list-style: none;
+}
+
+.subcategory-list span {
+    color: var(--text-muted);
+}
+
 .category-content a {
     color: var(--text-primary);
     text-decoration: none;
