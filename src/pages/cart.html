@@ -10,7 +10,6 @@
         <link rel="stylesheet" href="../css/base.css">
 
 </head>
-
 <body>
     <header class="site-header">
         <a href="home.html" class="logo" aria-label="PCBuilder home">
@@ -28,9 +27,13 @@
             <a class="cart-link active" href="cart.html" aria-label="Shopping cart">
                 🛒 <span>Cart</span><span class="cart-count" id="cart-count" aria-live="polite"></span>
             </a>
+             <button type="button" class="user-btn" onclick="window.location.href='login.html'" aria-label="Account">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4zm0 2c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5z"/>
+                </svg>
+        </button>
         </div>
-        
-        
+       
     </header>
 
     <main class="cart-page">
