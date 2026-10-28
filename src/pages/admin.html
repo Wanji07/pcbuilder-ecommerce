@@ -43,6 +43,7 @@
             </button>
             <span class="cart-label">Cart</span>
         </div>
+        <div id="user-header-nav" style="display: flex; align-items: center; gap: 12px;"></div>
     </header>
 
     <main class="admin-container">
@@ -52,11 +53,11 @@
         <div class="admin-form-box">
             <h2>Add New PC Component</h2>
             <form id="add-product-form">
-                <label>Product Name:</label>
-                <input type="text" id="prod-name" required placeholder="e.g. AMD Ryzen 5 5600X">
+                <label for="product-name">Product Name:</label>
+                <input type="text" id="product-name" required placeholder="e.g. AMD Ryzen 5 5600X">
 
-                <label>Category:</label>
-                <select id="prod-category" required>
+                <label for="product-category">Category:</label>
+                <select id="product-category" required>
                     <option value="">Select Category</option>
                     <option value="CPU">CPU</option>
                     <option value="GPU">GPU</option>
@@ -65,20 +66,34 @@
                     <option value="Storage">Storage</option>
                     <option value="Power Supply">Power Supply</option>
                     <option value="Case">Case</option>
+                    <option value="Mouse">Mouse</option>
+                </select>
+                
+                <label for="product-brand">Brand:</label>
+                <select id="product-brand" required>
+                    <option value="">Select Brand</option>
+                    <option value="Intel">Intel</option>
+                    <option value="AMD">AMD</option>
+                    <option value="ASUS">ASUS</option>
+                    <option value="Corsair">Corsair</option>
+                    <option value="Samsung">Samsung</option>
+                    <option value="NZXT">NZXT</option>
+                    <option value="Logitech">Logitech</option>
                 </select>
 
-                <label>Price (₱):</label>
-                <input type="number" id="prod-price" required placeholder="11500">
+                <label for="product-price">Price (₱):</label>
+                <input type="number" id="product-price" required placeholder="11500">
 
-                <label>Stock Quantity:</label>
-                <input type="number" id="prod-stock" required placeholder="10">
+                <label for="product-stock">Stock Quantity:</label>
+                <input type="number" id="product-stock" required placeholder="10">
 
-                <label>Specifications:</label>
-                <input type="text" id="prod-specs" required placeholder="6 Cores, 12 Threads">
+                <label for="product-specs">Specifications:</label>
+                <input type="text" id="product-specs" placeholder="6 Cores, 12 Threads">
 
-                <label>Image Filename or URL:</label>
-                <input type="text" id="prod-image" placeholder="../assets/ryzen5.png" required>
-                 <button type="submit">Add Product to Database</button>
+                <label for="product-image">Image Filename or URL:</label>
+                <input type="text" id="product-image" placeholder="../assets/ryzen5.png" required>
+                
+                <button type="submit">Add Product to Database</button>
             </form>
         </div>
 
@@ -91,13 +106,14 @@
                         <th>Image</th>
                         <th>Name</th>
                         <th>Category</th>
+                        <th>Brand</th>
                         <th>Price</th>
                         <th>Stock</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody id="admin-product-table">
-                    <!-- Dynamic rows will load here -->
+                    <!-- Dynamic rows load here -->
                 </tbody>
             </table>
         </div>
@@ -126,7 +142,6 @@
         </div>
     </footer>
     <script src="../js/script.js" defer></script>
-    <!-- Link your frontend JavaScript logic -->
     <script src="../js/admin.js" defer></script>
 </body>
 </html>
