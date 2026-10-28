@@ -83,33 +83,36 @@ app.post('/api/register', async (req, res) => {
 });
 
 // Login Route: Authenticates user credentials against MongoDB
+// Login Route: Authenticates user credentials against MongoDB using bcrypt
 app.post('/api/login', async (req, res) => {
     try {
         const { email, password } = req.body;
-
-        // Find user by email
         const user = await User.findOne({ email });
+
         if (!user) {
-            return res.status(400).json({ error: 'User not found. Please check your email.' });
+            return res.status(400).json({ error: 'Invalid email or password.' });
         }
 
-        // Compare entered password with hashed password in database
+        // Compare entered plain-text password with the encrypted hash in MongoDB
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
-            return res.status(400).json({ error: 'Invalid password.' });
+            return res.status(400).json({ error: 'Invalid email or password.' });
         }
 
-        // Return user info (excluding password)
+        // Return user info including isAdmin and shippingAddress
         res.json({
             message: 'Login successful!',
             user: {
                 id: user._id,
                 name: user.name,
                 email: user.email,
+                isAdmin: user.isAdmin,
                 shippingAddress: user.shippingAddress
             }
         });
+
     } catch (err) {
+        console.error('Login error:', err);
         res.status(500).json({ error: 'Server error during login.' });
     }
 });

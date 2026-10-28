@@ -1,3 +1,10 @@
+const currentSession = JSON.parse(localStorage.getItem('currentUser'));
+
+if (!currentSession || !currentSession.isAdmin) {
+    alert('Access denied. Administrator privileges required.');
+    window.location.href = 'home.html'; // Kick non-admins back to home
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     fetchAdminProducts();
 

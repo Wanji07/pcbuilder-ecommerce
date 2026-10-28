@@ -4,12 +4,8 @@ const userSchema = new mongoose.Schema({
     name: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    shippingAddress: {
-        street: String,
-        city: String,
-        postalCode: String,
-        phone: String
-    }
+    isAdmin: { type: Boolean, default: false }, // <-- Added boolean flag
+    createdAt: { type: Date, default: Date.now }
 });
 
 module.exports = mongoose.model('User', userSchema);
