@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#08121F">
+    <meta name="description" content="B.Y.T.E. - Account Dashboard">
+    <title>B.Y.T.E. | My Account</title>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/shop.css">
+    
+</head>
+
+<body>
+
+    <header class="site-header">
+        <a href="home.html" class="logo" aria-label="B.Y.T.E. home">
+            <img src="../assets/logo_dark.png" alt="B.Y.T.E. logo" width="150" height="37">
+        </a>
+        <nav class="main-nav" aria-label="Main navigation">
+            <a href="../pages/home.html">Home</a>
+            <a href="../pages/shop.html">Shop</a>
+            <a href="../pages/categories.html">Categories</a>
+            <a href="../pages/aboutUs.html">About us</a>
+            <a href="../pages/contact.html">Contact</a>
+        </nav>
+
+        <div class="header-actions">
+            <button type="button" class="cart-button" onclick="window.location.href='cart.html'" aria-label="Shopping cart">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M3 4h2l2.1 10.2a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 1.9-1.4L20.5 8H6.2M9 20a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm8 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                </svg>
+            </button>
+            <span class="cart-label">Cart</span>
+            <div id="user-header-nav" style="display: flex; align-items: center; gap: 8px;">
+                <!-- Dynamic "Hi, Name" link rendered here -->
+            </div>
+        </div>
+    </header>
+
+    <main class="account-container">
+        <!-- Sidebar Navigation -->
+        <aside class="account-sidebar">
+            <div class="user-greeting-box">
+                <h3 id="sidebar-user-name">Hi, User!</h3>
+                <p id="sidebar-user-email">user@example.com</p>
+            </div>
+            <nav class="sidebar-nav">
+                <button class="sidebar-btn active" onclick="switchTab('profile')">
+                     Profile Details
+                </button>
+                <button class="sidebar-btn" onclick="switchTab('orders')">
+                     Order History
+                </button>
+                <button class="sidebar-btn logout-btn" onclick="logoutUser()">
+                     Log Out
+                </button>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <section class="account-content">
+            <!-- Tab 1: Profile -->
+            <div id="tab-profile" class="tab-panel active">
+                <h2 style="margin: 0 0 10px 0; color: #fff;">Account Profile</h2>
+                <p style="color: #94a3b8; margin: 0 0 20px 0;">Manage your profile and account information.</p>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <label>Full Name</label>
+                        <span id="profile-name">---</span>
+                    </div>
+                    <div class="info-card">
+                        <label>Email Address</label>
+                        <span id="profile-email">---</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 2: Order History -->
+            <div id="tab-orders" class="tab-panel">
+                <h2 style="margin: 0 0 10px 0; color: #fff;">Order History</h2>
+                <p style="color: #94a3b8; margin: 0 0 20px 0;">View your past purchases and transaction receipts.</p>
+                <div id="orders-list">
+                    <p style="color: #94a3b8;">Loading order receipts...</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <img src="../assets/logo_dark.png" alt="B.Y.T.E. logo">
+            </div>
+            <div class="footer-column">
+                <h4>Explore</h4>
+                <a href="shop.html">Shop components</a>
+                <a href="categories.html">Categories</a>
+                <a href="aboutUs.html">About us</a>
+            </div>
+            <div class="footer-column">
+                <h4>Support</h4>
+                <a href="contact.html">Contact us</a>
+                <a href="#">Shipping & Returns</a>
+                <a href="#">FAQ</a>
+            </div>
+            <div class="footer-column">
+                <h4>Follow along</h4>
+                <a href="#">Instagram · Facebook</a>
+                <a href="#">TikTok · YouTube</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 B.Y.T.E. A better way to build.</p>
+        </div>
+    </footer>
+
+    <script src="../js/account.js"></script>
+</body>
+</html>
