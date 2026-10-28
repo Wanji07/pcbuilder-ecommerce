@@ -48,20 +48,74 @@ async function fetchAdminProducts() {
             return;
         }
 
-       products.forEach(product => {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-        <td><img src="${product.image}" alt="${product.name}" width="50" style="border-radius: 4px;"></td>
-        <td>${product.name}</td>
-        <td>${product.category}</td>
-        <td>₱${product.price.toLocaleString()}</td>
-        <td>${product.stock}</td>
-        <td><button class="delete-btn" onclick="deleteProduct('${product._id}')">Delete</button></td>
+     products.forEach(product => {
+    const row = document.createElement('tr');
+
+    row.innerHTML = `
+        <td>
+            <img src="${product.image || '../assets/default-pc-part.png'}" alt="${product.name}" style="width: 40px; height: 40px; object-fit: contain;">
+        </td>
+        <td><strong>${product.name}</strong></td>
+        <td>${product.category || 'N/A'}</td>
+        
+        <!-- Editable Price Input with Up/Down Arrows -->
+        <td>
+            <input type="number" id="price-${product._id}" value="${product.price}" step="0.01" min="0" 
+                   style="width: 100px; background: #1e293b; color: white; border: 1px solid #334155; padding: 6px; border-radius: 4px;">
+        </td>
+
+        <!-- Editable Stock Input with Up/Down Arrows -->
+        <td>
+            <input type="number" id="stock-${product._id}" value="${product.stock}" min="0" 
+                   style="width: 70px; background: #1e293b; color: white; border: 1px solid #334155; padding: 6px; border-radius: 4px;">
+        </td>
+
+        <!-- Action Buttons: Save & Delete -->
+        <td>
+            <div style="display: flex; gap: 8px; align-items: center;">
+                <button onclick="saveProduct('${product._id}')" 
+                        style="background: #38bdf8; color: #08121F; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">
+                    Save
+                </button>
+                <button onclick="deleteProduct('${product._id}')" 
+                        style="background: #ef4444; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">
+                    Delete
+                </button>
+            </div>
+        </td>
     `;
+
     tableBody.appendChild(row);
-        });
+});
     } catch (err) {
         console.error('Error fetching inventory:', err);
+    }
+}
+
+async function saveProduct(productId) {
+    const newPrice = document.getElementById(`price-${productId}`).value;
+    const newStock = document.getElementById(`stock-${productId}`).value;
+
+    try {
+        const response = await fetch(`http://localhost:3000/api/products/${productId}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                price: Number(newPrice),
+                stock: Number(newStock)
+            })
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            alert('Product updated successfully in MongoDB!');
+        } else {
+            alert(data.error || 'Failed to update product.');
+        }
+    } catch (err) {
+        console.error('Error saving product:', err);
+        alert('Server connection error while saving.');
     }
 }
 

@@ -115,6 +115,31 @@ app.post('/api/login', async (req, res) => {
 });
 
 
+// Update Product Stock & Price Route
+app.put('/api/products/:id', async (req, res) => {
+    try {
+        const { price, stock } = req.body;
+
+        const updatedProduct = await Product.findByIdAndUpdate(
+            req.params.id,
+            { price, stock },
+            { new: true } // Returns the updated document
+        );
+
+        if (!updatedProduct) {
+            return res.status(404).json({ error: 'Product not found.' });
+        }
+
+        res.json({
+            message: 'Product updated successfully!',
+            product: updatedProduct
+        });
+    } catch (err) {
+        console.error('Error updating product:', err);
+        res.status(500).json({ error: 'Server error while updating product.' });
+    }
+});
+
 // Update User Shipping Address Route
 app.put('/api/user/shipping', async (req, res) => {
     try {
@@ -145,6 +170,7 @@ app.put('/api/user/shipping', async (req, res) => {
 });
 
 // Checkout & Create Order Route
+// Checkout & Create Order Route with Stock Validation & Deduction
 app.post('/api/orders', async (req, res) => {
     try {
         const { userId, items, shippingAddress } = req.body;
@@ -153,11 +179,40 @@ app.post('/api/orders', async (req, res) => {
             return res.status(400).json({ error: 'Invalid order data or empty cart.' });
         }
 
-        // Calculate subtotal and VAT server-side for security
-        let subtotal = items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-        let vat = subtotal * 0.12;
-        let total = subtotal; // Assuming VAT is inclusive as per your cart logic
+        // 1. Verify stock availability for EVERY item in the cart first
+        for (let cartItem of items) {
+            // Ensure your cart items save the product's database ID as `_id` or `productId`
+            const productId = cartItem._id || cartItem.productId;
+            const product = await Product.findById(productId);
 
+            if (!product) {
+                return res.status(404).json({ error: `Product not found: ${cartItem.name}` });
+            }
+
+            if (product.stock < cartItem.quantity) {
+                return res.status(400).json({ 
+                    error: `Insufficient stock for "${product.name}". Only ${product.stock} left in stock!` 
+                });
+            }
+        }
+
+        // 2. If all items have enough stock, deduct the stock and calculate pricing
+        let subtotal = 0;
+        for (let cartItem of items) {
+            const productId = cartItem._id || cartItem.productId;
+            const product = await Product.findById(productId);
+
+            // Subtract ordered quantity from database stock
+            product.stock -= cartItem.quantity;
+            await product.save();
+
+            subtotal += cartItem.price * cartItem.quantity;
+        }
+
+        let vat = subtotal * 0.12;
+        let total = subtotal; // Assuming VAT inclusive pricing
+
+        // 3. Save the permanent order receipt to MongoDB
         const newOrder = new Order({
             userId,
             items,

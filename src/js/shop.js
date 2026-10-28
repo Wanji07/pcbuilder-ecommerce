@@ -5,6 +5,39 @@ document.addEventListener('DOMContentLoaded', async () => {
     setupFilters();
 });
 
+const userSession = JSON.parse(localStorage.getItem('currentUser'));
+const cartKey = userSession ? `cart_${userSession.id || userSession._id}` : 'cart_guest';
+
+function addToCart(productId) {
+    if (!userSession) {
+        alert('Please log in first.');
+        window.location.href = 'login.html';
+        return;
+    }
+
+    const productToAdd = allProducts.find(p => p._id === productId);
+    if (!productToAdd) return;
+
+    let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
+
+    const existingItem = cart.find(item => item._id === productId);
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        cart.push({
+            _id: productToAdd._id,
+            name: productToAdd.name,
+            price: productToAdd.price,
+            image: productToAdd.image,
+            quantity: 1
+        });
+    }
+
+    // Save back to this user's specific storage key
+    localStorage.setItem(cartKey, JSON.stringify(cart));
+    alert(`${productToAdd.name} added to cart!`);
+}
+
 // 1. Fetch products from Node.js / MongoDB backend
 async function fetchAndDisplayProducts() {
     try {
@@ -102,32 +135,3 @@ function setupFilters() {
     }
 }
 
-// Updated addToCart function in src/js/shop.js
-function addToCart(productId) {
-    const userSession = localStorage.getItem('currentUser');
-    
-    if (!userSession) {
-        alert('Access Denied: Please log in first to add items to your cart.');
-        window.location.href = 'login.html';
-        return;
-    }
-
-    // Find the clicked product from our global 'allProducts' array
-    const productToAdd = allProducts.find(p => p._id === productId);
-    if (!productToAdd) return;
-
-    // Get current cart from localStorage (or empty array)
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-    // Check if product is already in cart, if so, increase quantity or alert
-    const existingItem = cart.find(item => item._id === productId);
-    if (existingItem) {
-        existingItem.quantity = (existingItem.quantity || 1) + 1;
-    } else {
-        cart.push({ ...productToAdd, quantity: 1 });
-    }
-
-    // Save back to localStorage
-    localStorage.setItem('cart', JSON.stringify(cart));
-    alert(`${productToAdd.name} added to your cart!`);
-}
