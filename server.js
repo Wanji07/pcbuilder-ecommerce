@@ -115,25 +115,23 @@ app.post('/api/login', async (req, res) => {
 });
 
 
-// Update Product Stock & Price Route
+
+// PUT Route to update a product
 app.put('/api/products/:id', async (req, res) => {
     try {
-        const { price, stock } = req.body;
+        const { price, stock, description } = req.body; 
 
         const updatedProduct = await Product.findByIdAndUpdate(
             req.params.id,
-            { price, stock },
-            { new: true } // Returns the updated document
+            { price, stock, description },
+            { new: true, runValidators: true }
         );
 
         if (!updatedProduct) {
             return res.status(404).json({ error: 'Product not found.' });
         }
 
-        res.json({
-            message: 'Product updated successfully!',
-            product: updatedProduct
-        });
+        res.json({ message: 'Product updated successfully!', product: updatedProduct });
     } catch (err) {
         console.error('Error updating product:', err);
         res.status(500).json({ error: 'Server error while updating product.' });

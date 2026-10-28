@@ -93,6 +93,10 @@
                 <label for="product-image">Image Filename or URL:</label>
                 <input type="text" id="product-image" placeholder="../assets/ryzen5.png" required>
                 
+                <!-- Inside your <form id="add-product-form"> in admin.html -->
+                <label for="product-description">Detailed Description (Paragraph):</label>
+                <textarea id="product-description" rows="4" placeholder="Enter full product details, features, and compatibility information..." style="width: 100%; padding: 10px; margin: 10px 0 20px 0; background: #121f2f; border: 1px solid #2a3b52; color: #fff; border-radius: 6px; box-sizing: border-box;" required></textarea>
+
                 <button type="submit">Add Product to Database</button>
             </form>
         </div>
@@ -109,6 +113,7 @@
                         <th>Brand</th>
                         <th>Price</th>
                         <th>Stock</th>
+                        <th>Description</th>
                         <th>Action</th>
                     </tr>
                 </thead>

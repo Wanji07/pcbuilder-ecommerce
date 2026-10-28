@@ -93,7 +93,39 @@
             </div>
         </section>
     </main>
+    <!-- Product Details Modal Popup -->
+<div id="product-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; justify-content: center; align-items: center;">
+    <div style="background: #0D1B2C; border: 1px solid rgba(255,255,255,0.15); border-radius: 12px; width: 600px; max-width: 90%; padding: 30px; position: relative; color: #fff;">
+        <button onclick="closeProductModal()" style="position: absolute; top: 15px; right: 20px; background: none; border: none; color: #94a3b8; font-size: 1.5rem; cursor: pointer;">&times;</button>
+        
+        <div style="display: flex; gap: 20px; align-items: center; margin-bottom: 20px;">
+            <img id="modal-img" src="" alt="Product Image" style="width: 120px; height: 120px; object-fit: contain; background: #fff; border-radius: 8px; padding: 10px;">
+            <div>
+                <span id="modal-brand-tag" style="background: #38bdf8; color: #08121F; font-size: 0.75rem; font-weight: bold; padding: 3px 8px; border-radius: 4px;"></span>
+                <h2 id="modal-title" style="margin: 8px 0 4px 0; font-size: 1.3rem;"></h2>
+                <strong id="modal-price" style="color: #38bdf8; font-size: 1.2rem;"></strong>
+            </div>
+        </div>
 
+        <div style="margin-bottom: 20px;">
+            <h4 style="color: #94a3b8; margin: 0 0 6px 0; font-size: 0.85rem; text-transform: uppercase;">Specifications</h4>
+            <p id="modal-specs" style="color: #cbd5e1; font-size: 0.9rem; margin: 0;"></p>
+        </div>
+
+        <div style="margin-bottom: 25px;">
+            <h4 style="color: #94a3b8; margin: 0 0 6px 0; font-size: 0.85rem; text-transform: uppercase;">Detailed Overview</h4>
+            <p id="modal-desc" style="color: #cbd5e1; font-size: 0.9rem; line-height: 1.5; margin: 0;"></p>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 12px; align-items: center;">
+            <span id="modal-stock" style="font-size: 0.85rem; color: #4ade80;"></span>
+            <button id="modal-add-btn" style="background: #38bdf8; color: #08121F; border: none; padding: 10px 20px; border-radius: 6px; font-weight: bold; cursor: pointer;">
+                Add to Cart
+            </button>
+        </div>
+    </div>
+</div>
+</body>
     <p class="cart-feedback" id="cart-feedback" role="status" aria-live="polite"></p>
 
     <footer class="footer">

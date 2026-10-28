@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 price: Number(document.getElementById('product-price').value),
                 stock: Number(document.getElementById('product-stock').value),
                 specs: document.getElementById('product-specs').value,
+                description: document.getElementById('product-description') ? document.getElementById('product-description').value : '',
                 image: document.getElementById('product-image').value
             };
 
@@ -52,7 +53,7 @@ async function fetchAdminProducts() {
         tableBody.innerHTML = '';
 
         if (!products || products.length === 0) {
-            tableBody.innerHTML = `<tr><td colspan="7" style="text-align:center;">No products found in database.</td></tr>`;
+            tableBody.innerHTML = `<tr><td colspan="8" style="text-align:center;">No products found in database.</td></tr>`;
             return;
         }
 
@@ -70,13 +71,19 @@ async function fetchAdminProducts() {
                 <!-- Editable Price Input -->
                 <td>
                     <input type="number" id="price-${product._id}" value="${product.price}" step="0.01" min="0" 
-                           style="width: 100px; background: #1e293b; color: white; border: 1px solid #334155; padding: 6px; border-radius: 4px;">
+                           style="width: 90px; background: #1e293b; color: white; border: 1px solid #334155; padding: 6px; border-radius: 4px;">
                 </td>
 
                 <!-- Editable Stock Input -->
                 <td>
                     <input type="number" id="stock-${product._id}" value="${product.stock}" min="0" 
-                           style="width: 70px; background: #1e293b; color: white; border: 1px solid #334155; padding: 6px; border-radius: 4px;">
+                           style="width: 60px; background: #1e293b; color: white; border: 1px solid #334155; padding: 6px; border-radius: 4px;">
+                </td>
+
+                <!-- Editable Description Textarea -->
+                <td>
+                    <textarea id="desc-${product._id}" rows="2" 
+                              style="width: 180px; background: #1e293b; color: white; border: 1px solid #334155; padding: 6px; border-radius: 4px; font-size: 0.8rem; resize: vertical;">${product.description || ''}</textarea>
                 </td>
 
                 <!-- Action Buttons: Save & Delete -->
@@ -104,6 +111,7 @@ async function fetchAdminProducts() {
 async function saveProduct(productId) {
     const newPrice = document.getElementById(`price-${productId}`).value;
     const newStock = document.getElementById(`stock-${productId}`).value;
+    const newDescription = document.getElementById(`desc-${productId}`).value;
 
     try {
         const response = await fetch(`http://localhost:3000/api/products/${productId}`, {
@@ -111,7 +119,8 @@ async function saveProduct(productId) {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 price: Number(newPrice),
-                stock: Number(newStock)
+                stock: Number(newStock),
+                description: newDescription
             })
         });
 

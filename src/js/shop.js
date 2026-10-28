@@ -53,6 +53,7 @@ async function fetchAndDisplayProducts() {
 // 2. Render products dynamically into the grid
 function renderProducts(productsToRender) {
     const grid = document.getElementById('product-grid');
+    if (!grid) return;
     grid.innerHTML = '';
 
     if (productsToRender.length === 0) {
@@ -79,9 +80,9 @@ function renderProducts(productsToRender) {
                 <small>${product.brand || 'B.Y.T.E.'}</small>
                 <h3>${product.name}</h3>
                 <p>${product.specs || 'Standard specifications'}</p>
-                <strong>₱${product.price.toLocaleString()}</strong>
+                <strong>₱${product.price.toLocaleString(undefined, {minimumFractionDigits: 2})}</strong>
                 <div class="product-actions">
-                    <a href="#">View details →</a>
+                    <button type="button" onclick="openProductModal('${product._id}')" style="background: none; border: none; color: inherit; cursor: pointer; padding: 0; font: inherit; text-decoration: underline;">View details →</button>
                     <button onclick="addToCart('${product._id}')" ${!isAvailable ? 'disabled style="opacity: 0.5; cursor: not-allowed;"' : ''}>
                         ${isAvailable ? 'Add to cart' : 'Out of Stock'}
                     </button>
@@ -111,12 +112,12 @@ function setupFilters() {
     });
 
     // Dropdown change events
-    brandFilter.addEventListener('change', applyFilters);
-    availabilityFilter.addEventListener('change', applyFilters);
+    if (brandFilter) brandFilter.addEventListener('change', applyFilters);
+    if (availabilityFilter) availabilityFilter.addEventListener('change', applyFilters);
 
     function applyFilters() {
-        const selectedBrand = brandFilter.value.toLowerCase();
-        const selectedAvailability = availabilityFilter.value.toLowerCase();
+        const selectedBrand = brandFilter ? brandFilter.value.toLowerCase() : 'all';
+        const selectedAvailability = availabilityFilter ? availabilityFilter.value.toLowerCase() : 'all';
 
         const filtered = allProducts.filter(product => {
             const matchesCategory = currentCategory === 'all' || product.category.toLowerCase() === currentCategory;
@@ -135,3 +136,82 @@ function setupFilters() {
     }
 }
 
+// 4. Modal Popup Controls for "View details"
+function openProductModal(productId) {
+    const product = allProducts.find(p => p._id === productId);
+    if (!product) return;
+
+    // Create modal dynamically if it doesn't exist in HTML yet
+    let modal = document.getElementById('product-modal');
+    if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'product-modal';
+        modal.style.cssText = `display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; justify-content: center; align-items: center;`;
+        modal.innerHTML = `
+            <div style="background: #0D1B2C; border: 1px solid rgba(255,255,255,0.15); border-radius: 12px; width: 600px; max-width: 90%; padding: 30px; position: relative; color: #fff;">
+                <button onclick="closeProductModal()" style="position: absolute; top: 15px; right: 20px; background: none; border: none; color: #94a3b8; font-size: 1.5rem; cursor: pointer;">&times;</button>
+                
+                <div style="display: flex; gap: 20px; align-items: center; margin-bottom: 20px;">
+                    <img id="modal-img" src="" alt="Product Image" style="width: 120px; height: 120px; object-fit: contain; background: #fff; border-radius: 8px; padding: 10px;">
+                    <div>
+                        <span id="modal-brand-tag" style="background: #38bdf8; color: #08121F; font-size: 0.75rem; font-weight: bold; padding: 3px 8px; border-radius: 4px;"></span>
+                        <h2 id="modal-title" style="margin: 8px 0 4px 0; font-size: 1.3rem;"></h2>
+                        <strong id="modal-price" style="color: #38bdf8; font-size: 1.2rem;"></strong>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 20px;">
+                    <h4 style="color: #94a3b8; margin: 0 0 6px 0; font-size: 0.85rem; text-transform: uppercase;">Specifications</h4>
+                    <p id="modal-specs" style="color: #cbd5e1; font-size: 0.9rem; margin: 0;"></p>
+                </div>
+
+                <div style="margin-bottom: 25px;">
+                    <h4 style="color: #94a3b8; margin: 0 0 6px 0; font-size: 0.85rem; text-transform: uppercase;">Detailed Overview</h4>
+                    <p id="modal-desc" style="color: #cbd5e1; font-size: 0.9rem; line-height: 1.5; margin: 0;"></p>
+                </div>
+
+                <div style="display: flex; justify-content: flex-end; gap: 12px; align-items: center;">
+                    <span id="modal-stock" style="font-size: 0.85rem; color: #4ade80;"></span>
+                    <button id="modal-add-btn" style="background: #38bdf8; color: #08121F; border: none; padding: 10px 20px; border-radius: 6px; font-weight: bold; cursor: pointer;">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(modal);
+    }
+
+    // Populate modal content
+    document.getElementById('modal-img').src = product.image || '../assets/default-pc-part.png';
+    document.getElementById('modal-brand-tag').textContent = product.brand || product.category;
+    document.getElementById('modal-title').textContent = product.name;
+    document.getElementById('modal-price').textContent = `₱${product.price.toLocaleString(undefined, {minimumFractionDigits: 2})}`;
+    document.getElementById('modal-specs').textContent = product.specs || 'No specific attributes listed.';
+    document.getElementById('modal-desc').textContent = product.description || 'No extended description available for this product.';
+    
+    const stockEl = document.getElementById('modal-stock');
+    const addBtn = document.getElementById('modal-add-btn');
+
+    if (product.stock > 0) {
+        stockEl.textContent = `In Stock (${product.stock} available)`;
+        stockEl.style.color = '#4ade80';
+        addBtn.disabled = false;
+        addBtn.style.opacity = '1';
+        addBtn.onclick = () => {
+            addToCart(product._id);
+            closeProductModal();
+        };
+    } else {
+        stockEl.textContent = 'Out of Stock';
+        stockEl.style.color = '#ef4444';
+        addBtn.disabled = true;
+        addBtn.style.opacity = '0.5';
+    }
+
+    modal.style.display = 'flex';
+}
+
+function closeProductModal() {
+    const modal = document.getElementById('product-modal');
+    if (modal) modal.style.display = 'none';
+}
