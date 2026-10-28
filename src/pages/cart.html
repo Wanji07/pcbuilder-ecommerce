@@ -49,7 +49,7 @@
                 <div class="cart-items" id="cart-items"></div>
             </section>
 
-            <aside class="order-summary" aria-labelledby="summary-title">
+           <aside class="order-summary" aria-labelledby="summary-title">
                 <h2 id="summary-title">Order summary</h2>
                 <div class="summary-row">
                     <span>Subtotal</span>
@@ -64,11 +64,14 @@
                     <span>Total</span>
                     <strong id="cart-total">₱0.00</strong>
                 </div>
-                <a class="continue-shopping" href="shop.html">Continue shopping</a>
+
+                <button type="button" id="checkout-btn" style="width: 100%; margin-top: 15px; padding: 12px; background: #3b82f6; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: bold;" onclick="proceedToCheckout()">Proceed to Shipping</button>
+
+                <a class="continue-shopping" href="shop.html" style="display: block; text-align: center; margin-top: 10px;">Continue shopping</a>
             </aside>
         </div>
     </main>
-
+</body>
     <footer class="footer cart-footer">
         <div class="footer-container">
             <div class="footer-brand">
@@ -97,5 +100,6 @@
         </div>
     </footer>
     <script src="../js/script.js" defer></script>
+    <script src="../js/cart.js" defer></script>
 </body>
 </html>

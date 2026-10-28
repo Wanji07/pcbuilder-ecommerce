@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#08121F">
+    <meta name="description" content="B.Y.T.E. - Admin Dashboard">
+    <title>B.Y.T.E. | Admin Dashboard</title>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/shop.css">
+    <style>
+        .admin-container { max-width: 1000px; margin: 40px auto; padding: 20px; }
+        .admin-form-box, .admin-list-box { background: rgba(255, 255, 255, 0.03); padding: 25px; border-radius: 12px; margin-bottom: 30px; border: 1px solid rgba(255, 255, 255, 0.1); }
+        .admin-form-box input, .admin-form-box select { width: 100%; padding: 10px; margin: 10px 0 20px 0; background: #121f2f; border: 1px solid #2a3b52; color: #fff; border-radius: 6px; }
+        .admin-form-box button { background: #3b82f6; color: white; padding: 10px 20px; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; }
+        .admin-form-box button:hover { background: #2563eb; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th, td { padding: 12px; text-align: left; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+        th { color: #94a3b8; }
+        .delete-btn { background: #ef4444; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; }
+        .delete-btn:hover { background: #dc2626; }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <a href="home.html" class="logo" aria-label="B.Y.T.E. home">
+            <img src="../assets/logo_dark.png" alt="B.Y.T.E. logo" width="150" height="37">
+        </a>
+        <nav class="main-nav" aria-label="Main navigation">
+            <a href="home.html">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="categories.html">Categories</a>
+            <a href="aboutUs.html">About us</a>
+            <a href="contact.html">Contact</a>
+            <a href="admin.html" class="active">Admin Dashboard</a>
+        </nav>
+        <div class="header-actions">
+            <button type="button" class="cart-button" onclick="window.location.href='cart.html'" aria-label="Shopping cart">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M3 4h2l2.1 10.2a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 1.9-1.4L20.5 8H6.2M9 20a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm8 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                </svg>
+            </button>
+            <span class="cart-label">Cart</span>
+        </div>
+    </header>
+
+    <main class="admin-container">
+        <h1>Product Management Dashboard</h1>
+        
+        <!-- Add Product Form -->
+        <div class="admin-form-box">
+            <h2>Add New PC Component</h2>
+            <form id="add-product-form">
+                <label>Product Name:</label>
+                <input type="text" id="prod-name" required placeholder="e.g. AMD Ryzen 5 5600X">
+
+                <label>Category:</label>
+                <select id="prod-category" required>
+                    <option value="">Select Category</option>
+                    <option value="CPU">CPU</option>
+                    <option value="GPU">GPU</option>
+                    <option value="RAM">RAM</option>
+                    <option value="Motherboard">Motherboard</option>
+                    <option value="Storage">Storage</option>
+                    <option value="Power Supply">Power Supply</option>
+                    <option value="Case">Case</option>
+                </select>
+
+                <label>Price (₱):</label>
+                <input type="number" id="prod-price" required placeholder="11500">
+
+                <label>Stock Quantity:</label>
+                <input type="number" id="prod-stock" required placeholder="10">
+
+                <label>Specifications:</label>
+                <input type="text" id="prod-specs" required placeholder="6 Cores, 12 Threads">
+
+                <label>Image Filename or URL:</label>
+                <input type="text" id="prod-image" placeholder="../assets/ryzen5.png" required>
+                 <button type="submit">Add Product to Database</button>
+            </form>
+        </div>
+
+        <!-- Inventory List Table -->
+        <div class="admin-list-box">
+            <h2>Current Inventory List</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Name</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                        <th>Stock</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="admin-product-table">
+                    <!-- Dynamic rows will load here -->
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <img src="../assets/logo_dark.png" alt="B.Y.T.E. logo">
+            </div>
+            <div class="footer-column">
+                <h4>Explore</h4>
+                <a href="shop.html">Shop components</a>
+                <a href="categories.html">Categories</a>
+                <a href="aboutUs.html">About us</a>
+            </div>
+            <div class="footer-column">
+                <h4>Support</h4>
+                <a href="contact.html">Contact us</a>
+                <a href="#">Shipping & Returns</a>
+                <a href="#">FAQ</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 B.Y.T.E. A better way to build.</p>
+        </div>
+    </footer>
+    <script src="../js/script.js" defer></script>
+    <!-- Link your frontend JavaScript logic -->
+    <script src="../js/admin.js" defer></script>
+</body>
+</html>

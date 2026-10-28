@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#08121F">
+    <title>B.Y.T.E. | Order History & Receipts</title>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/shop.css">
+    <style>
+        .orders-container { max-width: 900px; margin: 40px auto; padding: 20px; }
+        .order-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; padding: 20px; margin-bottom: 20px; }
+        .order-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 10px; margin-bottom: 15px; }
+        .order-items-list { list-style: none; padding: 0; margin: 10px 0; }
+        .order-items-list li { display: flex; justify-content: space-between; padding: 6px 0; font-size: 0.9rem; color: #94a3b8; }
+        .shipping-info { background: rgba(0, 0, 0, 0.2); padding: 10px; border-radius: 6px; font-size: 0.85rem; margin-top: 10px; color: #cbd5e1; }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <a href="home.html" class="logo" aria-label="B.Y.T.E. home">
+            <img src="../assets/logo_dark.png" alt="B.Y.T.E. logo" width="150" height="37">
+        </a>
+        <nav class="main-nav" aria-label="Main navigation">
+            <a href="home.html">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="categories.html">Categories</a>
+            <a href="aboutUs.html">About us</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+        <div class="header-actions">
+            <button type="button" onclick="window.location.href='cart.html'" aria-label="Shopping cart">🛒</button>
+            <button type="button" class="user-btn" onclick="window.location.href='login.html'" aria-label="Account">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4zm0 2c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5z"/>
+                </svg>
+            </button>
+            <span>Cart</span>
+        </div>
+    </header>
+
+    <main class="orders-container">
+        <h1>Your Order History & Receipts</h1>
+        <p style="color: #94a3b8; margin-bottom: 25px;">Review your past component purchases and reference numbers.</p>
+        
+        <div id="orders-list">
+            <!-- Dynamic orders load here -->
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand"><img src="../assets/logo_dark.png" alt="B.Y.T.E. logo"></div>
+            <div class="footer-column">
+                <h4>Explore</h4>
+                <a href="shop.html">Shop components</a>
+                <a href="categories.html">Categories</a>
+                <a href="aboutUs.html">About us</a>
+            </div>
+            <div class="footer-column">
+                <h4>Support</h4>
+                <a href="contact.html">Contact us</a>
+                <a href="shippingPayment.html">Shipping & Returns</a>
+                <a href="contact.html">FAQ</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 B.Y.T.E. Build Your Tech Essentials.</p>
+        </div>
+    </footer>
+
+    <script src="../js/script.js" defer></script>
+    <script src="../js/orders.js" defer></script>
+</body>
+</html>

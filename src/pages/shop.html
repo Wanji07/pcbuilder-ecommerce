@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="theme-color" content="#08121F">
+    <meta name="theme-color" content="#08121F">
     <meta name="description" content="B.Y.T.E. - Build Your Tech Essentials">
     <title>B.Y.T.E. | Build Your Tech Essentials</title>
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/shop.css">
-
 </head>
 
 <body>
@@ -18,11 +17,11 @@
             <img src="../assets/logo_dark.png" alt="B.Y.T.E. logo" width="150" height="37">
         </a>
         <nav class="main-nav" aria-label="Main navigation">
-            <a href="../pages/home.html">Home</a>
-            <a href="" class="active">Shop</a>
-            <a href="../pages/categories.html">Categories</a>
-            <a href="../pages/aboutUs.html">About us</a>
-            <a href="../pages/contact.html">Contact</a>
+            <a href="home.html">Home</a>
+            <a href="shop.html" class="active">Shop</a>
+            <a href="categories.html">Categories</a>
+            <a href="aboutUs.html">About us</a>
+            <a href="contact.html">Contact</a>
         </nav>
 
         <div class="header-actions">
@@ -48,198 +47,81 @@
                 Good parts. Clear specs. No guesswork.
             </p>
         </section>
+        
         <section class="catalog">
-            <!--Category Navigation-->
-    <div class="categoryproduct-nav">
-        <button class="category-button active" data-category="all">
-            All
-        </button>
-        <button class="category-button" data-category="cpu">
-            CPU
-        </button>
-        <button class="category-button" data-category="gpu">
-            GPU
-        </button>
-        <button class="category-button" data-category="ram">
-            RAM
-        </button>
-        <button class="category-button" data-category="storage">
-            Storage
-        </button>
-        <button class="category-button" data-category="case">
-            Case
-        </button>
-        <button class="category-button" data-category="mouse">
-            Mouse
-        </button>
-    </div>
+            <!-- Category Navigation -->
+            <div class="categoryproduct-nav">
+                <button class="category-button active" data-category="all">All</button>
+                <button class="category-button" data-category="cpu">CPU</button>
+                <button class="category-button" data-category="gpu">GPU</button>
+                <button class="category-button" data-category="ram">RAM</button>
+                <button class="category-button" data-category="storage">Storage</button>
+                <button class="category-button" data-category="case">Case</button>
+                <button class="category-button" data-category="mouse">Mouse</button>
+            </div>
 
-    <!-- Main shopcatalog area -->
-    <div class="catalog-layout">
-        <!-- FILTER SIDEBAR -->
-        <aside class="filters">
-            <small>FILTERS</small>
-            <label for="brand-filter">Brand</label>
-            <select id="brand-filter">
-                <option value="all">All Brands</option>
-                <option value="amd">AMD</option>
-                <option value="asus">ASUS</option>
-                <option value="corsair">Corsair</option>
-                <option value="samsung">Samsung</option>
-                <option value="nzxt">NZXT</option>
-                <option value="logitech">Logitech</option>
-            </select>
-            <label for="availability-filter">
-                Availability
-            </label>
-            <select id="availability-filter">
-                <option value="all">All</option>
-                <option value="available">Available</option>
-                <option value="out">Out of stock</option>
-            </select>
-        </aside>
+            <!-- Main shop catalog area -->
+            <div class="catalog-layout">
+                <!-- FILTER SIDEBAR -->
+                <aside class="filters">
+                    <small>FILTERS</small>
+                    <label for="brand-filter">Brand</label>
+                    <select id="brand-filter">
+                        <option value="all">All Brands</option>
+                        <option value="amd">AMD</option>
+                        <option value="asus">ASUS</option>
+                        <option value="corsair">Corsair</option>
+                        <option value="samsung">Samsung</option>
+                        <option value="nzxt">NZXT</option>
+                        <option value="logitech">Logitech</option>
+                    </select>
+                    <label for="availability-filter">Availability</label>
+                    <select id="availability-filter">
+                        <option value="all">All</option>
+                        <option value="available">Available</option>
+                        <option value="out">Out of stock</option>
+                    </select>
+                </aside>
 
-        <!-- PRODUCTS CATALOG-->
-        <div class="product-grid">
-            <article class="product-card" data-product-id="ryzen-7-7800x3d" data-price="21495" data-category="cpu" data-brand="amd" data-availability="available">
-                <div class="product-image">
-                    <img src="../assets/ProductImages/CPU/Ryzen77800X3D.png" alt="Ryzen processor">
-                    <span class="product-tag">CPU</span>
+                <!-- PRODUCTS CATALOG (Dynamically populated from MongoDB) -->
+                <div class="product-grid" id="product-grid">
+                    <!-- Dynamic product cards will load here via shop.js -->
                 </div>
-                <div class="product-info">
-                    <small>AMD</small>
-                    <h3>Ryzen 7 7800X3D Processor</h3>
-                    <p>8-Core / 16-Thread · AM5</p>
-                    <strong>₱21,495</strong>
-                    <div class="product-actions">
-                        <a href="#">View details →</a>
-                        <button>Add to cart</button>
-                    </div>
-                </div>
-            </article>
+            </div>
+        </section>
+    </main>
 
-            <article class="product-card" data-product-id="rtx-4070-super-dual" data-price="38995" data-category="gpu" data-brand="asus" data-availability="available">
-                <div class="product-image">
-                    <img src="../assets/ProductImages/GPU/4070superdual.png" alt="RTX graphics card">
-                    <span class="product-tag">GPU</span>
-                </div>
-                <div class="product-info">
-                    <small>ASUS</small>
-                    <h3>GeForce RTX 4070 SUPER Dual</h3>
-                    <p>12GB GDDR6X · DLSS 3</p>
-                    <strong>₱38,995</strong>
-                    <div class="product-actions">
-                        <a href="#">View details →</a>
-                        <button>Add to cart</button>
-                    </div>
-                </div>
-            </article>
+    <p class="cart-feedback" id="cart-feedback" role="status" aria-live="polite"></p>
 
-            <article class="product-card" data-product-id="vengeance-rgb-ddr5-32gb" data-price="6495" data-category="ram" data-brand="corsair" data-availability="available">
-                <div class="product-image">
-                    <img src="../assets/ProductImages/RAM/Vengeance RGB DDR5 32GB.png" alt="Corsair RAM">
-                    <span class="product-tag">RAM</span>
-                </div>
-                 <div class="product-info">
-                    <small>Corsair</small>
-                    <h3>Vengeance RGB DDR5 32GB</h3>
-                    <p>6000MHz · CL36 · 2×16GB</p>
-                    <strong>₱6,495</strong>
-                    <div class="product-actions">
-                        <a href="#">View details →</a>
-                        <button>Add to cart</button>
-                 </div>
-                </div>
-            </article>
-
-            <article class="product-card" data-product-id="samsung-990-pro-1tb" data-price="6995" data-category="storage" data-brand="samsung" data-availability="available">
-                <div class="product-image">
-                    <img src="../assets/ProductImages/Storage/Storage.png" alt="Samsung SSD">
-                    <span class="product-tag">Storage</span>
-                </div>
-                <div class="product-info">
-                    <small>Samsung</small>
-                    <h3>990 PRO NVMe SSD 1TB</h3>
-                    <p>PCIe 4.0 · Read up to 7,450MB/s</p>
-                    <strong>₱6,995</strong>
-                    <div class="product-actions">
-                        <a href="#">View details →</a>
-                        <button>Add to cart</button>
-                    </div>
-                </div>
-            </article>
-
-            <article class="product-card" data-product-id="nzxt-h6-flow" data-price="8495" data-category="case" data-brand="nzxt" data-availability="available">
-                <div class="product-image">
-                    <img src="../assets/ProductImages/Case/H6 Flow Compact Mid-Tower.png" alt="NZXT computer case">
-                    <span class="product-tag">Case</span>
-                </div>
-                <div class="product-info">
-                    <small>NZXT</small>
-                    <h3>H6 Flow Compact Mid-Tower</h3>
-                    <p>Panoramic glass · ATX · White</p>
-                    <strong>₱8,495</strong>
-                    <div class="product-actions">
-                        <a href="#">View details →</a>
-                        <button>Add to cart</button>
-                    </div>
-                </div>
-            </article>
-            <article class="product-card" data-product-id="logitech-g-pro-x-superlight-2" data-price="7295" data-category="mouse" data-brand="logitech" data-availability="available">
-                <div class="product-image">
-                    <img src="../assets/ProductImages/Peripherals/Mouse/G PRO X Superlight 2.png" alt="Logitech mouse">
-                    <span class="product-tag">Mouse</span>
-                </div>
-                <div class="product-info">
-                    <small>Logitech</small>
-                    <h3>G PRO X Superlight 2</h3>
-                    <p>Wireless · HERO 2 Sensor</p>
-                    <strong>₱7,295</strong>
-                    <div class="product-actions">
-                        <a href="#">View details →</a>
-                        <button>Add to cart</button>
-                    </div>
-                </div>
-            </article>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <img src="../assets/logo_dark.png" alt="B.Y.T.E. logo">
+            </div>
+            <div class="footer-column">
+                <h4>Explore</h4>
+                <a href="shop.html">Shop components</a>
+                <a href="categories.html">Categories</a>
+                <a href="aboutUs.html">About us</a>
+            </div>
+            <div class="footer-column">
+                <h4>Support</h4>
+                <a href="contact.html">Contact us</a>
+                <a href="#">Shipping & Returns</a>
+                <a href="#">FAQ</a>
+            </div>
+            <div class="footer-column">
+                <h4>Follow along</h4>
+                <a href="#">Instagram · Facebook</a>
+                <a href="#">TikTok · YouTube</a>
+            </div>
         </div>
-    </div>
-</section>
-
-</main>
-
-<p class="cart-feedback" id="cart-feedback" role="status" aria-live="polite"></p>
-<script src="../js/script.js" defer></script>
+        <div class="footer-bottom">
+            <p>© 2026 B.Y.T.E. A better way to build.</p>
+        </div>
+    </footer>
+    <script src="../js/script.js" defer></script>
+    <!-- Dedicated Shop JavaScript -->
+    <script src="../js/shop.js" defer></script>
 </body>
-
-
-<footer class="footer">
-    <div class="footer-container">
-        <div class="footer-brand">
-            <img src="../assets/logo_dark.png" alt="B.Y.T.E. logo">
-        </div>
-        <div class="footer-column">
-            <h4>Explore</h4>
-
-            <a href="#">Shop components</a>
-            <a href="#">Categories</a>
-            <a href="#">About us</a>
-        </div>
-        <div class="footer-column">
-            <h4>Support</h4>
-
-            <a href="contact.html">Contact us</a>
-            <a href="#">Shipping & Returns</a>
-            <a href="#">FAQ</a>
-        </div>
-        <div class="footer-column">
-            <h4>Follow along</h4>
-
-            <a href="#">Instagram · Facebook</a>
-            <a href="#">TikTok · YouTube</a>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <p>© 2026 B.Y.T.E. A better way to build.</p>
-    </div>
-</footer>
 </html>
