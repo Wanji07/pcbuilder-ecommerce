@@ -7,7 +7,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const cartKey = `cart_${userSession.id || userSession._id}`;
-    const checkoutForm = document.getElementById('checkout-form'); // match your form ID
+    
+    // MATCH THE EXACT ID FROM YOUR HTML FILE: 'shipping-form'
+    const checkoutForm = document.getElementById('shipping-form'); 
 
     if (checkoutForm) {
         checkoutForm.addEventListener('submit', async (e) => {
@@ -19,7 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            // Build the payload including the correct userId
             const orderPayload = {
                 userId: userSession.id || userSession._id,
                 items: cart,
@@ -41,13 +42,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 const data = await response.json();
 
                 if (response.ok) {
-                    // Clear ONLY this user's cart after successful order
+                    // Clear user-specific cart after successful order
                     localStorage.removeItem(cartKey);
 
-                    alert(`Order placed successfully! Reference ID: ${data.orderId}`);
-                    window.location.href = 'orderHistory.html';
+                    const orderId = data.orderId || data._id;
+                    alert(`Order placed successfully! Reference ID: ${orderId}`);
+                    
+                    // Redirect straight to account page to see order history
+                    window.location.href = 'account.html';
                 } else {
-                    alert(data.error || 'Failed to process checkout.');
+                    alert(data.error || data.message || 'Failed to process checkout.');
                 }
             } catch (err) {
                 console.error('Checkout error:', err);

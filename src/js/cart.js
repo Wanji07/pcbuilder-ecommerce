@@ -122,3 +122,16 @@ function removeItem(index) {
     localStorage.setItem(cartKey, JSON.stringify(cart));
     loadCart();
 }
+
+function proceedToCheckout() {
+    const cartKey = getCartKey();
+    const cart = JSON.parse(localStorage.getItem(cartKey)) || [];
+
+    if (!cart || cart.length === 0) {
+        alert('Your cart is empty!');
+        return;
+    }
+
+    // Redirect to your shipping/payment page
+    window.location.href = 'shippingPayment.html'; 
+}
