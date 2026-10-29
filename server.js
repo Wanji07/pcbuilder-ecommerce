@@ -1,35 +1,47 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const bcrypt = require('bcryptjs'); // <-- Added this so password hashing works!
+const bcrypt = require('bcryptjs');
 const path = require('path');
 
 const app = express();
-const PORT = 3000;
+
+// Use Render's dynamic port if deployed, otherwise fallback to 3000 locally
+const PORT = process.env.PORT || 3000;
 
 // ==========================
-// MIDDLEWARE
+// MIDDLEWARE CONFIGURATION
 // ==========================
-app.use(cors()); // Allows your frontend HTML/JS to talk to this backend server
-app.use(express.json()); // Teaches Express how to read incoming JSON data from requests
-app.use(express.static('src')); // Tells the server where to find your static front-end files (CSS, images, JS)
+app.use(cors()); // Enables cross-origin requests for frontend-backend communication
+app.use(express.json()); // Parses incoming JSON payloads from client requests
+app.use(express.static('src')); // Serves static front-end assets (HTML, CSS, JS)
 
-// Import Mongoose Models
+// ==========================
+// DATABASE MODELS
+// ==========================
 const Product = require('./models/Product');
 const User = require('./models/User');
 
 // ==========================
 // DATABASE CONNECTION
 // ==========================
-mongoose.connect('mongodb://127.0.0.1:27017/pcbuilder_db')
-  .then(() => console.log('Connected to Local MongoDB successfully!'))
+// Uses MongoDB Atlas URL when online (Render), or falls back to local MongoDB for development
+const MONGO_URI = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/pcbuilder_db';
+
+/* 
+  --- OLD LOCAL CONNECTION CODE (Reference) ---
+  mongoose.connect('mongodb://127.0.0.1:27017/pcbuilder_db')
+*/
+
+mongoose.connect(MONGO_URI)
+  .then(() => console.log('Database connected successfully!'))
   .catch((err) => console.error('Database connection failed:', err));
 
 // ==========================
-// PRODUCT ROUTES
+// PRODUCT MANAGEMENT ROUTES
 // ==========================
 
-// Get all products from MongoDB to display on the shop/categories page
+// Get all products
 app.get('/api/products', async (req, res) => {
     try {
         const products = await Product.find();
@@ -39,18 +51,7 @@ app.get('/api/products', async (req, res) => {
     }
 });
 
-
-// Delete a product by ID
-app.delete('/api/products/:id', async (req, res) => {
-    try {
-        await Product.findByIdAndDelete(req.params.id);
-        res.json({ message: 'Product deleted successfully!' });
-    } catch (err) {
-        res.status(500).json({ error: 'Failed to delete product' });
-    }
-});
-
-// Add a new product into MongoDB (useful for seeding data via Thunder Client)
+// Add a new product
 app.post('/api/products', async (req, res) => {
     try {
         const newProduct = new Product(req.body);
@@ -61,69 +62,10 @@ app.post('/api/products', async (req, res) => {
     }
 });
 
-// ==========================
-// USER AUTH ROUTES
-// ==========================
-
-// Register Route: Takes user details, hashes the password, and saves to MongoDB
-app.post('/api/register', async (req, res) => {
-    try {
-        const { name, email, password } = req.body;
-        
-        // Hash password securely (10 rounds) before saving
-        const hashedPassword = await bcrypt.hash(password, 10);
-
-        const newUser = new User({ name, email, password: hashedPassword });
-        await newUser.save();
-
-        res.status(201).json({ message: 'User registered successfully!' });
-    } catch (err) {
-        res.status(500).json({ error: 'Registration failed. Email might already exist.' });
-    }
-});
-
-// Login Route: Authenticates user credentials against MongoDB
-// Login Route: Authenticates user credentials against MongoDB using bcrypt
-app.post('/api/login', async (req, res) => {
-    try {
-        const { email, password } = req.body;
-        const user = await User.findOne({ email });
-
-        if (!user) {
-            return res.status(400).json({ error: 'Invalid email or password.' });
-        }
-
-        // Compare entered plain-text password with the encrypted hash in MongoDB
-        const isMatch = await bcrypt.compare(password, user.password);
-        if (!isMatch) {
-            return res.status(400).json({ error: 'Invalid email or password.' });
-        }
-
-        // Return user info including isAdmin and shippingAddress
-        res.json({
-            message: 'Login successful!',
-            user: {
-                id: user._id,
-                name: user.name,
-                email: user.email,
-                isAdmin: user.isAdmin,
-                shippingAddress: user.shippingAddress
-            }
-        });
-
-    } catch (err) {
-        console.error('Login error:', err);
-        res.status(500).json({ error: 'Server error during login.' });
-    }
-});
-
-
-
-// PUT Route to update a product
+// Update a product by ID
 app.put('/api/products/:id', async (req, res) => {
     try {
         const { price, stock, description } = req.body; 
-
         const updatedProduct = await Product.findByIdAndUpdate(
             req.params.id,
             { price, stock, description },
@@ -136,20 +78,77 @@ app.put('/api/products/:id', async (req, res) => {
 
         res.json({ message: 'Product updated successfully!', product: updatedProduct });
     } catch (err) {
-        console.error('Error updating product:', err);
         res.status(500).json({ error: 'Server error while updating product.' });
     }
 });
 
-// Update User Shipping Address Route
+// Delete a product by ID
+app.delete('/api/products/:id', async (req, res) => {
+    try {
+        await Product.findByIdAndDelete(req.params.id);
+        res.json({ message: 'Product deleted successfully!' });
+    } catch (err) {
+        res.status(500).json({ error: 'Failed to delete product' });
+    }
+});
+
+// ==========================
+// USER AUTHENTICATION ROUTES
+// ==========================
+
+// Register a new user with encrypted password hashing
+app.post('/api/register', async (req, res) => {
+    try {
+        const { name, email, password } = req.body;
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        const newUser = new User({ name, email, password: hashedPassword });
+        await newUser.save();
+
+        res.status(201).json({ message: 'User registered successfully!' });
+    } catch (err) {
+        res.status(500).json({ error: 'Registration failed. Email might already exist.' });
+    }
+});
+
+// Authenticate user login credentials
+app.post('/api/login', async (req, res) => {
+    try {
+        const { email, password } = req.body;
+        const user = await User.findOne({ email });
+
+        if (!user) {
+            return res.status(400).json({ error: 'Invalid email or password.' });
+        }
+
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch) {
+            return res.status(400).json({ error: 'Invalid email or password.' });
+        }
+
+        res.json({
+            message: 'Login successful!',
+            user: {
+                id: user._id,
+                name: user.name,
+                email: user.email,
+                isAdmin: user.isAdmin,
+                shippingAddress: user.shippingAddress
+            }
+        });
+    } catch (err) {
+        res.status(500).json({ error: 'Server error during login.' });
+    }
+});
+
+// Update user shipping address
 app.put('/api/user/shipping', async (req, res) => {
     try {
         const { userId, shippingAddress } = req.body;
-
         const updatedUser = await User.findByIdAndUpdate(
             userId,
             { shippingAddress },
-            { new: true } // Returns the updated document
+            { new: true }
         );
 
         if (!updatedUser) {
@@ -170,72 +169,11 @@ app.put('/api/user/shipping', async (req, res) => {
     }
 });
 
-// Checkout & Create Order Route
-// Checkout & Create Order Route with Stock Validation & Deduction
-app.post('/api/orders', async (req, res) => {
-    try {
-        const { userId, items, shippingAddress } = req.body;
+// ==========================
+// ORDER & CHECKOUT ROUTES
+// ==========================
 
-        if (!userId || !items || items.length === 0) {
-            return res.status(400).json({ error: 'Invalid order data or empty cart.' });
-        }
-
-        // 1. Verify stock availability for EVERY item in the cart first
-        for (let cartItem of items) {
-            // Ensure your cart items save the product's database ID as `_id` or `productId`
-            const productId = cartItem._id || cartItem.productId;
-            const product = await Product.findById(productId);
-
-            if (!product) {
-                return res.status(404).json({ error: `Product not found: ${cartItem.name}` });
-            }
-
-            if (product.stock < cartItem.quantity) {
-                return res.status(400).json({ 
-                    error: `Insufficient stock for "${product.name}". Only ${product.stock} left in stock!` 
-                });
-            }
-        }
-
-        // 2. If all items have enough stock, deduct the stock and calculate pricing
-        let subtotal = 0;
-        for (let cartItem of items) {
-            const productId = cartItem._id || cartItem.productId;
-            const product = await Product.findById(productId);
-
-            // Subtract ordered quantity from database stock
-            product.stock -= cartItem.quantity;
-            await product.save();
-
-            subtotal += cartItem.price * cartItem.quantity;
-        }
-
-        let vat = subtotal * 0.12;
-        let total = subtotal; // Assuming VAT inclusive pricing
-
-        // 3. Save the permanent order receipt to MongoDB
-        const newOrder = new Order({
-            userId,
-            items,
-            subtotal,
-            vat,
-            total,
-            shippingAddress
-        });
-
-        await newOrder.save();
-
-        res.status(201).json({
-            message: 'Order placed successfully!',
-            orderId: newOrder._id
-        });
-    } catch (err) {
-        console.error('Error processing order:', err);
-        res.status(500).json({ error: 'Server error while processing order.' });
-    }
-});
-
-// Order Schema for MongoDB
+// Order Schema & Model
 const orderSchema = new mongoose.Schema({
     userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
     items: [
@@ -261,28 +199,77 @@ const orderSchema = new mongoose.Schema({
 
 const Order = mongoose.model('Order', orderSchema);
 
-// Get Orders for a Specific User
+// Process checkout, validate stock, and deduct inventory
+app.post('/api/orders', async (req, res) => {
+    try {
+        const { userId, items, shippingAddress } = req.body;
+
+        if (!userId || !items || items.length === 0) {
+            return res.status(400).json({ error: 'Invalid order data or empty cart.' });
+        }
+
+        // Validate stock for all items first
+        for (let cartItem of items) {
+            const productId = cartItem._id || cartItem.productId;
+            const product = await Product.findById(productId);
+
+            if (!product) {
+                return res.status(404).json({ error: `Product not found: ${cartItem.name}` });
+            }
+
+            if (product.stock < cartItem.quantity) {
+                return res.status(400).json({ 
+                    error: `Insufficient stock for "${product.name}". Only ${product.stock} left!` 
+                });
+            }
+        }
+
+        // Deduct stock and calculate totals
+        let subtotal = 0;
+        for (let cartItem of items) {
+            const productId = cartItem._id || cartItem.productId;
+            const product = await Product.findById(productId);
+
+            product.stock -= cartItem.quantity;
+            await product.save();
+
+            subtotal += cartItem.price * cartItem.quantity;
+        }
+
+        let vat = subtotal * 0.12;
+        let total = subtotal;
+
+        // Save order receipt
+        const newOrder = new Order({ userId, items, subtotal, vat, total, shippingAddress });
+        await newOrder.save();
+
+        res.status(201).json({ message: 'Order placed successfully!', orderId: newOrder._id });
+    } catch (err) {
+        res.status(500).json({ error: 'Server error while processing order.' });
+    }
+});
+
+// Retrieve order history for a specific user
 app.get('/api/orders/:userId', async (req, res) => {
     try {
         const { userId } = req.params;
-        const orders = await Order.find({ userId }).sort({ createdAt: -1 }); // Newest orders first
+        const orders = await Order.find({ userId }).sort({ createdAt: -1 });
         res.json(orders);
     } catch (err) {
-        console.error('Error fetching orders:', err);
         res.status(500).json({ error: 'Failed to retrieve order history.' });
     }
 });
 
 // ==========================
-// FRONTEND NAVIGATION ROUTES
+// SYSTEM & NAVIGATION ROUTES
 // ==========================
 
-// Test route to verify server is responding
+// Health check endpoint
 app.get('/api/test', (req, res) => {
     res.json({ message: "Hello from your backend server!" });
 });
 
-// Root route: Automatically serves your home page when visiting http://localhost:3000
+// Serve frontend home page on root request
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'src', 'pages', 'home.html'));
 });
@@ -291,5 +278,5 @@ app.get('/', (req, res) => {
 // START SERVER
 // ==========================
 app.listen(PORT, () => {
-    console.log(`Server is running smoothly on http://localhost:${PORT}`);
+    console.log(`Server is running smoothly on port ${PORT}`);
 });
