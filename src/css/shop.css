@@ -170,16 +170,13 @@
 /* Category tag */
 
 .product-tag {
-    position: absolute;
-
-    top: 10px;
-    left: 10px;
-
-    background: var(--accent);
-
-    padding: 5px 7px;
-
-    font-size: 8px;
+    background-color: #0f172a; 
+    color: #38bdf8;            
+    border: 1px solid #38bdf8; 
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: bold;
 }
 
 
