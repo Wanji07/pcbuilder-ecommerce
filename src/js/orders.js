@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     try {
         // Fetch only orders belonging to this specific user ID from MongoDB
-        const response = await fetch(`http://localhost:3000/api/orders/${userId}`);
+        const response = await fetch(`/api/orders/${userId}`);
         const orders = await response.json();
 
         ordersContainer.innerHTML = '';

@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             try {
-                const response = await fetch('http://localhost:3000/api/products', {
+                const response = await fetch('/api/products', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(newProduct)
@@ -54,7 +54,7 @@ async function fetchAdminProducts() {
     if (!tableBody) return;
 
     try {
-        const response = await fetch('http://localhost:3000/api/products');
+        const response = await fetch('/api/products');
         const products = await response.json();
 
         tableBody.innerHTML = '';
@@ -121,7 +121,7 @@ async function saveProduct(productId) {
     const newDescription = document.getElementById(`desc-${productId}`).value;
 
     try {
-        const response = await fetch(`http://localhost:3000/api/products/${productId}`, {
+        const response = await fetch(`/api/products/${productId}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -149,7 +149,7 @@ async function deleteProduct(id) {
     if (!confirm('Are you sure you want to delete this product?')) return;
 
     try {
-        const response = await fetch(`http://localhost:3000/api/products/${id}`, {
+        const response = await fetch(`/api/products/${id}`, {
             method: 'DELETE'
         });
 

@@ -41,7 +41,7 @@ function addToCart(productId) {
 // 1. Fetch products from Node.js / MongoDB backend
 async function fetchAndDisplayProducts() {
     try {
-        const response = await fetch('http://localhost:3000/api/products');
+        const response = await fetch('/api/products');
         allProducts = await response.json();
         renderProducts(allProducts);
     } catch (err) {
