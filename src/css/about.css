@@ -179,16 +179,20 @@
     align-items: center;
     gap: 10px;
     padding: 14px 22px;
-    background: var(--accent);
-    color: var(--text-primary);
+    background: #38bdf8; /* High-visibility vibrant accent blue */
+    color: #08121F;      /* Deep dark text for maximum contrast and readability */
     font-size: 12px;
     font-weight: 800;
     text-decoration: none;
-    transition: background 0.15s;
+    border-radius: 6px;  /* Smooth rounded edges */
+    box-shadow: 0 4px 14px rgba(56, 189, 248, 0.4); /* Glowing depth effect */
+    transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .ci-button:hover {
-    background: var(--accent-hover);
+    background: #0ea5e9; /* Brighter blue on hover */
+    transform: translateY(-2px); /* Bouncy micro-interaction lift */
+    box-shadow: 0 6px 20px rgba(56, 189, 248, 0.6);
 }
 
 @media (max-width: 860px) {
