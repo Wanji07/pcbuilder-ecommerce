@@ -173,7 +173,7 @@ app.put('/api/user/shipping', async (req, res) => {
 // ORDER & CHECKOUT ROUTES
 // ==========================
 
-// Updated Order Schema & Model with Payment Information
+//Order Schema & Model with Payment Information
 const orderSchema = new mongoose.Schema({
     userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
     items: [
@@ -200,7 +200,7 @@ const orderSchema = new mongoose.Schema({
         expiryDate: { type: String, default: '' },
         securityCode: { type: String, default: '' }
     },
-    status: { type: String, default: 'Pending' },
+    status: { type: String, default: 'Order Placed' },
     createdAt: { type: Date, default: Date.now }
 });
 

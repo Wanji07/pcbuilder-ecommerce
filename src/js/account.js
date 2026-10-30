@@ -86,7 +86,7 @@ async function fetchOrderHistory(userId) {
                 <div class="order-card" style="background: #121f2f; border: 1px solid #2a3b52; border-radius: 8px; padding: 20px; margin-bottom: 15px; color: #fff;">
                     <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; margin-bottom: 12px;">
                         <span style="font-size: 0.85rem; color: #94a3b8;"><strong>Order ID:</strong> ${order._id}</span>
-                        <span style="color: #38bdf8; font-weight: bold; font-size: 0.9rem;">${order.status || 'Pending'}</span>
+                        <span style="color: #38bdf8; font-weight: bold; font-size: 0.9rem;">${order.status || 'Order Placed'}</span>
                     </div>
 
                     <p style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 8px;"><strong>Date:</strong> ${dateFormatted}</p>
