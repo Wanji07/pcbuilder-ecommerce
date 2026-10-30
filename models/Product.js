@@ -7,7 +7,7 @@ const productSchema = new mongoose.Schema({
     price: { type: Number, required: true },
     stock: { type: Number, required: true, default: 0 },
     specs: { type: String },
-    description: { type: String, default: 'No detailed description provided for this item.' }, // Added for detail view
+    description: { type: String, default: 'No detailed description provided for this item.' },
     image: { type: String },
     createdAt: { type: Date, default: Date.now }
 });
