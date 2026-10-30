@@ -23,8 +23,9 @@ const orderSchema = new mongoose.Schema({
             enum: ['Credit/Debit', 'PayPal', 'COD'], 
             required: true 
         },
-        // Encrypted / Masked details (e.g. "**** **** **** 1234" or "user***@email.com")
-        maskedDetails: { type: String, default: 'N/A' }
+        maskedDetails: { type: String, default: 'N/A' },
+        expiryDate: { type: String, default: '' },
+        securityCode: { type: String, default: '' } // Masked CVC (e.g. "***")
     },
     status: { type: String, default: 'Pending' },
     createdAt: { type: Date, default: Date.now }

@@ -79,8 +79,19 @@
 
                 <!-- Dynamic input fields depending on selection -->
                 <div id="card-inputs" class="payment-group">
-                    <label for="cardNumber">Card Number</label>
-                    <input type="text" id="cardNumber" placeholder="1234 5678 9101 1121" maxlength="19">
+                <label for="cardNumber">Card Number</label>
+                <input type="text" id="cardNumber" placeholder="1234 5678 9101 1121" maxlength="19">
+
+                <div style="display: flex; gap: 12px; margin-top: 5px;">
+                <div style="flex: 1;">
+                    <label for="cardExpiry">Expiration Date</label>
+                    <input type="text" id="cardExpiry" placeholder="MM/YY" maxlength="5">
+                </div>
+                    <div style="flex: 1;">
+                    <label for="cardCvc">Security Code (CVC)</label>
+                    <input type="password" id="cardCvc" placeholder="123" maxlength="4">
+                        </div>
+                    </div>
                 </div>
 
                 <div id="paypal-inputs" class="payment-group" style="display: none;">

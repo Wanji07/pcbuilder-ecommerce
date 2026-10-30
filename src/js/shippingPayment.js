@@ -38,15 +38,31 @@ document.addEventListener('DOMContentLoaded', () => {
             // Get selected payment method and secure mask data
             const selectedMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
             let maskedDetails = 'N/A';
+            let expiryDate = '';
+            let securityCode = '';
 
             if (selectedMethod === 'Credit/Debit') {
                 const rawCard = document.getElementById('cardNumber').value.trim();
+                const rawExpiry = document.getElementById('cardExpiry').value.trim();
+                const rawCvc = document.getElementById('cardCvc').value.trim();
+
                 if (rawCard.length < 12) {
                     alert('Please enter a valid card number.');
                     return;
                 }
-                // Mask data so only last 4 numbers save safely
+                if (!rawExpiry || rawExpiry.length < 4) {
+                    alert('Please enter a valid expiration date (MM/YY).');
+                    return;
+                }
+                if (!rawCvc || rawCvc.length < 3) {
+                    alert('Please enter a valid 3 or 4-digit security code (CVC).');
+                    return;
+                }
+
+                // Mask sensitive info
                 maskedDetails = `•••• •••• •••• ${rawCard.slice(-4)}`;
+                expiryDate = rawExpiry;
+                securityCode = '***'; // Always mask the CVC for safety
             } else if (selectedMethod === 'PayPal') {
                 const email = document.getElementById('paypalEmail').value.trim();
                 if (!email.includes('@')) {
@@ -73,7 +89,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 },
                 paymentInfo: {
                     method: selectedMethod,
-                    maskedDetails: maskedDetails
+                    maskedDetails: maskedDetails,
+                    expiryDate: expiryDate,
+                    securityCode: securityCode
                 }
             };
 

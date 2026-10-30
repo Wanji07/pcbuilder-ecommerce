@@ -77,22 +77,26 @@ async function fetchOrderHistory(userId) {
                 </li>
             `).join('');
 
-            orderCard.innerHTML = `
-                <div class="order-header">
-                    <div>
-                        <span style="font-size: 0.8rem; color: #38bdf8; display: block;">Reference No: ${order._id}</span>
-                        <strong style="color: #fff; font-size: 1.1rem;">Order Date: ${dateFormatted}</strong>
-                    </div>
-                    <div style="text-align: right;">
-                        <span style="color: #94a3b8; font-size: 0.85rem; display: block;">Total Paid</span>
-                        <strong style="color: #38bdf8; font-size: 1.1rem;">₱${order.total.toLocaleString(undefined, {minimumFractionDigits: 2})}</strong>
-                    </div>
-                </div>
-                <ul class="order-items-list">${itemsHtml}</ul>
-                <div style="font-size: 0.85rem; color: #94a3b8;">
-                    <strong>Shipping To:</strong> ${order.shippingAddress.street}, ${order.shippingAddress.city} (${order.shippingAddress.postalCode})
-                </div>
-            `;
+            // Inside your accounts.js rendering logic
+            ordersContainer.innerHTML = orders.map(order => `
+            <div class="order-card" style="background: #121f2f; border: 1px solid #2a3b52; border-radius: 8px; padding: 15px; margin-bottom: 15px;">
+            <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; margin-bottom: 10px;">
+            <span><strong>Order ID:</strong> ${order._id}</span>
+            <span style="color: #38bdf8; font-weight: bold;">${order.status || 'Pending'}</span>
+            </div>
+            <p><strong>Total:</strong> ₱${order.totalAmount.toLocaleString()}</p>
+        
+            <!-- Payment Information Section -->
+            <p style="color: #94a3b8; font-size: 0.9rem; margin-top: 8px;">
+            <strong>Payment Method:</strong> ${order.paymentInfo?.method || 'N/A'} 
+            <span style="color: #cbd5e1;">(${order.paymentInfo?.maskedDetails || ''})</span>
+            </p>
+
+            <p style="color: #94a3b8; font-size: 0.85rem;">
+            <strong>Delivering to:</strong> ${order.shippingAddress?.street}, ${order.shippingAddress?.city}
+            </p>
+        </div>
+        `).join('');
 
             ordersContainer.appendChild(orderCard);
         });
