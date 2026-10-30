@@ -173,7 +173,7 @@ app.put('/api/user/shipping', async (req, res) => {
 // ORDER & CHECKOUT ROUTES
 // ==========================
 
-// Order Schema & Model
+// Updated Order Schema & Model with Payment Information
 const orderSchema = new mongoose.Schema({
     userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
     items: [
@@ -187,22 +187,29 @@ const orderSchema = new mongoose.Schema({
     ],
     subtotal: Number,
     vat: Number,
-    total: Number,
+    totalAmount: Number, // Mapped to total order value
     shippingAddress: {
         street: String,
         city: String,
         postalCode: String,
         phone: String
     },
+    paymentInfo: {
+        method: { type: String, required: true },
+        maskedDetails: { type: String, default: 'N/A' },
+        expiryDate: { type: String, default: '' },
+        securityCode: { type: String, default: '' }
+    },
+    status: { type: String, default: 'Pending' },
     createdAt: { type: Date, default: Date.now }
 });
 
 const Order = mongoose.model('Order', orderSchema);
 
-// Process checkout, validate stock, and deduct inventory
+// Process checkout, validate stock, deduct inventory, and save payment data
 app.post('/api/orders', async (req, res) => {
     try {
-        const { userId, items, shippingAddress } = req.body;
+        const { userId, items, shippingAddress, paymentInfo } = req.body;
 
         if (!userId || !items || items.length === 0) {
             return res.status(400).json({ error: 'Invalid order data or empty cart.' });
@@ -237,14 +244,23 @@ app.post('/api/orders', async (req, res) => {
         }
 
         let vat = subtotal * 0.12;
-        let total = subtotal;
+        let totalAmount = subtotal; // Can add vat if required by your pricing logic
 
-        // Save order receipt
-        const newOrder = new Order({ userId, items, subtotal, vat, total, shippingAddress });
+        // Save order receipt with payment information included
+        const newOrder = new Order({ 
+            userId, 
+            items, 
+            subtotal, 
+            vat, 
+            totalAmount, 
+            shippingAddress, 
+            paymentInfo 
+        });
         await newOrder.save();
 
         res.status(201).json({ message: 'Order placed successfully!', orderId: newOrder._id });
     } catch (err) {
+        console.error('Checkout processing error:', err);
         res.status(500).json({ error: 'Server error while processing order.' });
     }
 });
