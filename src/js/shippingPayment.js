@@ -7,8 +7,56 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const cartKey = `cart_${userSession.id || userSession._id}`;
-    
-    // UI elements for toggling payment inputs
+
+    // Get input elements
+    const postalInput = document.getElementById('postalCode');
+    const phoneInput = document.getElementById('phone');
+    const cardInput = document.getElementById('cardNumber');
+    const expiryInput = document.getElementById('cardExpiry');
+    const cvcInput = document.getElementById('cardCvc');
+
+    // Restrict Postal Code to numbers only
+    if (postalInput) {
+        postalInput.addEventListener('input', (e) => {
+            e.target.value = e.target.value.replace(/\D/g, '');
+        });
+    }
+
+    // Restrict Phone Number to numbers only
+    if (phoneInput) {
+        phoneInput.addEventListener('input', (e) => {
+            e.target.value = e.target.value.replace(/\D/g, '');
+        });
+    }
+
+    // Format Card Number (numbers only, adds space every 4 digits)
+    if (cardInput) {
+        cardInput.addEventListener('input', (e) => {
+            let digits = e.target.value.replace(/\D/g, '').substring(0, 16);
+            e.target.value = digits.match(/.{1,4}/g)?.join(' ') || digits;
+        });
+    }
+
+    // Format Expiration Date (numbers only, auto-adds slash MM/YY)
+    if (expiryInput) {
+        expiryInput.addEventListener('input', (e) => {
+            let value = e.target.value.replace(/\D/g, '').substring(0, 4);
+            if (value.length >= 3) {
+                e.target.value = `${value.substring(0, 2)}/${value.substring(2)}`;
+            } else {
+                e.target.value = value;
+            }
+        });
+    }
+
+    // Restrict CVC to numbers only
+    if (cvcInput) {
+        cvcInput.addEventListener('input', (e) => {
+            e.target.value = e.target.value.replace(/\D/g, '');
+        });
+    }
+
+    // Radio Toggle Logic
     const paymentRadios = document.querySelectorAll('input[name="paymentMethod"]');
     const cardInputs = document.getElementById('card-inputs');
     const paypalInputs = document.getElementById('paypal-inputs');
@@ -23,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    const checkoutForm = document.getElementById('shipping-form'); 
+    const checkoutForm = document.getElementById('shipping-form');
 
     if (checkoutForm) {
         checkoutForm.addEventListener('submit', async (e) => {
@@ -35,34 +83,38 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            // Get selected payment method and secure mask data
+            const phoneVal = phoneInput.value.trim();
+            if (phoneVal.length !== 11 || !phoneVal.startsWith('09')) {
+                alert('Please enter a valid 11-digit Philippine mobile number starting with 09.');
+                return;
+            }
+
             const selectedMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
             let maskedDetails = 'N/A';
             let expiryDate = '';
             let securityCode = '';
 
             if (selectedMethod === 'Credit/Debit') {
-                const rawCard = document.getElementById('cardNumber').value.trim();
-                const rawExpiry = document.getElementById('cardExpiry').value.trim();
-                const rawCvc = document.getElementById('cardCvc').value.trim();
+                const rawCard = cardInput.value.replace(/\s+/g, '');
+                const rawExpiry = expiryInput.value.trim();
+                const rawCvc = cvcInput.value.trim();
 
-                if (rawCard.length < 12) {
-                    alert('Please enter a valid card number.');
+                if (rawCard.length !== 16) {
+                    alert('Please enter a valid 16-digit card number.');
                     return;
                 }
-                if (!rawExpiry || rawExpiry.length < 4) {
+                if (rawExpiry.length !== 5) {
                     alert('Please enter a valid expiration date (MM/YY).');
                     return;
                 }
-                if (!rawCvc || rawCvc.length < 3) {
+                if (rawCvc.length < 3) {
                     alert('Please enter a valid 3 or 4-digit security code (CVC).');
                     return;
                 }
 
-                // Mask sensitive info
                 maskedDetails = `•••• •••• •••• ${rawCard.slice(-4)}`;
                 expiryDate = rawExpiry;
-                securityCode = '***'; // Always mask the CVC for safety
+                securityCode = '***';
             } else if (selectedMethod === 'PayPal') {
                 const email = document.getElementById('paypalEmail').value.trim();
                 if (!email.includes('@')) {
@@ -84,8 +136,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 shippingAddress: {
                     street: document.getElementById('street').value,
                     city: document.getElementById('city').value,
-                    postalCode: document.getElementById('postalCode').value,
-                    phone: document.getElementById('phone').value
+                    postalCode: postalInput.value,
+                    phone: phoneInput.value
                 },
                 paymentInfo: {
                     method: selectedMethod,
@@ -106,10 +158,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (response.ok) {
                     localStorage.removeItem(cartKey);
-
                     const orderId = data.orderId || data._id;
                     alert(`Order placed successfully! Reference ID: ${orderId}`);
-                    
                     window.location.href = 'account.html';
                 } else {
                     alert(data.error || data.message || 'Failed to process checkout.');

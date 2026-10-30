@@ -49,64 +49,64 @@
             <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 20px;">Where should we deliver your PC components and how will you pay?</p>
 
             <form id="shipping-form" class="checkout-form">
-                <label for="street">Street Address / Barangay</label>
-                <input type="text" id="street" placeholder="123 Katipunan Ave" required>
+    <label for="street">Street Address / Barangay</label>
+    <input type="text" id="street" placeholder="123 Katipunan Ave" required>
 
-                <label for="city">City / Province</label>
-                <input type="text" id="city" placeholder="Quezon City" required>
+    <label for="city">City / Province</label>
+    <input type="text" id="city" placeholder="Quezon City" required>
 
-                <label for="postalCode">Postal Code</label>
-                <input type="text" id="postalCode" placeholder="1108" required>
+    <label for="postalCode">Postal Code</label>
+    <input type="text" id="postalCode" placeholder="1108" pattern="\d{4}" maxlength="4" inputmode="numeric" title="Please enter a 4-digit postal code" required>
 
-                <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" placeholder="09123456789" required>
+    <label for="phone">Phone Number</label>
+    <input type="tel" id="phone" placeholder="09123456789" pattern="^09\d{9}$" maxlength="11" inputmode="numeric" title="Please enter an 11-digit mobile number starting with 09" required>
 
-                <hr style="margin: 25px 0; border: none; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+    <hr style="margin: 25px 0; border: none; border-top: 1px solid rgba(255, 255, 255, 0.1);">
 
-                <!-- Payment Option Section Added Below -->
-                <label style="color: #fff; font-weight: bold; margin-bottom: 10px;">Payment Method</label>
-                <div style="display: flex; gap: 20px; margin-bottom: 15px;">
-                    <label style="cursor: pointer; display: flex; align-items: center; gap: 6px; color: #fff; margin-top: 0;">
-                        <input type="radio" name="paymentMethod" value="Credit/Debit" checked> Credit/Debit
-                    </label>
-                    <label style="cursor: pointer; display: flex; align-items: center; gap: 6px; color: #fff; margin-top: 0;">
-                        <input type="radio" name="paymentMethod" value="PayPal"> PayPal
-                    </label>
-                    <label style="cursor: pointer; display: flex; align-items: center; gap: 6px; color: #fff; margin-top: 0;">
-                        <input type="radio" name="paymentMethod" value="COD"> Cash on Delivery
-                    </label>
-                </div>
+    <!-- Payment Option Section -->
+    <label style="color: #fff; font-weight: bold; margin-bottom: 10px;">Payment Method</label>
+    <div style="display: flex; gap: 20px; margin-bottom: 15px;">
+        <label style="cursor: pointer; display: flex; align-items: center; gap: 6px; color: #fff; margin-top: 0;">
+            <input type="radio" name="paymentMethod" value="Credit/Debit" checked> Credit/Debit
+        </label>
+        <label style="cursor: pointer; display: flex; align-items: center; gap: 6px; color: #fff; margin-top: 0;">
+            <input type="radio" name="paymentMethod" value="PayPal"> PayPal
+        </label>
+        <label style="cursor: pointer; display: flex; align-items: center; gap: 6px; color: #fff; margin-top: 0;">
+            <input type="radio" name="paymentMethod" value="COD"> Cash on Delivery
+        </label>
+    </div>
 
-                <!-- Dynamic input fields depending on selection -->
-                <div id="card-inputs" class="payment-group">
-                <label for="cardNumber">Card Number</label>
-                <input type="text" id="cardNumber" placeholder="1234 5678 9101 1121" maxlength="19">
+    <!-- Dynamic input fields -->
+    <div id="card-inputs" class="payment-group">
+        <label for="cardNumber">Card Number</label>
+        <input type="text" id="cardNumber" placeholder="1234 5678 9101 1121" maxlength="19" inputmode="numeric">
 
-                <div style="display: flex; gap: 12px; margin-top: 5px;">
-                <div style="flex: 1;">
-                    <label for="cardExpiry">Expiration Date</label>
-                    <input type="text" id="cardExpiry" placeholder="MM/YY" maxlength="5">
-                </div>
-                    <div style="flex: 1;">
-                    <label for="cardCvc">Security Code (CVC)</label>
-                    <input type="password" id="cardCvc" placeholder="123" maxlength="4">
-                        </div>
-                    </div>
-                </div>
+        <div style="display: flex; gap: 12px; margin-top: 5px;">
+            <div style="flex: 1;">
+                <label for="cardExpiry">Expiration Date</label>
+                <input type="text" id="cardExpiry" placeholder="MM/YY" maxlength="5" inputmode="numeric">
+            </div>
+            <div style="flex: 1;">
+                <label for="cardCvc">Security Code (CVC)</label>
+                <input type="password" id="cardCvc" placeholder="123" maxlength="4" inputmode="numeric">
+            </div>
+        </div>
+    </div>
 
-                <div id="paypal-inputs" class="payment-group" style="display: none;">
-                    <label for="paypalEmail">PayPal Account Email</label>
-                    <input type="email" id="paypalEmail" placeholder="your-email@paypal.com">
-                </div>
+    <div id="paypal-inputs" class="payment-group" style="display: none;">
+        <label for="paypalEmail">PayPal Account Email</label>
+        <input type="email" id="paypalEmail" placeholder="your-email@paypal.com">
+    </div>
 
-                <div id="cod-inputs" class="payment-group" style="display: none;">
-                    <p style="background: rgba(56, 189, 248, 0.1); border: 1px solid #38bdf8; padding: 10px; border-radius: 6px; color: #38bdf8; font-size: 0.85rem; margin-top: 10px;">
-                        ✓ Pay with cash when your package arrives at your doorstep.
-                    </p>
-                </div>
+    <div id="cod-inputs" class="payment-group" style="display: none;">
+        <p style="background: rgba(56, 189, 248, 0.1); border: 1px solid #38bdf8; padding: 10px; border-radius: 6px; color: #38bdf8; font-size: 0.85rem; margin-top: 10px;">
+            ✓ Pay with cash when your package arrives at your doorstep.
+        </p>
+    </div>
 
-                <button type="submit" class="checkout-btn">Complete Order</button>
-            </form>
+    <button type="submit" class="checkout-btn">Complete Order</button>
+</form>
         </div>
     </main>
 
