@@ -181,7 +181,7 @@ function openProductModal(productId) {
         document.body.appendChild(modal);
     }
 
-    // Populate modal content
+    // Populate modal content content of specs from database
     document.getElementById('modal-img').src = product.image || '../assets/default-pc-part.png';
     document.getElementById('modal-brand-tag').textContent = product.brand || product.category;
     document.getElementById('modal-title').textContent = product.name;
@@ -192,6 +192,8 @@ function openProductModal(productId) {
     const stockEl = document.getElementById('modal-stock');
     const addBtn = document.getElementById('modal-add-btn');
 
+
+//check if in stock or not
     if (product.stock > 0) {
         stockEl.textContent = `In Stock (${product.stock} available)`;
         stockEl.style.color = '#4ade80';
