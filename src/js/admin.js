@@ -14,12 +14,16 @@ document.addEventListener('DOMContentLoaded', () => {
         addProductForm.addEventListener('submit', async (e) => {
             e.preventDefault();
 
+            const priceInput = document.getElementById('product-price');
+            const stockInput = document.getElementById('product-stock');
+            if (!priceInput.reportValidity() || !stockInput.reportValidity()) return;
+
             const newProduct = {
                 name: document.getElementById('product-name').value,
                 category: document.getElementById('product-category').value,
                 brand: document.getElementById('product-brand').value,
-                price: Number(document.getElementById('product-price').value),
-                stock: Number(document.getElementById('product-stock').value),
+                price: Number(priceInput.value),
+                stock: Number(stockInput.value),
                 specs: document.getElementById('product-specs').value,
                 description: document.getElementById('product-description') ? document.getElementById('product-description').value : '',
                 image: document.getElementById('product-image').value
@@ -77,13 +81,13 @@ async function fetchAdminProducts() {
                 
                 <!-- Editable Price Input -->
                 <td>
-                    <input type="number" id="price-${product._id}" value="${product.price}" step="0.01" min="0" 
+                    <input type="number" id="price-${product._id}" value="${product.price}" step="0.01" min="0" required
                            style="width: 90px; background: #1e293b; color: white; border: 1px solid #334155; padding: 6px; border-radius: 4px;">
                 </td>
 
                 <!-- Editable Stock Input -->
                 <td>
-                    <input type="number" id="stock-${product._id}" value="${product.stock}" min="0" 
+                    <input type="number" id="stock-${product._id}" value="${product.stock}" min="0" step="1" required
                            style="width: 60px; background: #1e293b; color: white; border: 1px solid #334155; padding: 6px; border-radius: 4px;">
                 </td>
 
@@ -116,8 +120,12 @@ async function fetchAdminProducts() {
 }
 
 async function saveProduct(productId) {
-    const newPrice = document.getElementById(`price-${productId}`).value;
-    const newStock = document.getElementById(`stock-${productId}`).value;
+    const priceInput = document.getElementById(`price-${productId}`);
+    const stockInput = document.getElementById(`stock-${productId}`);
+    if (!priceInput.reportValidity() || !stockInput.reportValidity()) return;
+
+    const newPrice = priceInput.value;
+    const newStock = stockInput.value;
     const newDescription = document.getElementById(`desc-${productId}`).value;
 
     try {
