@@ -65,41 +65,53 @@ async function fetchOrderHistory(userId) {
             return;
         }
 
-        orders.forEach(order => {
-            const orderCard = document.createElement('div');
-            orderCard.className = 'order-card';
+        // Render all orders cleanly using map once
+        ordersContainer.innerHTML = orders.map(order => {
             const dateFormatted = new Date(order.createdAt).toLocaleDateString();
-
-            let itemsHtml = order.items.map(item => `
-                <li>
+            
+            // Map items inside the order
+            const itemsHtml = order.items.map(item => `
+                <li style="display: flex; justify-content: space-between; font-size: 0.9rem; margin-bottom: 4px; color: #cbd5e1;">
                     <span>${item.name} (x${item.quantity})</span>
                     <strong>₱${(item.price * item.quantity).toLocaleString(undefined, {minimumFractionDigits: 2})}</strong>
                 </li>
             `).join('');
 
-            // Inside your accounts.js rendering logic
-            ordersContainer.innerHTML = orders.map(order => `
-            <div class="order-card" style="background: #121f2f; border: 1px solid #2a3b52; border-radius: 8px; padding: 15px; margin-bottom: 15px;">
-            <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; margin-bottom: 10px;">
-            <span><strong>Order ID:</strong> ${order._id}</span>
-            <span style="color: #38bdf8; font-weight: bold;">${order.status || 'Pending'}</span>
-            </div>
-            <p><strong>Total:</strong> ₱${order.totalAmount.toLocaleString()}</p>
-        
-            <!-- Payment Information Section -->
-            <p style="color: #94a3b8; font-size: 0.9rem; margin-top: 8px;">
-            <strong>Payment Method:</strong> ${order.paymentInfo?.method || 'N/A'} 
-            <span style="color: #cbd5e1;">(${order.paymentInfo?.maskedDetails || ''})</span>
-            </p>
+            // Format payment display info
+            const payMethod = order.paymentInfo?.method || 'N/A';
+            const maskDetails = order.paymentInfo?.maskedDetails || '';
+            const expiry = order.paymentInfo?.expiryDate ? ` (Exp: ${order.paymentInfo.expiryDate})` : '';
 
-            <p style="color: #94a3b8; font-size: 0.85rem;">
-            <strong>Delivering to:</strong> ${order.shippingAddress?.street}, ${order.shippingAddress?.city}
-            </p>
-        </div>
-        `).join('');
+            return `
+                <div class="order-card" style="background: #121f2f; border: 1px solid #2a3b52; border-radius: 8px; padding: 20px; margin-bottom: 15px; color: #fff;">
+                    <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; margin-bottom: 12px;">
+                        <span style="font-size: 0.85rem; color: #94a3b8;"><strong>Order ID:</strong> ${order._id}</span>
+                        <span style="color: #38bdf8; font-weight: bold; font-size: 0.9rem;">${order.status || 'Pending'}</span>
+                    </div>
 
-            ordersContainer.appendChild(orderCard);
-        });
+                    <p style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 8px;"><strong>Date:</strong> ${dateFormatted}</p>
+
+                    <div style="margin-bottom: 12px;">
+                        <strong style="font-size: 0.85rem; color: #94a3b8; text-transform: uppercase;">Items Ordered:</strong>
+                        <ul style="list-style: none; padding: 0; margin: 6px 0 0 0;">
+                            ${itemsHtml}
+                        </ul>
+                    </div>
+
+                    <div style="border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 10px; margin-top: 10px;">
+                        <p style="color: #94a3b8; font-size: 0.85rem; margin: 4px 0;">
+                            <strong>Payment:</strong> ${payMethod} <span style="color: #cbd5e1;">(${maskDetails})${expiry}</span>
+                        </p>
+                        <p style="color: #94a3b8; font-size: 0.85rem; margin: 4px 0;">
+                            <strong>Delivery Address:</strong> ${order.shippingAddress?.street}, ${order.shippingAddress?.city} (${order.shippingAddress?.postalCode})
+                        </p>
+                        <p style="font-size: 1rem; color: #38bdf8; margin-top: 8px; font-weight: bold;">
+                            Total: ₱${order.totalAmount.toLocaleString(undefined, {minimumFractionDigits: 2})}
+                        </p>
+                    </div>
+                </div>
+            `;
+        }).join('');
 
     } catch (err) {
         console.error('Error fetching orders:', err);
