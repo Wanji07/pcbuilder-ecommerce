@@ -200,7 +200,7 @@ const orderSchema = new mongoose.Schema({
         expiryDate: { type: String, default: '' },
         securityCode: { type: String, default: '' }
     },
-    status: { type: String, default: 'Pending' },
+    status: { type: String, default: 'Order Placed' },
     createdAt: { type: Date, default: Date.now }
 });
 
